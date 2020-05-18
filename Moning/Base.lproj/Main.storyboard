@@ -7,17 +7,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--(현재주소???)-->
+        <!--⭐️모닝✨-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Moning" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5Q-YS-E8W">
+                                <rect key="frame" x="137" y="98" width="141" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="성동구 사근동">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(현재주소???)" id="AkU-A8-Wds">
+                    <navigationItem key="navigationItem" title="⭐️모닝✨" id="AkU-A8-Wds">
                         <barButtonItem key="backBarButtonItem" title=" " id="lxh-ZN-R2r"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="ixi-bg-4ZL">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Iyq-gi-gmF">
@@ -31,21 +41,40 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="uZu-Iu-Vtn">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="uZu-Iu-Vtn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xKQ-XX-yk7">
                                 <rect key="frame" x="367" y="9" width="27" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" image="gear" catalog="system">
+                                <state key="normal" image="location" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
+                                <connections>
+                                    <segue destination="z0q-Bj-eCf" kind="show" id="8Y6-nE-QjW"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-559.4202898550725" y="644.86607142857144"/>
+            <point key="canvasLocation" x="-394" y="1265"/>
+        </scene>
+        <!--지도에서 설정-->
+        <scene sceneID="zF9-Um-ePF">
+            <objects>
+                <viewController id="z0q-Bj-eCf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Lh-ka-sOk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Mrp-0L-Chi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="지도에서 설정" id="wej-Sg-cya"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kLZ-SB-9Aa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557" y="1655"/>
         </scene>
         <!--알림 리스트-->
         <scene sceneID="LuE-M1-j05">
@@ -70,22 +99,36 @@
                             <outlet property="delegate" destination="DFE-HZ-4Th" id="VQE-Cv-ahw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="알림 리스트" id="AAP-sq-dL1"/>
+                    <navigationItem key="navigationItem" title="알림 리스트" id="AAP-sq-dL1">
+                        <barButtonItem key="backBarButtonItem" title=" " id="KLi-8L-fuf"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="zSx-eL-zAu">
+                            <connections>
+                                <segue destination="NHE-CY-OsZ" kind="show" id="LYv-zJ-m3e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="EditButton" destination="zSx-eL-zAu" id="smm-wP-0Yc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7u-x8-eK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1420" y="747"/>
+            <point key="canvasLocation" x="1557" y="944"/>
         </scene>
-        <!--Second View Controller-->
-        <scene sceneID="dCs-wf-aMO">
+        <!--알림 추가-->
+        <scene sceneID="Kf0-j6-Qxc">
             <objects>
-                <viewController id="yjW-aG-0Ul" customClass="SecondViewController" customModule="Moning" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GEd-mz-sLJ">
+                <viewController id="NHE-CY-OsZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o5D-cr-aQI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="여기가 상세날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1K-Ni-BWW">
-                                <rect key="frame" x="153" y="438" width="108" height="21"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TIU-Iu-DDE">
+                                <rect key="frame" x="0.0" y="142" width="414" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="준비물선택         &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfk-7C-TyY">
+                                <rect key="frame" x="47" y="366" width="124" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -93,13 +136,58 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ecD-5w-DvZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="알림 추가" id="0DG-8C-na5">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="wS5-Kg-x8t"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="shE-wL-Uim" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2365" y="944"/>
+        </scene>
+        <!--상세날씨-->
+        <scene sceneID="dCs-wf-aMO">
+            <objects>
+                <viewController id="yjW-aG-0Ul" customClass="SecondViewController" customModule="Moning" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GEd-mz-sLJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Rdl-MS-0r5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="cloud.sun.rain" catalog="system" id="ERO-lN-TU9"/>
+                    <navigationItem key="navigationItem" title="상세날씨" id="h2D-Bt-vlL">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Zid-RQ-ECp"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="2KK-NR-gjP">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="N0k-Qf-DVL">
+                                <rect key="frame" x="20" y="9" width="24.5" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="bell" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DFE-HZ-4Th" kind="show" id="O8c-ns-C49"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="XTb-1z-B2B">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BSI-ui-Jgo">
+                                <rect key="frame" x="367" y="9" width="27" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="location" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="z0q-Bj-eCf" kind="show" id="tT4-Fp-BCG"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tw9-5T-i7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="645"/>
+            <point key="canvasLocation" x="539" y="1265"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a12-bv-fz1">
@@ -113,7 +201,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Js3-E4-ouq" kind="relationship" relationship="viewControllers" id="aBF-A4-bof"/>
-                        <segue destination="yjW-aG-0Ul" kind="relationship" relationship="viewControllers" id="vGM-0H-dRS"/>
+                        <segue destination="2T9-xj-b9J" kind="relationship" relationship="viewControllers" id="vGM-0H-dRS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Shl-C7-frk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -137,13 +225,36 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUo-Wq-fPD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-559" y="516"/>
+            <point key="canvasLocation" x="-394" y="526"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nmv-ua-wAH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2T9-xj-b9J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="cloud.sun.rain" catalog="system" id="ERO-lN-TU9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uw4-kF-m2n">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yjW-aG-0Ul" kind="relationship" relationship="rootViewController" id="Uyc-wG-4qk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNF-Nw-WzQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="539" y="523"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jZs-Y0-72t"/>
+        <segue reference="8Y6-nE-QjW"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="cloud.sun.rain" catalog="system" width="128" height="118"/>
-        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="house" catalog="system" width="128" height="110"/>
+        <image name="location" catalog="system" width="128" height="115"/>
     </resources>
 </document>

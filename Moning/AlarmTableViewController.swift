@@ -10,14 +10,33 @@ import UIKit
 
 class AlarmTableViewController: UITableViewController {
 
+    @IBOutlet weak var EditButton: UIBarButtonItem!
+//
+//    var editToggle = true
+//
+//    @IBAction func EditButtonAction(_ sender: Any) {
+//
+//        if (editToggle){
+//            EditButton.title = "Add"
+//            editToggle = false
+//
+//            // 알람 리스트 편집 가능하게하기
+//        }
+//
+//        else {
+//
+//        }
+//
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
