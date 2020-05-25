@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
+		3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */; };
+		3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6514247B8FA60001DB5F /* Place.storyboard */; };
 		3F4F9A0D246FC0AF005DEFE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F9A0C246FC0AF005DEFE9 /* AppDelegate.swift */; };
 		3F4F9A0F246FC0AF005DEFE9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F9A0E246FC0AF005DEFE9 /* SceneDelegate.swift */; };
 		3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F9A10246FC0AF005DEFE9 /* MainViewController.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
+		3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		3F4F6514247B8FA60001DB5F /* Place.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
 		3F4F9A09246FC0AF005DEFE9 /* Moning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4F9A0C246FC0AF005DEFE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F4F9A0E246FC0AF005DEFE9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +86,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F4F650E247B8EAD0001DB5F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3F4F6514247B8FA60001DB5F /* Place.storyboard */,
+				3F4F6509247B8E300001DB5F /* Alarm.storyboard */,
+				3F4F9A12246FC0AF005DEFE9 /* Main.storyboard */,
+				3F4F9A17246FC0B3005DEFE9 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3F4F650F247B8EC80001DB5F /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		3F4F6510247B8ED80001DB5F /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
 		3F4F9A00246FC0AF005DEFE9 = {
 			isa = PBXGroup;
 			children = (
@@ -103,13 +136,13 @@
 		3F4F9A0B246FC0AF005DEFE9 /* Moning */ = {
 			isa = PBXGroup;
 			children = (
-				3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */,
+				3F4F650E247B8EAD0001DB5F /* Storyboard */,
+				3F4F650F247B8EC80001DB5F /* Alarm */,
 				3F4F9A0C246FC0AF005DEFE9 /* AppDelegate.swift */,
+				3F4F6510247B8ED80001DB5F /* Place */,
 				3F4F9A0E246FC0AF005DEFE9 /* SceneDelegate.swift */,
 				3F4F9A10246FC0AF005DEFE9 /* MainViewController.swift */,
-				3F4F9A12246FC0AF005DEFE9 /* Main.storyboard */,
 				3F4F9A15246FC0B3005DEFE9 /* Assets.xcassets */,
-				3F4F9A17246FC0B3005DEFE9 /* LaunchScreen.storyboard */,
 				3F8E7AA724710DB700752C92 /* SecondViewController.swift */,
 				3F4F9A1A246FC0B3005DEFE9 /* Info.plist */,
 			);
@@ -238,6 +271,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */,
+				3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */,
 				3F4F9A19246FC0B3005DEFE9 /* LaunchScreen.storyboard in Resources */,
 				3F4F9A16246FC0B3005DEFE9 /* Assets.xcassets in Resources */,
 				3F4F9A14246FC0AF005DEFE9 /* Main.storyboard in Resources */,
@@ -265,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
 				3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */,
 				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,
