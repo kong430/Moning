@@ -11,23 +11,9 @@ import UIKit
 class AlarmTableViewController: UITableViewController {
 
     @IBOutlet weak var EditButton: UIBarButtonItem!
-//
-//    var editToggle = true
-//
-//    @IBAction func EditButtonAction(_ sender: Any) {
-//
-//        if (editToggle){
-//            EditButton.title = "Add"
-//            editToggle = false
-//
-//            // 알람 리스트 편집 가능하게하기
-//        }
-//
-//        else {
-//
-//        }
-//
-//    }
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
