@@ -23,18 +23,26 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func refreshButtonAction(_ sender: Any) {
+        locationManager.startUpdatingLocation()
         self.getCurrentLocation()
-//        self.view.layoutIfNeeded()
-//        update()
     }
-    
+
+    var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         
-//        getCurrentLocation()
-//        self.view.layoutIfNeeded()
-//        update()
+        DispatchQueue.main.async {
+            self.getCurrentLocation()
+        }
     }
     
     func update(){
@@ -48,17 +56,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    
-    var locationManager: CLLocationManager!
-    
     func getCurrentLocation(){
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
-        
         var coor = locationManager.location?.coordinate
+        
         if(coor==nil){
             print("error: location coordinate nil")
             return
@@ -80,7 +80,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     }
                 }
         
-        self.getWeather()
+        DispatchQueue.main.async {
+            self.getWeather()
+        }
     }
     
     var currentResult: CurrentResults?
