@@ -45,17 +45,37 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func update(){
+    // UI 띄우기
+//    func update(){
+//        nameLabel.text = Place.name
+//        timeLabel.text = MainWeather.timeStamp
+//        currentTempLabel.text = MainWeather.currentTemp
+//        lowTempLabel.text = MainWeather.minTemp
+//        highTempLabel.text = MainWeather.maxTemp
+//        weatherImage.image = UIImage(named: MainWeather.icon+".png")
+//        weatherLabel.text = MainWeather.description
+//        self.view.layoutIfNeeded()
+//    }
+
+    func update1(){
         nameLabel.text = Place.name
-        currentTempLabel.text = String(CurrentWeather.temp)
-        lowTempLabel.text = String(CurrentWeather.temp_min)
-        highTempLabel.text = String(CurrentWeather.temp_max)
-        weatherImage.image = UIImage(named: CurrentWeather.icon+".png")
-        weatherLabel.text = CurrentWeather.description
+        weatherImage.image = UIImage(named: MainWeather.icon+".png")
+        weatherLabel.text = MainWeather.description
+        self.view.layoutIfNeeded()
+    }
+    func update2(){
+        lowTempLabel.text = MainWeather.minTemp + "℃"
+        highTempLabel.text = MainWeather.maxTemp + "℃"
+        self.view.layoutIfNeeded()
+    }
+    func update3(){
+        timeLabel.text = MainWeather.timeStamp + " 기준"
+        currentTempLabel.text = MainWeather.currentTemp + " ℃"
         self.view.layoutIfNeeded()
     }
     
     
+    // 현위치 받아오기
     func getCurrentLocation(){
         var coor = locationManager.location?.coordinate
         
@@ -82,52 +102,162 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         DispatchQueue.main.async {
             self.getWeather()
+            self.getVillageTemp()
+            self.getCurrentTemp()
         }
     }
     
+    
+    // openweather API
     var currentResult: CurrentResults?
     
     func getWeather(){
         let url = OpenWeatherClient.currentUrl(lat: Place.lat, lon: Place.lon)
-        
         print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
-            
-            print(data)
-            
             guard let data = data else { return }
-            
+    
             let decoder = JSONDecoder()
-            
             if let searchData = try? decoder.decode(CurrentResults.self, from: data) {
                 self.currentResult = searchData
-                
                 print(self.currentResult)
                 
+                // 날씨
                 for weather in self.currentResult!.weather {
-                    CurrentWeather.description = weather.description
-                    CurrentWeather.icon = weather.icon
+                    MainWeather.description = weather.description
+                    MainWeather.icon = weather.icon
                 }
-                
-                CurrentWeather.temp = self.currentResult!.main.temp
-                CurrentWeather.temp_min = self.currentResult!.main.temp_min
-                CurrentWeather.temp_max = self.currentResult!.main.temp_max
-                
-                CurrentWeather.humidity = self.currentResult!.main.humidity
-                CurrentWeather.feels_like = self.currentResult!.main.feels_like
-                CurrentWeather.wind_speed = self.currentResult!.wind.speed
-                CurrentWeather.clouds = self.currentResult!.clouds.all
-                
+                // 습도, 바람
+                MainWeather.humidity = self.currentResult!.main.humidity
+                MainWeather.windSpeed = self.currentResult!.wind.speed
             }
 
             DispatchQueue.main.async {
-                self.update()
+                self.update1()
             }
         }
         
         task.resume()
     }
+    
+    
+    // 기상청 API 동네예보
+    func getVillageTemp(){
+        let url = KMAweatherClient.villageUrl(lat: Place.lat, lon: Place.lon)
+        print(url)
+        
+        let task = URLSession.shared.dataTask(with: url) {
+        data, response, error in
+            guard let data = data else { return }
+            print(data)
+            
+            let decoder = JSONDecoder()
+            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                else {
+                    print("json error")
+                    return
+                }
+            
+            let resp = jsonData["response"] as! [String:Any]
+            let hdr = resp["header"] as! [String:Any]
+            let rslt = hdr["resultCode"] as! String
+            
+            if rslt != "00" {
+                print("result code error")
+                return
+            }
+            
+            let bd = resp["body"] as! [String:Any]
+            let items = bd["items"] as! [String:Any]
+            let item = items["item"] as! [[String:Any]]
+            
+            var cnt = 0
+            for i in item {
+                let data = i as [String:Any]
+                
+                let cat = data["category"] as! String
+                let fcstT = data["fcstTime"] as! String
+                
+                // 최저기온
+                if cat == "TMN" && fcstT == "0600" {
+                    MainWeather.minTemp = data["fcstValue"] as! String
+                    cnt+=1
+                }
+                
+                // 최고기온
+                if cat == "TMX" && fcstT == "1500"{
+                    MainWeather.maxTemp = data["fcstValue"] as! String
+                    cnt+=1
+                }
+                
+                if cnt==2 {
+                    break
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.update2()
+            }
+        }
+
+        task.resume()
+    }
+    
+    // 기상청 API 초단기실황
+    func getCurrentTemp(){
+        let url = KMAweatherClient.nowcastUrl(lat: Place.lat, lon: Place.lon)
+        print(url)
+        
+        let task = URLSession.shared.dataTask(with: url) {
+        data, response, error in
+            guard let data = data else { return }
+            print(data)
+            
+            let decoder = JSONDecoder()
+            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                else {
+                    print("json error")
+                    return
+                }
+            
+            let resp = jsonData["response"] as! [String:Any]
+            let hdr = resp["header"] as! [String:Any]
+            let rslt = hdr["resultCode"] as! String
+            
+            if rslt != "00" {
+                print("result code error")
+                return
+            }
+            
+            let bd = resp["body"] as! [String:Any]
+            let items = bd["items"] as! [String:Any]
+            let item = items["item"] as! [[String:Any]]
+            
+            var cnt = 0
+            for i in item {
+                let data = i as [String:Any]
+                
+                let cat = data["category"] as! String
+                
+                // 현재기온
+                if cat == "T1H" {
+                    MainWeather.timeStamp = (data["baseDate"] as! String)+" "+(data["baseTime"] as! String)
+                    MainWeather.currentTemp = data["obsrValue"] as! String
+                    break
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.update3()
+            }
+        }
+
+        task.resume()
+    }
+    
+    
+    
     
 }

@@ -13,6 +13,8 @@ class Place {
     static var name: String! // 주소
     static var lat: CLLocationDegrees! // 위도
     static var lon: CLLocationDegrees! // 경도
+    static var nx: Int! // 기상청 x좌표
+    static var ny: Int! // 기상청 y좌표
 }
 
 

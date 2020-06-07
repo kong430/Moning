@@ -1,5 +1,5 @@
 //
-//  WeatherResults.swift
+//  OpenWeatherResults.swift
 //  Moning
 //
 //  Created by 이제인 on 2020/06/01.
@@ -12,12 +12,12 @@ struct CurrentResults: Decodable, Equatable {
     let weather: [WeatherData]
     let main: MainData
     let wind: WindData
-    let clouds: CloudData
 }
 
 struct ForecastResults: Decodable, Equatable {
     let list: [FiveDay]
 }
+
 
 struct WeatherData: Codable, Equatable {
     let id: Int
@@ -38,10 +38,6 @@ struct MainData: Codable, Equatable {
 struct WindData: Codable, Equatable {
     let speed: Double
     let deg: Int
-}
-
-struct CloudData: Codable, Equatable {
-    let all: Int
 }
 
 struct FiveDay: Codable, Equatable {
