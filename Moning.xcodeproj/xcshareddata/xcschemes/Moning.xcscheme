@@ -71,7 +71,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "../Moning/TestLocation.gpx"
+         identifier = "../Moning/gpx/Kaist.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
