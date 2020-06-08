@@ -48,18 +48,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             self.getCurrentLocation()
         }
     }
-    
-    // UI 띄우기
-//    func update(){
-//        nameLabel.text = Place.name
-//        timeLabel.text = MainWeather.timeStamp
-//        currentTempLabel.text = MainWeather.currentTemp
-//        lowTempLabel.text = MainWeather.minTemp
-//        highTempLabel.text = MainWeather.maxTemp
-//        weatherImage.image = UIImage(named: MainWeather.icon+".png")
-//        weatherLabel.text = MainWeather.description
-//        self.view.layoutIfNeeded()
-//    }
 
     func updateWeather(){
         nameLabel.text = Place.name
@@ -69,8 +57,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func updateVillageTemp(){
-        lowTempLabel.text = MainWeather.minTemp + "℃"
-        highTempLabel.text = MainWeather.maxTemp + "℃"
+        lowTempLabel.text = MainWeather.minTemp
+        highTempLabel.text = MainWeather.maxTemp
         self.view.layoutIfNeeded()
     }
     
@@ -97,20 +85,39 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 //        print(Place.lon)
 
         let findLocation: CLLocation = CLLocation(latitude: coor!.latitude, longitude: coor!.longitude)
-                let geoCoder: CLGeocoder = CLGeocoder()
-                let local: Locale = Locale(identifier: "Ko-kr") // Korea
-                geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
-                    if let address: [CLPlacemark] = place {
-                        Place.name = String((address.last?.administrativeArea)!)+" "+String((address.last?.locality)!)+" "+String((address.last?.thoroughfare)!)
-                        print(Place.name)
-                    }
+        let geoCoder: CLGeocoder = CLGeocoder()
+        let local: Locale = Locale(identifier: "Ko-kr") // Korea
+        geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
+            if let address: [CLPlacemark] = place {
+                Place.sidoName = String((address.last?.administrativeArea)!)
+                Place.cityName = String((address.last?.locality)!)
+                
+                let sub: String!
+                if (address.last?.subLocality != nil) {
+                    sub = String((address.last?.subLocality)!)
                 }
-        
-        DispatchQueue.main.async {
-            self.getWeather()
-            KMAweatherClient.getVillageTemp()
-            KMAweatherClient.getCurrentTemp()
+                else {
+                    sub = String((address.last?.thoroughfare)!)
+                }
+                
+                if (Place.sidoName == Place.cityName) { // 세종시 세종시 이따고로 나옴
+                    Place.name = Place.sidoName + " " + sub
+                }
+                else {
+                    Place.name = Place.sidoName + " " + Place.cityName + " " + sub
+                }
+                print(Place.name)
+            }
+            
+            DispatchQueue.main.async {
+                print("이제할거야!!!!!!!!!!!!!!!! Place sidoName:\(Place.sidoName)")
+                self.getWeather()
+                KMAweatherClient.getVillageTemp()
+                KMAweatherClient.getCurrentTemp()
+                AirDustClient.getAirDust()
+            }
         }
+
     }
     
     
@@ -119,7 +126,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func getWeather(){
         let url = OpenWeatherClient.currentUrl(lat: Place.lat, lon: Place.lon)
-        print(url)
+//        print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
@@ -128,7 +135,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             let decoder = JSONDecoder()
             if let searchData = try? decoder.decode(CurrentResults.self, from: data) {
                 self.currentResult = searchData
-                print(self.currentResult)
+//                print(self.currentResult)
                 
                 // 날씨
                 for weather in self.currentResult!.weather {

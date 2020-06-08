@@ -11,7 +11,7 @@ import CoreLocation
 
 class KMAweatherClient {
     
-    static let apiKey = "ServiceKey=WlFbddIA5I1gY%2BO8cyfSL1u9PK0o0BD06jw%2FxSAroIkdaLfMpNY5c7zv%2F%2FSEnpl5SS17Wh7wImc0IF1GxAiyFA%3D%3D&ServiceKey=-"
+    static let apiKey = "ServiceKey=bUUAThKo0ONn9UfQ2I5%2FkOt5ZYqr4JLrZyPBIV3ZNvR%2FNsJB4PTpDuNM%2FlN1g8jH3ITlWNy24RnCzjYjk7paVg%3D%3D&ServiceKey=-"
     
     static func coorString(lat: CLLocationDegrees, lon: CLLocationDegrees) -> String {
            convertCoor(lat: lat, lon: lon)
@@ -72,19 +72,22 @@ class KMAweatherClient {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        let dateString = dateFormatter.string(from: date)
         
         let calendar = Calendar.current
         let components = calendar.dateComponents([.minute], from: date)
-
+        
+        let dateString: String
         let timeString: String
+        
         // 0분~40분: 그 전 시간 59분
         if (0 <= components.minute! && components.minute! <= 40) {
+            dateString = dateFormatter.string(from: date-3600)
             dateFormatter.dateFormat = "HH"
             timeString = dateFormatter.string(from: date-3600) + "59"
         }
         // 41분~59분: 그대로
         else {
+            dateString = dateFormatter.string(from: date)
             dateFormatter.dateFormat = "HHmm"
             timeString = dateFormatter.string(from: date)
         }
@@ -98,17 +101,18 @@ class KMAweatherClient {
     
     static func getCurrentTemp(){
         let url = self.nowcastUrl(lat: Place.lat, lon: Place.lon)
-        print(url)
+//        print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
         data, response, error in
             guard let data = data else { return }
-            print(data)
             
             let decoder = JSONDecoder()
             guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 else {
-                    print("json error")
+                    print("nowcast: json error")
+                    MainWeather.timeStamp = ""
+                    MainWeather.currentTemp = ""
                     return
                 }
             
@@ -117,7 +121,7 @@ class KMAweatherClient {
             let rslt = hdr["resultCode"] as! String
             
             if rslt != "00" {
-                print("result code error")
+                print("nowcast: result code error")
                 return
             }
             
@@ -140,6 +144,7 @@ class KMAweatherClient {
             }
             
             DispatchQueue.main.async {
+                print("nowcast: success")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentTemp"), object: nil)
             }
         }
@@ -184,17 +189,18 @@ class KMAweatherClient {
     
     static func getVillageTemp(){
         let url = self.villageUrl(lat: Place.lat, lon: Place.lon)
-        print(url)
+//        print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
         data, response, error in
             guard let data = data else { return }
-            print(data)
             
             let decoder = JSONDecoder()
             guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 else {
-                    print("json error")
+                    print("village: json error")
+                    MainWeather.maxTemp = ""
+                    MainWeather.minTemp = ""
                     return
                 }
             
@@ -203,7 +209,7 @@ class KMAweatherClient {
             let rslt = hdr["resultCode"] as! String
             
             if rslt != "00" {
-                print("result code error")
+                print("village: result code error")
                 return
             }
             
@@ -236,6 +242,7 @@ class KMAweatherClient {
             }
             
             DispatchQueue.main.async {
+                print("village: success")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
             }
         }
