@@ -129,7 +129,8 @@ class KMAweatherClient {
             let items = bd["items"] as! [String:Any]
             let item = items["item"] as! [[String:Any]]
             
-            var cnt = 0
+            var isok = false
+            
             for i in item {
                 let data = i as [String:Any]
                 
@@ -139,13 +140,19 @@ class KMAweatherClient {
                 if cat == "T1H" {
                     MainWeather.timeStamp = (data["baseDate"] as! String)+" "+(data["baseTime"] as! String)
                     MainWeather.currentTemp = data["obsrValue"] as! String
+                    print("nowcast: success")
+                    isok = true
                     break
                 }
             }
             
+            if !isok {
+                MainWeather.timeStamp = ""
+                MainWeather.currentTemp = ""
+                print("nowcast: fail")
+            }
             DispatchQueue.main.async {
-                print("nowcast: success")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentTemp"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentTemp"), object: "nil")
             }
         }
 
@@ -237,13 +244,19 @@ class KMAweatherClient {
                 }
                 
                 if cnt==2 {
+                    print("village: success")
                     break
                 }
             }
             
+            if cnt<2 {
+                MainWeather.maxTemp = ""
+                MainWeather.minTemp = ""
+                print("village: fail")
+            }
+            
             DispatchQueue.main.async {
-                print("village: success")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "VillageTemp"), object: "nil")
             }
         }
 

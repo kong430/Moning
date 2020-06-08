@@ -10,15 +10,20 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var test: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateAirDust), name: NSNotification.Name(rawValue: "AirDust"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-       NotificationCenter.default.addObserver(self, selector: #selector(updateAirDust), name: NSNotification.Name(rawValue: "AirDust"), object: nil)
     }
     
     @objc func updateAirDust(){
-        // ui update
+        print("??????????")
+        test.text = MainWeather.pm10Val + "/" + MainWeather.pm25Val
         self.view.layoutIfNeeded()
     }
     

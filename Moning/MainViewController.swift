@@ -89,6 +89,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         let local: Locale = Locale(identifier: "Ko-kr") // Korea
         geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
             if let address: [CLPlacemark] = place {
+                print(address)
                 Place.sidoName = String((address.last?.administrativeArea)!)
                 Place.cityName = String((address.last?.locality)!)
                 
@@ -100,7 +101,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     sub = String((address.last?.thoroughfare)!)
                 }
                 
-                if (Place.sidoName == Place.cityName) { // 세종시 세종시 이따고로 나옴
+                if (Place.sidoName == "세종특별자치시") { // 세종시 예외처리
+                    Place.cityName = "세종시"
                     Place.name = Place.sidoName + " " + sub
                 }
                 else {
@@ -110,7 +112,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             DispatchQueue.main.async {
-                print("이제할거야!!!!!!!!!!!!!!!! Place sidoName:\(Place.sidoName)")
                 self.getWeather()
                 KMAweatherClient.getVillageTemp()
                 KMAweatherClient.getCurrentTemp()

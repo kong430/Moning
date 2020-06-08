@@ -264,8 +264,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생활지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2S-5A-wlX">
-                                <rect key="frame" x="30" y="226" width="69.5" height="24"/>
+                                <rect key="frame" x="30" y="267" width="69.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjf-wj-bg6">
+                                <rect key="frame" x="30" y="226" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -273,10 +279,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gNO-9d-Zfv" firstAttribute="top" secondItem="Rdl-MS-0r5" secondAttribute="top" constant="50" id="LR4-Ay-XeL"/>
+                            <constraint firstItem="wjf-wj-bg6" firstAttribute="top" secondItem="5sb-zX-5Ef" secondAttribute="bottom" constant="20" id="Nqb-tF-PFH"/>
                             <constraint firstItem="h2S-5A-wlX" firstAttribute="leading" secondItem="Rdl-MS-0r5" secondAttribute="leading" constant="30" id="eNq-1r-aB6"/>
-                            <constraint firstItem="h2S-5A-wlX" firstAttribute="top" secondItem="5sb-zX-5Ef" secondAttribute="bottom" constant="20" id="jJK-U8-OjW"/>
+                            <constraint firstItem="h2S-5A-wlX" firstAttribute="top" secondItem="wjf-wj-bg6" secondAttribute="bottom" constant="20" id="jJK-U8-OjW"/>
                             <constraint firstItem="gNO-9d-Zfv" firstAttribute="leading" secondItem="Rdl-MS-0r5" secondAttribute="leading" constant="30" id="jhI-tb-SVT"/>
                             <constraint firstItem="5sb-zX-5Ef" firstAttribute="leading" secondItem="Rdl-MS-0r5" secondAttribute="leading" constant="30" id="ka4-UR-Rph"/>
+                            <constraint firstItem="wjf-wj-bg6" firstAttribute="leading" secondItem="Rdl-MS-0r5" secondAttribute="leading" constant="30" id="mSp-NY-11h"/>
                             <constraint firstItem="5sb-zX-5Ef" firstAttribute="top" secondItem="gNO-9d-Zfv" secondAttribute="bottom" constant="20" id="oxE-tM-Fct"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rdl-MS-0r5"/>
@@ -309,6 +317,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="test" destination="wjf-wj-bg6" id="WBU-Ne-s6K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tw9-5T-i7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -393,8 +404,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8Y6-nE-QjW"/>
-        <segue reference="jZs-Y0-72t"/>
+        <segue reference="tT4-Fp-BCG"/>
+        <segue reference="O8c-ns-C49"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>

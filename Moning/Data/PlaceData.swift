@@ -19,7 +19,6 @@ class Place {
     static var sidoName: String! // 시도 이름
     static var cityName: String! // 구역 이름
     static func sidoUrl() -> String {
-        print("sidoUrl(): sidoName=\(sidoName)")
         if sidoName == nil {
             return ""
         }
