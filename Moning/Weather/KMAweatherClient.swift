@@ -17,9 +17,9 @@ class KMAweatherClient {
            convertCoor(lat: lat, lon: lon)
            return "&nx="+String(Place.nx)+"&ny="+String(Place.ny)
     }
-       
-   static func convertCoor(lat: CLLocationDegrees, lon: CLLocationDegrees){
-           // 위도경도 -> 기상청좌표 변환
+    
+    // 위도경도 -> 기상청좌표 변환
+    static func convertCoor(lat: CLLocationDegrees, lon: CLLocationDegrees){
            let RE = 6371.00877 // 지구 반경(km)
            let GRID = 5.0 // 격자 간격(km)
            let SLAT1 = 30.0 // 투영 위도1(degree)
@@ -61,11 +61,10 @@ class KMAweatherClient {
            theta *= sn
            Place.nx = Int(floor(ra * sin(theta) + XO + 0.5))
            Place.ny = Int(floor(ro - ra * cos(theta) + YO + 0.5))
-    
     }
     
     
-    // 초단기실황 -> 현재 기온
+    // API 1 : 초단기실황 -> 현재 기온
     static let nowcastBase = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getUltraSrtNcst?"
     static let nowcastType = "&pageNo=1&numOfRows=10&dataType=json"
     
@@ -97,8 +96,60 @@ class KMAweatherClient {
         return URL(string: self.nowcastBase+self.apiKey+self.nowcastType+self.nowcastTimeString()+self.coorString(lat: lat, lon: lon))!
     }
     
+    static func getCurrentTemp(){
+        let url = self.nowcastUrl(lat: Place.lat, lon: Place.lon)
+        print(url)
+        
+        let task = URLSession.shared.dataTask(with: url) {
+        data, response, error in
+            guard let data = data else { return }
+            print(data)
+            
+            let decoder = JSONDecoder()
+            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                else {
+                    print("json error")
+                    return
+                }
+            
+            let resp = jsonData["response"] as! [String:Any]
+            let hdr = resp["header"] as! [String:Any]
+            let rslt = hdr["resultCode"] as! String
+            
+            if rslt != "00" {
+                print("result code error")
+                return
+            }
+            
+            let bd = resp["body"] as! [String:Any]
+            let items = bd["items"] as! [String:Any]
+            let item = items["item"] as! [[String:Any]]
+            
+            var cnt = 0
+            for i in item {
+                let data = i as [String:Any]
+                
+                let cat = data["category"] as! String
+                
+                // 현재기온
+                if cat == "T1H" {
+                    MainWeather.timeStamp = (data["baseDate"] as! String)+" "+(data["baseTime"] as! String)
+                    MainWeather.currentTemp = data["obsrValue"] as! String
+                    break
+                }
+            }
+            
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentTemp"), object: nil)
+            }
+        }
+
+        task.resume()
+    }
+
     
-    // 동네예보 -> 최저/최고 기온
+    
+    // API 2 : 동네예보 -> 최저/최고 기온
     static let villageBase = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?"
     static let villageType = "&pageNo=1&numOfRows=50&dataType=json"
     
@@ -131,8 +182,65 @@ class KMAweatherClient {
         return URL(string: self.villageBase+self.apiKey+self.villageType+self.villageTimeString()+self.coorString(lat: lat, lon: lon))!
     }
     
+    static func getVillageTemp(){
+        let url = self.villageUrl(lat: Place.lat, lon: Place.lon)
+        print(url)
+        
+        let task = URLSession.shared.dataTask(with: url) {
+        data, response, error in
+            guard let data = data else { return }
+            print(data)
+            
+            let decoder = JSONDecoder()
+            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                else {
+                    print("json error")
+                    return
+                }
+            
+            let resp = jsonData["response"] as! [String:Any]
+            let hdr = resp["header"] as! [String:Any]
+            let rslt = hdr["resultCode"] as! String
+            
+            if rslt != "00" {
+                print("result code error")
+                return
+            }
+            
+            let bd = resp["body"] as! [String:Any]
+            let items = bd["items"] as! [String:Any]
+            let item = items["item"] as! [[String:Any]]
+            
+            var cnt = 0
+            for i in item {
+                let data = i as [String:Any]
+                
+                let cat = data["category"] as! String
+                let fcstT = data["fcstTime"] as! String
+                
+                // 최저기온
+                if cat == "TMN" && fcstT == "0600" {
+                    MainWeather.minTemp = data["fcstValue"] as! String
+                    cnt+=1
+                }
+                
+                // 최고기온
+                if cat == "TMX" && fcstT == "1500"{
+                    MainWeather.maxTemp = data["fcstValue"] as! String
+                    cnt+=1
+                }
+                
+                if cnt==2 {
+                    break
+                }
+            }
+            
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
+            }
+        }
+
+        task.resume()
+    }
     
-
-   
-
 }

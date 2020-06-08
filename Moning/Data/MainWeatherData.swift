@@ -9,6 +9,7 @@
 import Foundation
 
 class MainWeather {
+    
     static var description: String! // 날씨 설명
     static var icon: String! // 이미지
     

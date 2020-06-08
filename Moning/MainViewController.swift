@@ -31,6 +31,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "CurrentTemp"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,18 +61,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 //        self.view.layoutIfNeeded()
 //    }
 
-    func update1(){
+    func updateWeather(){
         nameLabel.text = Place.name
         weatherImage.image = UIImage(named: MainWeather.icon+".png")
         weatherLabel.text = MainWeather.description
         self.view.layoutIfNeeded()
     }
-    func update2(){
+    
+    @objc func updateVillageTemp(){
         lowTempLabel.text = MainWeather.minTemp + "℃"
         highTempLabel.text = MainWeather.maxTemp + "℃"
         self.view.layoutIfNeeded()
     }
-    func update3(){
+    
+    @objc func updateCurrentTemp(){
         timeLabel.text = MainWeather.timeStamp + " 기준"
         currentTempLabel.text = MainWeather.currentTemp + " ℃"
         self.view.layoutIfNeeded()
@@ -102,8 +108,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         DispatchQueue.main.async {
             self.getWeather()
-            self.getVillageTemp()
-            self.getCurrentTemp()
+            KMAweatherClient.getVillageTemp()
+            KMAweatherClient.getCurrentTemp()
         }
     }
     
@@ -135,7 +141,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
 
             DispatchQueue.main.async {
-                self.update1()
+                self.updateWeather()
             }
         }
         
@@ -143,120 +149,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    // 기상청 API 동네예보
-    func getVillageTemp(){
-        let url = KMAweatherClient.villageUrl(lat: Place.lat, lon: Place.lon)
-        print(url)
         
-        let task = URLSession.shared.dataTask(with: url) {
-        data, response, error in
-            guard let data = data else { return }
-            print(data)
-            
-            let decoder = JSONDecoder()
-            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                else {
-                    print("json error")
-                    return
-                }
-            
-            let resp = jsonData["response"] as! [String:Any]
-            let hdr = resp["header"] as! [String:Any]
-            let rslt = hdr["resultCode"] as! String
-            
-            if rslt != "00" {
-                print("result code error")
-                return
-            }
-            
-            let bd = resp["body"] as! [String:Any]
-            let items = bd["items"] as! [String:Any]
-            let item = items["item"] as! [[String:Any]]
-            
-            var cnt = 0
-            for i in item {
-                let data = i as [String:Any]
-                
-                let cat = data["category"] as! String
-                let fcstT = data["fcstTime"] as! String
-                
-                // 최저기온
-                if cat == "TMN" && fcstT == "0600" {
-                    MainWeather.minTemp = data["fcstValue"] as! String
-                    cnt+=1
-                }
-                
-                // 최고기온
-                if cat == "TMX" && fcstT == "1500"{
-                    MainWeather.maxTemp = data["fcstValue"] as! String
-                    cnt+=1
-                }
-                
-                if cnt==2 {
-                    break
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.update2()
-            }
-        }
-
-        task.resume()
-    }
-    
-    // 기상청 API 초단기실황
-    func getCurrentTemp(){
-        let url = KMAweatherClient.nowcastUrl(lat: Place.lat, lon: Place.lon)
-        print(url)
-        
-        let task = URLSession.shared.dataTask(with: url) {
-        data, response, error in
-            guard let data = data else { return }
-            print(data)
-            
-            let decoder = JSONDecoder()
-            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                else {
-                    print("json error")
-                    return
-                }
-            
-            let resp = jsonData["response"] as! [String:Any]
-            let hdr = resp["header"] as! [String:Any]
-            let rslt = hdr["resultCode"] as! String
-            
-            if rslt != "00" {
-                print("result code error")
-                return
-            }
-            
-            let bd = resp["body"] as! [String:Any]
-            let items = bd["items"] as! [String:Any]
-            let item = items["item"] as! [[String:Any]]
-            
-            var cnt = 0
-            for i in item {
-                let data = i as [String:Any]
-                
-                let cat = data["category"] as! String
-                
-                // 현재기온
-                if cat == "T1H" {
-                    MainWeather.timeStamp = (data["baseDate"] as! String)+" "+(data["baseTime"] as! String)
-                    MainWeather.currentTemp = data["obsrValue"] as! String
-                    break
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.update3()
-            }
-        }
-
-        task.resume()
-    }
-    
     
     
     
