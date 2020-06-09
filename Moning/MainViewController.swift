@@ -31,6 +31,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "CurrentTemp"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,18 +48,28 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             self.getCurrentLocation()
         }
     }
-    
-    func update(){
+
+    func updateWeather(){
         nameLabel.text = Place.name
-        currentTempLabel.text = String(CurrentWeather.temp)
-        lowTempLabel.text = String(CurrentWeather.temp_min)
-        highTempLabel.text = String(CurrentWeather.temp_max)
-        weatherImage.image = UIImage(named: CurrentWeather.icon+".png")
-        weatherLabel.text = CurrentWeather.description
+        weatherImage.image = UIImage(named: MainWeather.icon+".png")
+        weatherLabel.text = MainWeather.description
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func updateVillageTemp(){
+        lowTempLabel.text = MainWeather.minTemp
+        highTempLabel.text = MainWeather.maxTemp
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func updateCurrentTemp(){
+        timeLabel.text = MainWeather.timeStamp + " 기준"
+        currentTempLabel.text = MainWeather.currentTemp + " ℃"
         self.view.layoutIfNeeded()
     }
     
     
+    // 현위치 받아오기
     func getCurrentLocation(){
         var coor = locationManager.location?.coordinate
         
@@ -71,63 +85,80 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 //        print(Place.lon)
 
         let findLocation: CLLocation = CLLocation(latitude: coor!.latitude, longitude: coor!.longitude)
-                let geoCoder: CLGeocoder = CLGeocoder()
-                let local: Locale = Locale(identifier: "Ko-kr") // Korea
-                geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
-                    if let address: [CLPlacemark] = place {
-                        Place.name = String((address.last?.administrativeArea)!)+" "+String((address.last?.locality)!)+" "+String((address.last?.thoroughfare)!)
-                        print(Place.name)
-                    }
+        let geoCoder: CLGeocoder = CLGeocoder()
+        let local: Locale = Locale(identifier: "Ko-kr") // Korea
+        geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
+            if let address: [CLPlacemark] = place {
+                print(address)
+                Place.sidoName = String((address.last?.administrativeArea)!)
+                Place.cityName = String((address.last?.locality)!)
+                
+                let sub: String!
+                if (address.last?.subLocality != nil) {
+                    sub = String((address.last?.subLocality)!)
                 }
-        
-        DispatchQueue.main.async {
-            self.getWeather()
+                else {
+                    sub = String((address.last?.thoroughfare)!)
+                }
+                
+                if (Place.sidoName == "세종특별자치시") { // 세종시 예외처리
+                    Place.cityName = "세종시"
+                    Place.name = Place.sidoName + " " + sub
+                }
+                else {
+                    Place.name = Place.sidoName + " " + Place.cityName + " " + sub
+                }
+                print(Place.name)
+            }
+            
+            DispatchQueue.main.async {
+                self.getWeather()
+                KMAweatherClient.getVillageTemp()
+                KMAweatherClient.getCurrentTemp()
+                AirDustClient.getAirDust()
+            }
         }
+
     }
     
+    
+    // openweather API
     var currentResult: CurrentResults?
     
     func getWeather(){
         let url = OpenWeatherClient.currentUrl(lat: Place.lat, lon: Place.lon)
-        
-        print(url)
+//        print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
-            
-            print(data)
-            
             guard let data = data else { return }
-            
+    
             let decoder = JSONDecoder()
-            
             if let searchData = try? decoder.decode(CurrentResults.self, from: data) {
                 self.currentResult = searchData
+//                print(self.currentResult)
                 
-                print(self.currentResult)
-                
+                // 날씨
                 for weather in self.currentResult!.weather {
-                    CurrentWeather.description = weather.description
-                    CurrentWeather.icon = weather.icon
+                    MainWeather.description = weather.description
+                    MainWeather.icon = weather.icon
                 }
-                
-                CurrentWeather.temp = self.currentResult!.main.temp
-                CurrentWeather.temp_min = self.currentResult!.main.temp_min
-                CurrentWeather.temp_max = self.currentResult!.main.temp_max
-                
-                CurrentWeather.humidity = self.currentResult!.main.humidity
-                CurrentWeather.feels_like = self.currentResult!.main.feels_like
-                CurrentWeather.wind_speed = self.currentResult!.wind.speed
-                CurrentWeather.clouds = self.currentResult!.clouds.all
-                
+                // 습도, 바람
+                MainWeather.humidity = self.currentResult!.main.humidity
+                MainWeather.windSpeed = self.currentResult!.wind.speed
             }
 
             DispatchQueue.main.async {
-                self.update()
+                self.updateWeather()
             }
         }
         
         task.resume()
     }
+    
+    
+        
+    
+    
     
 }
