@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */; };
+		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
+		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
 		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
 		3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */; };
 		3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6514247B8FA60001DB5F /* Place.storyboard */; };
@@ -18,9 +21,36 @@
 		3F4F9A19246FC0B3005DEFE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F9A17246FC0B3005DEFE9 /* LaunchScreen.storyboard */; };
 		3F4F9A24246FC0B3005DEFE9 /* MoningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F9A23246FC0B3005DEFE9 /* MoningTests.swift */; };
 		3F4F9A2F246FC0B3005DEFE9 /* MoningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F9A2E246FC0B3005DEFE9 /* MoningUITests.swift */; };
+		3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5750472484178D00C567BF /* OpenWeatherClient.swift */; };
+		3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F57504F2484328800C567BF /* OpenWeatherResults.swift */; };
+		3F5750562484355D00C567BF /* MainWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5750532484355D00C567BF /* MainWeatherData.swift */; };
+		3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE1247BBDE900529C72 /* PlaceData.swift */; };
+		3F7B3EF6247CF66D00529C72 /* 04n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE4247CF66C00529C72 /* 04n.png */; };
+		3F7B3EF7247CF66D00529C72 /* 11n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE5247CF66C00529C72 /* 11n.png */; };
+		3F7B3EF8247CF66D00529C72 /* 13d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE6247CF66C00529C72 /* 13d.png */; };
+		3F7B3EF9247CF66D00529C72 /* 02n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE7247CF66C00529C72 /* 02n.png */; };
+		3F7B3EFA247CF66D00529C72 /* 50n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE8247CF66C00529C72 /* 50n.png */; };
+		3F7B3EFB247CF66D00529C72 /* 10n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE9247CF66C00529C72 /* 10n.png */; };
+		3F7B3EFC247CF66D00529C72 /* 04d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EEA247CF66C00529C72 /* 04d.png */; };
+		3F7B3EFD247CF66D00529C72 /* 13n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EEB247CF66C00529C72 /* 13n.png */; };
+		3F7B3EFE247CF66D00529C72 /* 01d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EEC247CF66C00529C72 /* 01d.png */; };
+		3F7B3EFF247CF66D00529C72 /* 50d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EED247CF66D00529C72 /* 50d.png */; };
+		3F7B3F00247CF66D00529C72 /* 03d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EEE247CF66D00529C72 /* 03d.png */; };
+		3F7B3F01247CF66D00529C72 /* 02d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EEF247CF66D00529C72 /* 02d.png */; };
+		3F7B3F02247CF66D00529C72 /* 10d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EF0247CF66D00529C72 /* 10d.png */; };
+		3F7B3F03247CF66D00529C72 /* 09n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EF1247CF66D00529C72 /* 09n.png */; };
+		3F7B3F04247CF66D00529C72 /* 01n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EF2247CF66D00529C72 /* 01n.png */; };
+		3F7B3F05247CF66D00529C72 /* 03n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EF3247CF66D00529C72 /* 03n.png */; };
+		3F7B3F06247CF66D00529C72 /* 11d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EF4247CF66D00529C72 /* 11d.png */; };
+		3F7B3F07247CF66D00529C72 /* 09d.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B3EF5247CF66D00529C72 /* 09d.png */; };
+		3F86B004248E285A00776E8C /* AirDustClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86B003248E285A00776E8C /* AirDustClient.swift */; };
 		3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E7AA724710DB700752C92 /* SecondViewController.swift */; };
 		3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */; };
 		AB410043248F4B03000E24DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB410042248F4B03000E24DA /* MapViewController.swift */; };
+		3FC8DE7C248A420600848BD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FC8DE7B248A420500848BD9 /* GoogleService-Info.plist */; };
+		702F727F2D1E570A1E0F4250 /* Pods_MoningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C09965D53485687DA3E724D /* Pods_MoningTests.framework */; };
+		99C4DBBA3E9CC1549BDC158A /* Pods_Moning_MoningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A35997FD44D497BA6422FC4 /* Pods_Moning_MoningUITests.framework */; };
+		B6F016D96D20591F9667DFE9 /* Pods_Moning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C1C351ACD19048E4817080 /* Pods_Moning.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +71,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02C1C351ACD19048E4817080 /* Pods_Moning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
+		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
+		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
+		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
 		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		3F4F6514247B8FA60001DB5F /* Place.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
@@ -58,9 +93,47 @@
 		3F4F9A2A246FC0B3005DEFE9 /* MoningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoningUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4F9A2E246FC0B3005DEFE9 /* MoningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoningUITests.swift; sourceTree = "<group>"; };
 		3F4F9A30246FC0B3005DEFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F5750472484178D00C567BF /* OpenWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClient.swift; sourceTree = "<group>"; };
+		3F57504F2484328800C567BF /* OpenWeatherResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherResults.swift; sourceTree = "<group>"; };
+		3F5750532484355D00C567BF /* MainWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWeatherData.swift; sourceTree = "<group>"; };
+		3F75B257248D5ABE009EC63C /* Hongdae.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Hongdae.gpx; sourceTree = "<group>"; };
+		3F7B3EE1247BBDE900529C72 /* PlaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceData.swift; sourceTree = "<group>"; };
+		3F7B3EE4247CF66C00529C72 /* 04n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04n.png; sourceTree = "<group>"; };
+		3F7B3EE5247CF66C00529C72 /* 11n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11n.png; sourceTree = "<group>"; };
+		3F7B3EE6247CF66C00529C72 /* 13d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13d.png; sourceTree = "<group>"; };
+		3F7B3EE7247CF66C00529C72 /* 02n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02n.png; sourceTree = "<group>"; };
+		3F7B3EE8247CF66C00529C72 /* 50n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50n.png; sourceTree = "<group>"; };
+		3F7B3EE9247CF66C00529C72 /* 10n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10n.png; sourceTree = "<group>"; };
+		3F7B3EEA247CF66C00529C72 /* 04d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04d.png; sourceTree = "<group>"; };
+		3F7B3EEB247CF66C00529C72 /* 13n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13n.png; sourceTree = "<group>"; };
+		3F7B3EEC247CF66C00529C72 /* 01d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01d.png; sourceTree = "<group>"; };
+		3F7B3EED247CF66D00529C72 /* 50d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50d.png; sourceTree = "<group>"; };
+		3F7B3EEE247CF66D00529C72 /* 03d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03d.png; sourceTree = "<group>"; };
+		3F7B3EEF247CF66D00529C72 /* 02d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02d.png; sourceTree = "<group>"; };
+		3F7B3EF0247CF66D00529C72 /* 10d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10d.png; sourceTree = "<group>"; };
+		3F7B3EF1247CF66D00529C72 /* 09n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09n.png; sourceTree = "<group>"; };
+		3F7B3EF2247CF66D00529C72 /* 01n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01n.png; sourceTree = "<group>"; };
+		3F7B3EF3247CF66D00529C72 /* 03n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03n.png; sourceTree = "<group>"; };
+		3F7B3EF4247CF66D00529C72 /* 11d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11d.png; sourceTree = "<group>"; };
+		3F7B3EF5247CF66D00529C72 /* 09d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09d.png; sourceTree = "<group>"; };
+		3F86B003248E285A00776E8C /* AirDustClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDustClient.swift; sourceTree = "<group>"; };
+		3F86B005248E2EEF00776E8C /* Kaist.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Kaist.gpx; sourceTree = "<group>"; };
+		3F86B007248E96C500776E8C /* Jeju.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Jeju.gpx; sourceTree = "<group>"; };
+		3F86B008248E980200776E8C /* Sejong.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sejong.gpx; sourceTree = "<group>"; };
+		3F86B009248E987200776E8C /* ITBT.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ITBT.gpx; sourceTree = "<group>"; };
+		3F86B00A248EB36C00776E8C /* Chunan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chunan.gpx; sourceTree = "<group>"; };
 		3F8E7AA724710DB700752C92 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 		AB410042248F4B03000E24DA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3FC8DE7B248A420500848BD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C09965D53485687DA3E724D /* Pods_MoningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A35997FD44D497BA6422FC4 /* Pods_Moning_MoningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning_MoningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C0BEEB5A0E93E9E4A530212 /* Pods-MoningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoningTests.debug.xcconfig"; path = "Target Support Files/Pods-MoningTests/Pods-MoningTests.debug.xcconfig"; sourceTree = "<group>"; };
+		71AB8F87E13543447A1069FB /* Pods-Moning-MoningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning-MoningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8CA3C180C57BD0A4767267A4 /* Pods-MoningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoningTests.release.xcconfig"; path = "Target Support Files/Pods-MoningTests/Pods-MoningTests.release.xcconfig"; sourceTree = "<group>"; };
+		A22CB8343F3750C803B70C9E /* Pods-Moning-MoningUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning-MoningUITests.release.xcconfig"; path = "Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A270A396E51F3DAD2F191318 /* Pods-Moning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.debug.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.debug.xcconfig"; sourceTree = "<group>"; };
+		B1057F324EC466EE1C362E1E /* Pods-Moning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.release.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F016D96D20591F9667DFE9 /* Pods_Moning.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702F727F2D1E570A1E0F4250 /* Pods_MoningTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +157,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99C4DBBA3E9CC1549BDC158A /* Pods_Moning_MoningUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29397BF9159E19D1ADCE94CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A270A396E51F3DAD2F191318 /* Pods-Moning.debug.xcconfig */,
+				B1057F324EC466EE1C362E1E /* Pods-Moning.release.xcconfig */,
+				71AB8F87E13543447A1069FB /* Pods-Moning-MoningUITests.debug.xcconfig */,
+				A22CB8343F3750C803B70C9E /* Pods-Moning-MoningUITests.release.xcconfig */,
+				5C0BEEB5A0E93E9E4A530212 /* Pods-MoningTests.debug.xcconfig */,
+				8CA3C180C57BD0A4767267A4 /* Pods-MoningTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3F4F650E247B8EAD0001DB5F /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +191,9 @@
 		3F4F650F247B8EC80001DB5F /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */,
 				3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */,
+				0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -123,6 +214,8 @@
 				3F4F9A22246FC0B3005DEFE9 /* MoningTests */,
 				3F4F9A2D246FC0B3005DEFE9 /* MoningUITests */,
 				3F4F9A0A246FC0AF005DEFE9 /* Products */,
+				29397BF9159E19D1ADCE94CA /* Pods */,
+				7D7271E3FBC95F7686158DF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,15 +232,21 @@
 		3F4F9A0B246FC0AF005DEFE9 /* Moning */ = {
 			isa = PBXGroup;
 			children = (
-				3F4F650E247B8EAD0001DB5F /* Storyboard */,
+				0572B520248F310F00DB740A /* Moning.entitlements */,
+				3F5750462484177000C567BF /* Weather */,
 				3F4F650F247B8EC80001DB5F /* Alarm */,
-				3F4F9A0C246FC0AF005DEFE9 /* AppDelegate.swift */,
 				3F4F6510247B8ED80001DB5F /* Place */,
+				3F7B3EE0247BBDB700529C72 /* Data */,
+				3F4F650E247B8EAD0001DB5F /* Storyboard */,
+				3F4F9A0C246FC0AF005DEFE9 /* AppDelegate.swift */,
 				3F4F9A0E246FC0AF005DEFE9 /* SceneDelegate.swift */,
 				3F4F9A10246FC0AF005DEFE9 /* MainViewController.swift */,
-				3F4F9A15246FC0B3005DEFE9 /* Assets.xcassets */,
 				3F8E7AA724710DB700752C92 /* SecondViewController.swift */,
+				3F4F9A15246FC0B3005DEFE9 /* Assets.xcassets */,
 				3F4F9A1A246FC0B3005DEFE9 /* Info.plist */,
+				3FC8DE7B248A420500848BD9 /* GoogleService-Info.plist */,
+				3F86B006248E969600776E8C /* gpx */,
+				3F7B3EE3247CF5B000529C72 /* Images */,
 			);
 			path = Moning;
 			sourceTree = "<group>";
@@ -170,6 +269,74 @@
 			path = MoningUITests;
 			sourceTree = "<group>";
 		};
+		3F5750462484177000C567BF /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				3F5750472484178D00C567BF /* OpenWeatherClient.swift */,
+				3F57504F2484328800C567BF /* OpenWeatherResults.swift */,
+				3F433B7A248A55E100738762 /* KMAweatherClient.swift */,
+				3F86B003248E285A00776E8C /* AirDustClient.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		3F7B3EE0247BBDB700529C72 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3F5750532484355D00C567BF /* MainWeatherData.swift */,
+				3F7B3EE1247BBDE900529C72 /* PlaceData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3F7B3EE3247CF5B000529C72 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3F7B3EEC247CF66C00529C72 /* 01d.png */,
+				3F7B3EF2247CF66D00529C72 /* 01n.png */,
+				3F7B3EEF247CF66D00529C72 /* 02d.png */,
+				3F7B3EE7247CF66C00529C72 /* 02n.png */,
+				3F7B3EEE247CF66D00529C72 /* 03d.png */,
+				3F7B3EF3247CF66D00529C72 /* 03n.png */,
+				3F7B3EEA247CF66C00529C72 /* 04d.png */,
+				3F7B3EE4247CF66C00529C72 /* 04n.png */,
+				3F7B3EF5247CF66D00529C72 /* 09d.png */,
+				3F7B3EF1247CF66D00529C72 /* 09n.png */,
+				3F7B3EF0247CF66D00529C72 /* 10d.png */,
+				3F7B3EE9247CF66C00529C72 /* 10n.png */,
+				3F7B3EF4247CF66D00529C72 /* 11d.png */,
+				3F7B3EE5247CF66C00529C72 /* 11n.png */,
+				3F7B3EE6247CF66C00529C72 /* 13d.png */,
+				3F7B3EEB247CF66C00529C72 /* 13n.png */,
+				3F7B3EED247CF66D00529C72 /* 50d.png */,
+				3F7B3EE8247CF66C00529C72 /* 50n.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		3F86B006248E969600776E8C /* gpx */ = {
+			isa = PBXGroup;
+			children = (
+				3F75B257248D5ABE009EC63C /* Hongdae.gpx */,
+				3F86B005248E2EEF00776E8C /* Kaist.gpx */,
+				3F86B007248E96C500776E8C /* Jeju.gpx */,
+				3F86B008248E980200776E8C /* Sejong.gpx */,
+				3F86B009248E987200776E8C /* ITBT.gpx */,
+				3F86B00A248EB36C00776E8C /* Chunan.gpx */,
+			);
+			path = gpx;
+			sourceTree = "<group>";
+		};
+		7D7271E3FBC95F7686158DF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02C1C351ACD19048E4817080 /* Pods_Moning.framework */,
+				5A35997FD44D497BA6422FC4 /* Pods_Moning_MoningUITests.framework */,
+				4C09965D53485687DA3E724D /* Pods_MoningTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,9 +344,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F4F9A33246FC0B3005DEFE9 /* Build configuration list for PBXNativeTarget "Moning" */;
 			buildPhases = (
+				B3F0269D89FBC6AF57946510 /* [CP] Check Pods Manifest.lock */,
 				3F4F9A05246FC0AF005DEFE9 /* Sources */,
 				3F4F9A06246FC0AF005DEFE9 /* Frameworks */,
 				3F4F9A07246FC0AF005DEFE9 /* Resources */,
+				AC139CDED921CC730D4A187D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,6 +363,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F4F9A36246FC0B3005DEFE9 /* Build configuration list for PBXNativeTarget "MoningTests" */;
 			buildPhases = (
+				626C4F53991C6C8DDA7FD122 /* [CP] Check Pods Manifest.lock */,
 				3F4F9A1B246FC0B3005DEFE9 /* Sources */,
 				3F4F9A1C246FC0B3005DEFE9 /* Frameworks */,
 				3F4F9A1D246FC0B3005DEFE9 /* Resources */,
@@ -212,9 +382,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F4F9A39246FC0B3005DEFE9 /* Build configuration list for PBXNativeTarget "MoningUITests" */;
 			buildPhases = (
+				9256CA42294EAD1170D3768D /* [CP] Check Pods Manifest.lock */,
 				3F4F9A26246FC0B3005DEFE9 /* Sources */,
 				3F4F9A27246FC0B3005DEFE9 /* Frameworks */,
 				3F4F9A28246FC0B3005DEFE9 /* Resources */,
+				0EFAE14230AFF26348ECD23B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,11 +446,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F7B3EF6247CF66D00529C72 /* 04n.png in Resources */,
+				3F7B3F04247CF66D00529C72 /* 01n.png in Resources */,
+				3F7B3F00247CF66D00529C72 /* 03d.png in Resources */,
 				3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */,
+				3F7B3F02247CF66D00529C72 /* 10d.png in Resources */,
+				3F7B3EF8247CF66D00529C72 /* 13d.png in Resources */,
+				3F7B3EFF247CF66D00529C72 /* 50d.png in Resources */,
+				3F7B3EFE247CF66D00529C72 /* 01d.png in Resources */,
+				3F7B3EFA247CF66D00529C72 /* 50n.png in Resources */,
 				3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */,
+				3F7B3F07247CF66D00529C72 /* 09d.png in Resources */,
+				3F7B3EFD247CF66D00529C72 /* 13n.png in Resources */,
+				3F7B3F03247CF66D00529C72 /* 09n.png in Resources */,
+				3F7B3F01247CF66D00529C72 /* 02d.png in Resources */,
+				3F7B3EF7247CF66D00529C72 /* 11n.png in Resources */,
+				3F7B3EFC247CF66D00529C72 /* 04d.png in Resources */,
 				3F4F9A19246FC0B3005DEFE9 /* LaunchScreen.storyboard in Resources */,
+				3FC8DE7C248A420600848BD9 /* GoogleService-Info.plist in Resources */,
+				3F7B3EF9247CF66D00529C72 /* 02n.png in Resources */,
 				3F4F9A16246FC0B3005DEFE9 /* Assets.xcassets in Resources */,
+				3F7B3F05247CF66D00529C72 /* 03n.png in Resources */,
 				3F4F9A14246FC0AF005DEFE9 /* Main.storyboard in Resources */,
+				3F7B3F06247CF66D00529C72 /* 11d.png in Resources */,
+				3F7B3EFB247CF66D00529C72 /* 10n.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,16 +489,127 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0EFAE14230AFF26348ECD23B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		626C4F53991C6C8DDA7FD122 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoningTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9256CA42294EAD1170D3768D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Moning-MoningUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC139CDED921CC730D4A187D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moning/Pods-Moning-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moning/Pods-Moning-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Moning/Pods-Moning-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F0269D89FBC6AF57946510 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Moning-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3F4F9A05246FC0AF005DEFE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */,
 				3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */,
+				3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
 				3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */,
+				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,
+				3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */,
 				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,
+				0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */,
+				05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */,
 				3F4F9A0D246FC0AF005DEFE9 /* AppDelegate.swift in Sources */,
+				3F86B004248E285A00776E8C /* AirDustClient.swift in Sources */,
+				3F5750562484355D00C567BF /* MainWeatherData.swift in Sources */,
 				3F4F9A0F246FC0AF005DEFE9 /* SceneDelegate.swift in Sources */,
 				AB410043248F4B03000E24DA /* MapViewController.swift in Sources */,
 			);
@@ -480,8 +782,10 @@
 		};
 		3F4F9A34246FC0B3005DEFE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A270A396E51F3DAD2F191318 /* Pods-Moning.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moning/Moning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6FMP88TVVY;
 				INFOPLIST_FILE = Moning/Info.plist;
@@ -498,8 +802,10 @@
 		};
 		3F4F9A35246FC0B3005DEFE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1057F324EC466EE1C362E1E /* Pods-Moning.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moning/Moning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6FMP88TVVY;
 				INFOPLIST_FILE = Moning/Info.plist;
@@ -516,6 +822,7 @@
 		};
 		3F4F9A37246FC0B3005DEFE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C0BEEB5A0E93E9E4A530212 /* Pods-MoningTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -538,6 +845,7 @@
 		};
 		3F4F9A38246FC0B3005DEFE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CA3C180C57BD0A4767267A4 /* Pods-MoningTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -560,6 +868,7 @@
 		};
 		3F4F9A3A246FC0B3005DEFE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AB8F87E13543447A1069FB /* Pods-Moning-MoningUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -580,6 +889,7 @@
 		};
 		3F4F9A3B246FC0B3005DEFE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A22CB8343F3750C803B70C9E /* Pods-Moning-MoningUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
