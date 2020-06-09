@@ -12,6 +12,10 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(Place.lat)
+        print(Place.lon)
+        
 
         // Do any additional setup after loading the view.
     }
