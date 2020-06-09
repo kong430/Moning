@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */; };
+		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
 		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
 		3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */; };
 		3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6514247B8FA60001DB5F /* Place.storyboard */; };
@@ -62,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddAlarmViewController.swift; path = Moning/Alarm/AddAlarmViewController.swift; sourceTree = "<group>"; };
+		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
+		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		3F4F6514247B8FA60001DB5F /* Place.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
@@ -135,6 +140,7 @@
 			children = (
 				3F4F6514247B8FA60001DB5F /* Place.storyboard */,
 				3F4F6509247B8E300001DB5F /* Alarm.storyboard */,
+				05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */,
 				3F4F9A12246FC0AF005DEFE9 /* Main.storyboard */,
 				3F4F9A17246FC0B3005DEFE9 /* LaunchScreen.storyboard */,
 			);
@@ -160,6 +166,7 @@
 		3F4F9A00246FC0AF005DEFE9 = {
 			isa = PBXGroup;
 			children = (
+				0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */,
 				3F4F9A0B246FC0AF005DEFE9 /* Moning */,
 				3F4F9A22246FC0B3005DEFE9 /* MoningTests */,
 				3F4F9A2D246FC0B3005DEFE9 /* MoningUITests */,
@@ -180,6 +187,8 @@
 		3F4F9A0B246FC0AF005DEFE9 /* Moning */ = {
 			isa = PBXGroup;
 			children = (
+				0572B520248F310F00DB740A /* Moning.entitlements */,
+				3F4F650E247B8EAD0001DB5F /* Storyboard */,
 				3F5750462484177000C567BF /* Weather */,
 				3F4F650F247B8EC80001DB5F /* Alarm */,
 				3F4F6510247B8ED80001DB5F /* Place */,
@@ -415,6 +424,8 @@
 				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,
 				3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */,
 				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,
+				0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */,
+				05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */,
 				3F4F9A0D246FC0AF005DEFE9 /* AppDelegate.swift in Sources */,
 				3F5750562484355D00C567BF /* CurrentWeatherData.swift in Sources */,
 				3F4F9A0F246FC0AF005DEFE9 /* SceneDelegate.swift in Sources */,
@@ -590,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moning/Moning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6FMP88TVVY;
 				INFOPLIST_FILE = Moning/Info.plist;
@@ -608,6 +620,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moning/Moning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6FMP88TVVY;
 				INFOPLIST_FILE = Moning/Info.plist;
