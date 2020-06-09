@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
 		0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */; };
 		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
+		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
 		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
 		3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */; };
 		3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6514247B8FA60001DB5F /* Place.storyboard */; };
@@ -71,10 +71,10 @@
 
 /* Begin PBXFileReference section */
 		02C1C351ACD19048E4817080 /* Pods_Moning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
-		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddAlarmViewController.swift; path = Moning/Alarm/AddAlarmViewController.swift; sourceTree = "<group>"; };
+		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
 		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
+		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
 		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		3F4F6514247B8FA60001DB5F /* Place.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
@@ -180,7 +180,6 @@
 			children = (
 				3F4F6514247B8FA60001DB5F /* Place.storyboard */,
 				3F4F6509247B8E300001DB5F /* Alarm.storyboard */,
-				05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */,
 				3F4F9A12246FC0AF005DEFE9 /* Main.storyboard */,
 				3F4F9A17246FC0B3005DEFE9 /* LaunchScreen.storyboard */,
 			);
@@ -190,7 +189,9 @@
 		3F4F650F247B8EC80001DB5F /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */,
 				3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */,
+				0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -206,7 +207,6 @@
 		3F4F9A00246FC0AF005DEFE9 = {
 			isa = PBXGroup;
 			children = (
-				0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */,
 				3F4F9A0B246FC0AF005DEFE9 /* Moning */,
 				3F4F9A22246FC0B3005DEFE9 /* MoningTests */,
 				3F4F9A2D246FC0B3005DEFE9 /* MoningUITests */,
@@ -230,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				0572B520248F310F00DB740A /* Moning.entitlements */,
-				3F4F650E247B8EAD0001DB5F /* Storyboard */,
 				3F5750462484177000C567BF /* Weather */,
 				3F4F650F247B8EC80001DB5F /* Alarm */,
 				3F4F6510247B8ED80001DB5F /* Place */,

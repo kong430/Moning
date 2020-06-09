@@ -209,10 +209,10 @@
                                 <state key="normal" image="bell" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
-                                <connections>
-                                    <segue destination="Yy8-LQ-thX" kind="show" id="jZs-Y0-72t"/>
-                                </connections>
                             </button>
+                            <connections>
+                                <segue destination="h2W-kw-1kR" kind="show" id="NJ0-0a-DTc"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="uZu-Iu-Vtn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xKQ-XX-yk7">
@@ -298,10 +298,10 @@
                                 <state key="normal" image="bell" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
-                                <connections>
-                                    <segue destination="Yy8-LQ-thX" kind="show" id="O8c-ns-C49"/>
-                                </connections>
                             </button>
+                            <connections>
+                                <segue destination="h2W-kw-1kR" kind="show" id="AJk-In-44R"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="XTb-1z-B2B">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BSI-ui-Jgo">
@@ -324,6 +324,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tw9-5T-i7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="537.68115942028987" y="1264.9553571428571"/>
+        </scene>
+        <!--Alarm-->
+        <scene sceneID="eV7-Lt-ZNh">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AlarmRef" storyboardName="Alarm" referencedIdentifier="Alarm" id="h2W-kw-1kR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="beK-B3-PgZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xxQ-Fi-tUS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349" y="1040"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a12-bv-fz1">
@@ -382,16 +392,6 @@
             </objects>
             <point key="canvasLocation" x="539" y="523"/>
         </scene>
-        <!--Alarm-->
-        <scene sceneID="76i-eJ-UMl">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Alarm" id="Yy8-LQ-thX" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Ipi-34-rAB"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fos-BE-SMB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1557" y="944"/>
-        </scene>
         <!--Place-->
         <scene sceneID="DwY-gI-jaB">
             <objects>
@@ -405,7 +405,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tT4-Fp-BCG"/>
-        <segue reference="O8c-ns-C49"/>
+        <segue reference="AJk-In-44R"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
