@@ -209,10 +209,10 @@
                                 <state key="normal" image="bell" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
+                                <connections>
+                                    <segue destination="h2W-kw-1kR" kind="show" id="K37-Bf-fug"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="h2W-kw-1kR" kind="show" id="NJ0-0a-DTc"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="uZu-Iu-Vtn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xKQ-XX-yk7">
@@ -298,10 +298,10 @@
                                 <state key="normal" image="bell" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
+                                <connections>
+                                    <segue destination="h2W-kw-1kR" kind="show" id="zXI-Gz-bKW"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="h2W-kw-1kR" kind="show" id="AJk-In-44R"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="XTb-1z-B2B">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BSI-ui-Jgo">
@@ -404,8 +404,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tT4-Fp-BCG"/>
-        <segue reference="AJk-In-44R"/>
+        <segue reference="8Y6-nE-QjW"/>
+        <segue reference="K37-Bf-fug"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
