@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */; };
+		05BF599E249262CB007DA866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05BF599D249262CB007DA866 /* GoogleService-Info.plist */; };
 		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
 		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
 		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
@@ -46,10 +47,9 @@
 		3F86B004248E285A00776E8C /* AirDustClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86B003248E285A00776E8C /* AirDustClient.swift */; };
 		3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E7AA724710DB700752C92 /* SecondViewController.swift */; };
 		3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */; };
-		AB410043248F4B03000E24DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB410042248F4B03000E24DA /* MapViewController.swift */; };
-		3FC8DE7C248A420600848BD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FC8DE7B248A420500848BD9 /* GoogleService-Info.plist */; };
 		702F727F2D1E570A1E0F4250 /* Pods_MoningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C09965D53485687DA3E724D /* Pods_MoningTests.framework */; };
 		99C4DBBA3E9CC1549BDC158A /* Pods_Moning_MoningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A35997FD44D497BA6422FC4 /* Pods_Moning_MoningUITests.framework */; };
+		AB410043248F4B03000E24DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB410042248F4B03000E24DA /* MapViewController.swift */; };
 		B6F016D96D20591F9667DFE9 /* Pods_Moning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C1C351ACD19048E4817080 /* Pods_Moning.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +74,7 @@
 		02C1C351ACD19048E4817080 /* Pods_Moning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
+		05BF599D249262CB007DA866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
 		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
@@ -124,8 +125,6 @@
 		3F86B00A248EB36C00776E8C /* Chunan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chunan.gpx; sourceTree = "<group>"; };
 		3F8E7AA724710DB700752C92 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
-		AB410042248F4B03000E24DA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		3FC8DE7B248A420500848BD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C09965D53485687DA3E724D /* Pods_MoningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A35997FD44D497BA6422FC4 /* Pods_Moning_MoningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning_MoningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0BEEB5A0E93E9E4A530212 /* Pods-MoningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoningTests.debug.xcconfig"; path = "Target Support Files/Pods-MoningTests/Pods-MoningTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +132,7 @@
 		8CA3C180C57BD0A4767267A4 /* Pods-MoningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoningTests.release.xcconfig"; path = "Target Support Files/Pods-MoningTests/Pods-MoningTests.release.xcconfig"; sourceTree = "<group>"; };
 		A22CB8343F3750C803B70C9E /* Pods-Moning-MoningUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning-MoningUITests.release.xcconfig"; path = "Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A270A396E51F3DAD2F191318 /* Pods-Moning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.debug.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.debug.xcconfig"; sourceTree = "<group>"; };
+		AB410042248F4B03000E24DA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B1057F324EC466EE1C362E1E /* Pods-Moning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.release.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,7 +244,7 @@
 				3F8E7AA724710DB700752C92 /* SecondViewController.swift */,
 				3F4F9A15246FC0B3005DEFE9 /* Assets.xcassets */,
 				3F4F9A1A246FC0B3005DEFE9 /* Info.plist */,
-				3FC8DE7B248A420500848BD9 /* GoogleService-Info.plist */,
+				05BF599D249262CB007DA866 /* GoogleService-Info.plist */,
 				3F86B006248E969600776E8C /* gpx */,
 				3F7B3EE3247CF5B000529C72 /* Images */,
 			);
@@ -448,6 +448,7 @@
 			files = (
 				3F7B3EF6247CF66D00529C72 /* 04n.png in Resources */,
 				3F7B3F04247CF66D00529C72 /* 01n.png in Resources */,
+				05BF599E249262CB007DA866 /* GoogleService-Info.plist in Resources */,
 				3F7B3F00247CF66D00529C72 /* 03d.png in Resources */,
 				3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */,
 				3F7B3F02247CF66D00529C72 /* 10d.png in Resources */,
@@ -463,7 +464,6 @@
 				3F7B3EF7247CF66D00529C72 /* 11n.png in Resources */,
 				3F7B3EFC247CF66D00529C72 /* 04d.png in Resources */,
 				3F4F9A19246FC0B3005DEFE9 /* LaunchScreen.storyboard in Resources */,
-				3FC8DE7C248A420600848BD9 /* GoogleService-Info.plist in Resources */,
 				3F7B3EF9247CF66D00529C72 /* 02n.png in Resources */,
 				3F4F9A16246FC0B3005DEFE9 /* Assets.xcassets in Resources */,
 				3F7B3F05247CF66D00529C72 /* 03n.png in Resources */,
@@ -793,7 +793,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HelloJaneJane.Moning;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.HelloJaneJane.Moning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -813,7 +813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HelloJaneJane.Moning;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.HelloJaneJane.Moning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
