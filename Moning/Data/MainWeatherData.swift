@@ -22,8 +22,8 @@ class MainWeather {
     static var windSpeed: Double! // 바람 속도
     
     // 미세먼지
-    static var pm10Val: String!
-    static var pm25Val: String!
+    static var pm10Val: String! // pm10 미세먼지
+    static var pm25Val: String! // pm2.5 초미세먼지
     
     // 자외선
     // 불쾌지수

@@ -65,7 +65,6 @@ class AirDustClient {
             }
             
             DispatchQueue.main.async {
-                print("!!!!!!")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AirDust"), object: nil)
             }
         }

@@ -53,6 +53,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         nameLabel.text = Place.name
         weatherImage.image = UIImage(named: MainWeather.icon+".png")
         weatherLabel.text = MainWeather.description
+        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
         self.view.layoutIfNeeded()
     }
     
