@@ -31,6 +31,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
         
@@ -49,11 +52,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
-    func updateWeather(){
+    @objc func updateWeather(){
         nameLabel.text = Place.name
         weatherImage.image = UIImage(named: MainWeather.icon+".png")
         weatherLabel.text = MainWeather.description
         self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        print("????????????????????")
+        print(getBackgroundColor(icon: MainWeather.icon))
         self.view.layoutIfNeeded()
     }
     
@@ -117,6 +122,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 KMAweatherClient.getVillageTemp()
                 KMAweatherClient.getCurrentTemp()
                 AirDustClient.getAirDust()
+                LivingWeatherClient.getUV()
+                LivingWeatherClient.getDiscomfort()
             }
         }
 
@@ -144,13 +151,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     MainWeather.description = weather.description
                     MainWeather.icon = weather.icon
                 }
-                // 습도, 바람
+                // 습도, 바람, 체감기온
                 MainWeather.humidity = self.currentResult!.main.humidity
                 MainWeather.windSpeed = self.currentResult!.wind.speed
+                MainWeather.feels_like = self.currentResult!.main.feels_like - 273.15 // 캘빈 -> 섭씨
             }
-
+            
             DispatchQueue.main.async {
-                self.updateWeather()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Weather"), object: nil)
             }
         }
         

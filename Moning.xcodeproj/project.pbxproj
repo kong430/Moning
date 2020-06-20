@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */; };
 		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
+		3F0F4EE2249DE3790055BC2D /* humidity.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EE1249DE3790055BC2D /* humidity.png */; };
+		3F0F4EE4249DEBCB0055BC2D /* LivingWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F4EE3249DEBCB0055BC2D /* LivingWeatherClient.swift */; };
+		3F0F4EE6249E06D10055BC2D /* umbrella.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EE5249E06D10055BC2D /* umbrella.png */; };
+		3F0F4EEA249E49AF0055BC2D /* feels_like.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EE9249E49AF0055BC2D /* feels_like.png */; };
+		3F0F4EF4249E87640055BC2D /* uv3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EEB249E87620055BC2D /* uv3.png */; };
+		3F0F4EF5249E87640055BC2D /* uv4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EEC249E87620055BC2D /* uv4.png */; };
+		3F0F4EF6249E87640055BC2D /* uv2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EED249E87630055BC2D /* uv2.png */; };
+		3F0F4EF7249E87640055BC2D /* discomfort2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EEE249E87630055BC2D /* discomfort2.png */; };
+		3F0F4EF8249E87640055BC2D /* uv1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EEF249E87630055BC2D /* uv1.png */; };
+		3F0F4EF9249E87640055BC2D /* uv5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EF0249E87630055BC2D /* uv5.png */; };
+		3F0F4EFA249E87640055BC2D /* discomfort3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EF1249E87630055BC2D /* discomfort3.png */; };
+		3F0F4EFB249E87640055BC2D /* discomfort1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EF2249E87630055BC2D /* discomfort1.png */; };
+		3F0F4EFC249E87640055BC2D /* discomfort4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F4EF3249E87640055BC2D /* discomfort4.png */; };
 		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
 		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
 		3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */; };
@@ -22,8 +35,6 @@
 		3F4F9A24246FC0B3005DEFE9 /* MoningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F9A23246FC0B3005DEFE9 /* MoningTests.swift */; };
 		3F4F9A2F246FC0B3005DEFE9 /* MoningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F9A2E246FC0B3005DEFE9 /* MoningUITests.swift */; };
 		3F5430772493FEBF008E827C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F5430762493FEBF008E827C /* GoogleService-Info.plist */; };
-		3F5430792494031C008E827C /* uv-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5430782494031C008E827C /* uv-light.png */; };
-		3F54307B2494083C008E827C /* angry-face.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F54307A2494083B008E827C /* angry-face.png */; };
 		3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5750472484178D00C567BF /* OpenWeatherClient.swift */; };
 		3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F57504F2484328800C567BF /* OpenWeatherResults.swift */; };
 		3F5750562484355D00C567BF /* MainWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5750532484355D00C567BF /* MainWeatherData.swift */; };
@@ -78,6 +89,19 @@
 		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
 		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
+		3F0F4EE1249DE3790055BC2D /* humidity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humidity.png; sourceTree = "<group>"; };
+		3F0F4EE3249DEBCB0055BC2D /* LivingWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivingWeatherClient.swift; sourceTree = "<group>"; };
+		3F0F4EE5249E06D10055BC2D /* umbrella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = umbrella.png; sourceTree = "<group>"; };
+		3F0F4EE9249E49AF0055BC2D /* feels_like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feels_like.png; sourceTree = "<group>"; };
+		3F0F4EEB249E87620055BC2D /* uv3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uv3.png; sourceTree = "<group>"; };
+		3F0F4EEC249E87620055BC2D /* uv4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uv4.png; sourceTree = "<group>"; };
+		3F0F4EED249E87630055BC2D /* uv2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uv2.png; sourceTree = "<group>"; };
+		3F0F4EEE249E87630055BC2D /* discomfort2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discomfort2.png; sourceTree = "<group>"; };
+		3F0F4EEF249E87630055BC2D /* uv1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uv1.png; sourceTree = "<group>"; };
+		3F0F4EF0249E87630055BC2D /* uv5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uv5.png; sourceTree = "<group>"; };
+		3F0F4EF1249E87630055BC2D /* discomfort3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discomfort3.png; sourceTree = "<group>"; };
+		3F0F4EF2249E87630055BC2D /* discomfort1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discomfort1.png; sourceTree = "<group>"; };
+		3F0F4EF3249E87640055BC2D /* discomfort4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discomfort4.png; sourceTree = "<group>"; };
 		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
 		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
@@ -97,8 +121,6 @@
 		3F4F9A2E246FC0B3005DEFE9 /* MoningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoningUITests.swift; sourceTree = "<group>"; };
 		3F4F9A30246FC0B3005DEFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F5430762493FEBF008E827C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3F5430782494031C008E827C /* uv-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uv-light.png"; sourceTree = "<group>"; };
-		3F54307A2494083B008E827C /* angry-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "angry-face.png"; sourceTree = "<group>"; };
 		3F5750472484178D00C567BF /* OpenWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClient.swift; sourceTree = "<group>"; };
 		3F57504F2484328800C567BF /* OpenWeatherResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherResults.swift; sourceTree = "<group>"; };
 		3F5750532484355D00C567BF /* MainWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWeatherData.swift; sourceTree = "<group>"; };
@@ -282,6 +304,7 @@
 				3F57504F2484328800C567BF /* OpenWeatherResults.swift */,
 				3F433B7A248A55E100738762 /* KMAweatherClient.swift */,
 				3F86B003248E285A00776E8C /* AirDustClient.swift */,
+				3F0F4EE3249DEBCB0055BC2D /* LivingWeatherClient.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -299,8 +322,18 @@
 		3F7B3EE3247CF5B000529C72 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				3F54307A2494083B008E827C /* angry-face.png */,
-				3F5430782494031C008E827C /* uv-light.png */,
+				3F0F4EF2249E87630055BC2D /* discomfort1.png */,
+				3F0F4EEE249E87630055BC2D /* discomfort2.png */,
+				3F0F4EF1249E87630055BC2D /* discomfort3.png */,
+				3F0F4EF3249E87640055BC2D /* discomfort4.png */,
+				3F0F4EEF249E87630055BC2D /* uv1.png */,
+				3F0F4EED249E87630055BC2D /* uv2.png */,
+				3F0F4EEB249E87620055BC2D /* uv3.png */,
+				3F0F4EEC249E87620055BC2D /* uv4.png */,
+				3F0F4EF0249E87630055BC2D /* uv5.png */,
+				3F0F4EE9249E49AF0055BC2D /* feels_like.png */,
+				3F0F4EE5249E06D10055BC2D /* umbrella.png */,
+				3F0F4EE1249DE3790055BC2D /* humidity.png */,
 				3F7B3EEC247CF66C00529C72 /* 01d.png */,
 				3F7B3EF2247CF66D00529C72 /* 01n.png */,
 				3F7B3EEF247CF66D00529C72 /* 02d.png */,
@@ -455,31 +488,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F0F4EEA249E49AF0055BC2D /* feels_like.png in Resources */,
+				3F0F4EF7249E87640055BC2D /* discomfort2.png in Resources */,
 				3F7B3EF6247CF66D00529C72 /* 04n.png in Resources */,
+				3F0F4EF9249E87640055BC2D /* uv5.png in Resources */,
 				3F7B3F04247CF66D00529C72 /* 01n.png in Resources */,
 				3F5430772493FEBF008E827C /* GoogleService-Info.plist in Resources */,
 				3F7B3F00247CF66D00529C72 /* 03d.png in Resources */,
 				3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */,
+				3F0F4EFC249E87640055BC2D /* discomfort4.png in Resources */,
 				3F7B3F02247CF66D00529C72 /* 10d.png in Resources */,
+				3F0F4EFA249E87640055BC2D /* discomfort3.png in Resources */,
 				3F7B3EF8247CF66D00529C72 /* 13d.png in Resources */,
+				3F0F4EE6249E06D10055BC2D /* umbrella.png in Resources */,
 				3F7B3EFF247CF66D00529C72 /* 50d.png in Resources */,
 				3F7B3EFE247CF66D00529C72 /* 01d.png in Resources */,
 				3F7B3EFA247CF66D00529C72 /* 50n.png in Resources */,
+				3F0F4EF5249E87640055BC2D /* uv4.png in Resources */,
+				3F0F4EF4249E87640055BC2D /* uv3.png in Resources */,
 				3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */,
 				3F7B3F07247CF66D00529C72 /* 09d.png in Resources */,
+				3F0F4EFB249E87640055BC2D /* discomfort1.png in Resources */,
 				3F7B3EFD247CF66D00529C72 /* 13n.png in Resources */,
 				3F7B3F03247CF66D00529C72 /* 09n.png in Resources */,
 				3F7B3F01247CF66D00529C72 /* 02d.png in Resources */,
 				3F7B3EF7247CF66D00529C72 /* 11n.png in Resources */,
-				3F5430792494031C008E827C /* uv-light.png in Resources */,
 				3F7B3EFC247CF66D00529C72 /* 04d.png in Resources */,
+				3F0F4EF8249E87640055BC2D /* uv1.png in Resources */,
 				3F4F9A19246FC0B3005DEFE9 /* LaunchScreen.storyboard in Resources */,
 				3F7B3EF9247CF66D00529C72 /* 02n.png in Resources */,
 				3F4F9A16246FC0B3005DEFE9 /* Assets.xcassets in Resources */,
 				3F7B3F05247CF66D00529C72 /* 03n.png in Resources */,
 				3F4F9A14246FC0AF005DEFE9 /* Main.storyboard in Resources */,
+				3F0F4EE2249DE3790055BC2D /* humidity.png in Resources */,
+				3F0F4EF6249E87640055BC2D /* uv2.png in Resources */,
 				3F7B3F06247CF66D00529C72 /* 11d.png in Resources */,
-				3F54307B2494083C008E827C /* angry-face.png in Resources */,
 				3F7B3EFB247CF66D00529C72 /* 10n.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +652,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */,
+				3F0F4EE4249DEBCB0055BC2D /* LivingWeatherClient.swift in Sources */,
 				3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */,
 				3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */,
 				3F60E9A524948D4B002740F0 /* ColorData.swift in Sources */,

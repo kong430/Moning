@@ -48,7 +48,7 @@ class AirDustClient {
                 let data = i as [String:Any]
                 
                 let cityName = data["cityName"] as! String
-                print(cityName)
+//                print(cityName)
                 if cityName == Place.cityName {
                     MainWeather.pm10Val = data["pm10Value"] as! String
                     MainWeather.pm25Val = data["pm25Value"] as! String
