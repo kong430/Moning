@@ -11,6 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var locationManager = CLLocationManager()
     override func viewDidLoad(){
