@@ -26,31 +26,70 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var discomfortLabel: UILabel!
     @IBOutlet weak var discomfortImage: UIImageView!
     
+    @IBOutlet weak var dustTitleLabel: UILabel!
+    @IBOutlet weak var dust10TitleLabel: UILabel!
+    @IBOutlet weak var dust25TitleLabel: UILabel!
+    @IBOutlet weak var dust10SubImage: UIImageView!
+    @IBOutlet weak var dust25SubImage: UIImageView!
+    
+    @IBOutlet weak var detailWeatherTitleLabel: UILabel!
+    @IBOutlet weak var windTitleLabel: UILabel!
+    @IBOutlet weak var rainTitleLabel: UILabel!
+    @IBOutlet weak var humidityTitleLabel: UILabel!
+    @IBOutlet weak var uvTitleLabel: UILabel!
+    @IBOutlet weak var feellikeTitleLabel: UILabel!
+    @IBOutlet weak var discomfortTitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateAirDust), name: NSNotification.Name(rawValue: "AirDust"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDetailWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
-        
-         NotificationCenter.default.addObserver(self, selector: #selector(updateUV), name: NSNotification.Name(rawValue: "UV"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDiscomfort), name: NSNotification.Name(rawValue: "discomfort"), object: nil)
-        
-        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        DispatchQueue.main.async{
-//            NotificationCenter.default.addObserver(self, selector: #selector(self.updateAirDust), name: NSNotification.Name(rawValue: "AirDust"), object: nil)
-//        }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateAirDust), name: NSNotification.Name(rawValue: "AirDust"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDetailWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUV), name: NSNotification.Name(rawValue: "UV"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDiscomfort), name: NSNotification.Name(rawValue: "discomfort"), object: nil)
     }
     
     @objc func updateDetailWeather(){
         windLabel.text = String(MainWeather.windSpeed)+"m/s"
         humidityLabel.text = String(MainWeather.humidity)+"%"
         feellikeLabel.text = String(format: "%.1f", MainWeather.feels_like)+"℃"
+        
+        self.updateColor()
+        
+        self.view.layoutIfNeeded()
+    }
+    
+    func updateColor(){
+        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        
+        dust10SubImage.tintColor = getBackgroundColor(icon: MainWeather.icon)
+        dust25SubImage.tintColor = getBackgroundColor(icon: MainWeather.icon)
+        
+        dustTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        dust10numLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        dust25numLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        dust10TitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        dust25TitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        dust10textLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        dust25textLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        
+        detailWeatherTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        windTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        windLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        rainTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        rainLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        humidityTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        humidityLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        uvTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        uvLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        feellikeTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        feellikeLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        discomfortTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        discomfortLabel.textColor = getMainTextColor(icon: MainWeather.icon)
         
         self.view.layoutIfNeeded()
     }
@@ -71,12 +110,10 @@ class SecondViewController: UIViewController {
             else if 3 <= UVnum && UVnum <= 5 {
                 // 보통
                 uvImage.image = UIImage(named: "uv2"+".png")
-                
             }
             else if 6 <= UVnum && UVnum <= 7 {
                 // 높음
                 uvImage.image = UIImage(named: "uv3"+".png")
-                
             }
             else if 8 <= UVnum && UVnum <= 10 {
                 // 매우 높음
@@ -104,16 +141,13 @@ class SecondViewController: UIViewController {
                 // 낮음: 전원 쾌적함을 느낌
                 discomfortImage.image = UIImage(named: "discomfort1"+".png")
             }
-                
             else if 68 <= discomfortNum && discomfortNum < 75 {
                 // 보통: 불쾌감을 느끼기 시작함
                 discomfortImage.image = UIImage(named: "discomfort2"+".png")
-                
             }
             else if 75 <= discomfortNum && discomfortNum < 80 {
                 // 높음: 50% 정도 불쾌감을 느낌
                 discomfortImage.image = UIImage(named: "discomfort3"+".png")
-                
             }
             else if 80 <= discomfortNum {
                 // 매우 높음: 전원 불쾌감을 느낌

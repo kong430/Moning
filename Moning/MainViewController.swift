@@ -14,12 +14,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
     @IBOutlet weak var highTempLabel: UILabel!
+    
+    @IBOutlet weak var notifyTitleLabel: UILabel!
+    @IBOutlet weak var codiTitleLabel: UILabel!
     
     
     @IBAction func refreshButtonAction(_ sender: Any) {
@@ -31,7 +35,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
         
@@ -56,21 +59,37 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         nameLabel.text = Place.name
         weatherImage.image = UIImage(named: MainWeather.icon+".png")
         weatherLabel.text = MainWeather.description
-        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
-        print("????????????????????")
-        print(getBackgroundColor(icon: MainWeather.icon))
+        
+        updateColor()
+        
         self.view.layoutIfNeeded()
+    }
+    
+    func updateColor() {
+        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        
+        nameLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        timeLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        currentTempLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        lowTempLabel.textColor = getBlueColor(icon: MainWeather.icon)
+        highTempLabel.textColor = getRedColor(icon: MainWeather.icon)
+        weatherLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+    
+        notifyTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        codiTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
     }
     
     @objc func updateVillageTemp(){
         lowTempLabel.text = MainWeather.minTemp
         highTempLabel.text = MainWeather.maxTemp
+        
         self.view.layoutIfNeeded()
     }
     
     @objc func updateCurrentTemp(){
         timeLabel.text = MainWeather.timeStamp + " 기준"
         currentTempLabel.text = MainWeather.currentTemp + " ℃"
+        
         self.view.layoutIfNeeded()
     }
     
@@ -119,11 +138,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             DispatchQueue.main.async {
                 self.getWeather()
-                KMAweatherClient.getVillageTemp()
-                KMAweatherClient.getCurrentTemp()
-                AirDustClient.getAirDust()
-                LivingWeatherClient.getUV()
-                LivingWeatherClient.getDiscomfort()
             }
         }
 
@@ -159,6 +173,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Weather"), object: nil)
+                KMAweatherClient.getVillageTemp()
+                KMAweatherClient.getCurrentTemp()
+                AirDustClient.getAirDust()
+                LivingWeatherClient.getUV()
+                LivingWeatherClient.getDiscomfort()
             }
         }
         
