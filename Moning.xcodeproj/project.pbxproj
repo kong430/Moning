@@ -67,6 +67,9 @@
 		3F63C752249FE185002EA061 /* charger.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F63C749249FE185002EA061 /* charger.png */; };
 		3F63C753249FE185002EA061 /* sunscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F63C74A249FE185002EA061 /* sunscreen.png */; };
 		3F63C754249FE185002EA061 /* hotpack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F63C74B249FE185002EA061 /* hotpack.png */; };
+		3F63C756249FE29D002EA061 /* CodiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63C755249FE29D002EA061 /* CodiData.swift */; };
+		3F63C758249FE2C6002EA061 /* NotifyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63C757249FE2C6002EA061 /* NotifyData.swift */; };
+		3F63C75A249FED2D002EA061 /* CodiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63C759249FED2D002EA061 /* CodiCollectionViewCell.swift */; };
 		3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE1247BBDE900529C72 /* PlaceData.swift */; };
 		3F86B004248E285A00776E8C /* AirDustClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86B003248E285A00776E8C /* AirDustClient.swift */; };
 		3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E7AA724710DB700752C92 /* SecondViewController.swift */; };
@@ -163,6 +166,9 @@
 		3F63C749249FE185002EA061 /* charger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = charger.png; sourceTree = "<group>"; };
 		3F63C74A249FE185002EA061 /* sunscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunscreen.png; sourceTree = "<group>"; };
 		3F63C74B249FE185002EA061 /* hotpack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotpack.png; sourceTree = "<group>"; };
+		3F63C755249FE29D002EA061 /* CodiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodiData.swift; sourceTree = "<group>"; };
+		3F63C757249FE2C6002EA061 /* NotifyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyData.swift; sourceTree = "<group>"; };
+		3F63C759249FED2D002EA061 /* CodiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodiCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F75B257248D5ABE009EC63C /* Hongdae.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Hongdae.gpx; sourceTree = "<group>"; };
 		3F7B3EE1247BBDE900529C72 /* PlaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceData.swift; sourceTree = "<group>"; };
 		3F86B003248E285A00776E8C /* AirDustClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDustClient.swift; sourceTree = "<group>"; };
@@ -289,6 +295,7 @@
 				3F4F9A0C246FC0AF005DEFE9 /* AppDelegate.swift */,
 				3F4F9A0E246FC0AF005DEFE9 /* SceneDelegate.swift */,
 				3F4F9A10246FC0AF005DEFE9 /* MainViewController.swift */,
+				3F63C759249FED2D002EA061 /* CodiCollectionViewCell.swift */,
 				3F8E7AA724710DB700752C92 /* SecondViewController.swift */,
 				3F4F9A15246FC0B3005DEFE9 /* Assets.xcassets */,
 				3F4F9A1A246FC0B3005DEFE9 /* Info.plist */,
@@ -396,6 +403,8 @@
 				3F5750532484355D00C567BF /* MainWeatherData.swift */,
 				3F7B3EE1247BBDE900529C72 /* PlaceData.swift */,
 				3F60E9A424948D4B002740F0 /* ColorData.swift */,
+				3F63C755249FE29D002EA061 /* CodiData.swift */,
+				3F63C757249FE2C6002EA061 /* NotifyData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -717,11 +726,14 @@
 			files = (
 				3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */,
 				3F0F4EE4249DEBCB0055BC2D /* LivingWeatherClient.swift in Sources */,
+				3F63C756249FE29D002EA061 /* CodiData.swift in Sources */,
 				3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */,
 				3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */,
+				3F63C75A249FED2D002EA061 /* CodiCollectionViewCell.swift in Sources */,
 				3F60E9A524948D4B002740F0 /* ColorData.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
 				3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */,
+				3F63C758249FE2C6002EA061 /* NotifyData.swift in Sources */,
 				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,
 				3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */,
 				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,

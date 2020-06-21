@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 
-class MainViewController: UIViewController, CLLocationManagerDelegate {
+class MainViewController: UIViewController, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,6 +25,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var notifyTitleLabel: UILabel!
     @IBOutlet weak var codiTitleLabel: UILabel!
     
+    @IBOutlet weak var codiCollectionView: UICollectionView!
     
     @IBAction func refreshButtonAction(_ sender: Any) {
         locationManager.startUpdatingLocation()
@@ -77,6 +78,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
         notifyTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
         codiTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        
+        codiCollectionView.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
     }
     
     @objc func updateVillageTemp(){
@@ -185,7 +188,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-        
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        Codination.codiImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CodiCell", for: indexPath) as! CodiCollectionViewCell
+        cell.codiImage.image = UIImage(named: Codination.codiImages[indexPath.row])
+                return cell
+    }
     
     
     
