@@ -99,7 +99,7 @@ class KMAweatherClient {
         return URL(string: self.nowcastBase+self.apiKey+self.nowcastType+self.nowcastTimeString()+self.coorString(lat: lat, lon: lon))!
     }
     
-    static func getCurrentTemp(){
+    static func getNowcast(){
         let url = self.nowcastUrl(lat: Place.lat, lon: Place.lon)
 //        print(url)
         
@@ -152,7 +152,7 @@ class KMAweatherClient {
                 print("nowcast: fail")
             }
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentTemp"), object: "nil")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Nowcast"), object: "nil")
             }
         }
 
@@ -163,7 +163,7 @@ class KMAweatherClient {
     
     // API 2 : 동네예보 -> 최저/최고 기온
     static let villageBase = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?"
-    static let villageType = "&pageNo=1&numOfRows=50&dataType=json"
+    static let villageType = "&pageNo=1&numOfRows=70&dataType=json"
     
     static func villageTimeString() -> String {
         let date = Date()
@@ -194,7 +194,7 @@ class KMAweatherClient {
         return URL(string: self.villageBase+self.apiKey+self.villageType+self.villageTimeString()+self.coorString(lat: lat, lon: lon))!
     }
     
-    static func getVillageTemp(){
+    static func getVillageForcast(){
         let url = self.villageUrl(lat: Place.lat, lon: Place.lon)
 //        print(url)
         
@@ -234,16 +234,46 @@ class KMAweatherClient {
                 // 최저기온
                 if cat == "TMN" && fcstT == "0600" {
                     MainWeather.minTemp = data["fcstValue"] as! String
-                    cnt+=1
+                    cnt += 1
                 }
-                
                 // 최고기온
                 if cat == "TMX" && fcstT == "1500"{
                     MainWeather.maxTemp = data["fcstValue"] as! String
-                    cnt+=1
+                    cnt += 1
                 }
                 
-                if cnt==2 {
+                // 6시 강수확률
+                if cat == "POP" && fcstT == "0600" {
+                    MainWeather.rainProb06 = data["fcstValue"] as! String
+                    cnt += 1
+                }
+                // 9시 강수확률
+                if cat == "POP" && fcstT == "0900" {
+                    MainWeather.rainProb09 = data["fcstValue"] as! String
+                    cnt += 1
+                }
+                // 12시 강수확률
+                if cat == "POP" && fcstT == "1200" {
+                    MainWeather.rainProb12 = data["fcstValue"] as! String
+                    cnt += 1
+                }
+                // 15시 강수확률
+                if cat == "POP" && fcstT == "1500" {
+                    MainWeather.rainProb15 = data["fcstValue"] as! String
+                    cnt += 1
+                }
+                // 18시 강수확률
+                if cat == "POP" && fcstT == "1800" {
+                    MainWeather.rainProb18 = data["fcstValue"] as! String
+                    cnt += 1
+                }
+                // 21시 강수확률
+                if cat == "POP" && fcstT == "2100" {
+                    MainWeather.rainProb21 = data["fcstValue"] as! String
+                    cnt += 1
+                }
+                
+                if cnt == 8 {
                     print("village: success")
                     break
                 }
@@ -256,7 +286,7 @@ class KMAweatherClient {
             }
             
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "VillageTemp"), object: "nil")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Village"), object: "nil")
             }
         }
 

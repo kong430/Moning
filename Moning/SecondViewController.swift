@@ -58,6 +58,15 @@ class SecondViewController: UIViewController {
         humidityLabel.text = String(MainWeather.humidity)+"%"
         feellikeLabel.text = String(format: "%.1f", MainWeather.feels_like)+"℃"
         
+        var rainProb = 0
+        rainProb = max(rainProb, Int(MainWeather.rainProb06)!)
+        rainProb = max(rainProb, Int(MainWeather.rainProb09)!)
+        rainProb = max(rainProb, Int(MainWeather.rainProb12)!)
+        rainProb = max(rainProb, Int(MainWeather.rainProb15)!)
+        rainProb = max(rainProb, Int(MainWeather.rainProb18)!)
+        rainProb = max(rainProb, Int(MainWeather.rainProb21)!)
+        rainLabel.text = String(rainProb)+"%"
+        
         self.updateColor()
         
         self.view.layoutIfNeeded()

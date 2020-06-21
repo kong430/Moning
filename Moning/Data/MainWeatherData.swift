@@ -24,13 +24,17 @@ class MainWeather {
     static var windSpeed: Double! // 바람 속도
     static var feels_like: Double! // 체감온도
     
-    // 기상청 동네예보
-    static var timeStamp: String!
-    static var currentTemp: String! // Double
-    static var minTemp: String! // Double
-    static var maxTemp: String! // Double
-    
-    // 강수량
+    // 기상청
+    static var timeStamp: String! // 기준 시간
+    static var currentTemp: String! // 현재기온
+    static var minTemp: String! // 최저기온
+    static var maxTemp: String! // 최고기온
+    static var rainProb06: String! = "0" // 6시 강수확률
+    static var rainProb09: String! = "0" // 9시 강수확률
+    static var rainProb12: String! = "0" // 12시 강수확률
+    static var rainProb15: String! = "0" // 15시 강수확률
+    static var rainProb18: String! = "0" // 18시 강수확률
+    static var rainProb21: String! = "0" // 21시 강수확률
     
     // 미세먼지
     static var pm10Val: String! // pm10 미세먼지

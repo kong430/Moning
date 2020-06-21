@@ -358,7 +358,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="K8e-SB-5dO">
                                 <rect key="frame" x="62" y="459" width="290" height="130"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SLz-ea-2do">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="SLz-ea-2do">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="130"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바람" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1M-Rl-7jx">
@@ -367,15 +367,15 @@
                                                     <constraint firstAttribute="width" constant="70" id="Fre-19-PLU"/>
                                                     <constraint firstAttribute="height" constant="23" id="ghN-uE-1Vc"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="wind" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2NE-sy-MHv">
-                                                <rect key="frame" x="0.0" y="37" width="70" height="57"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="wind.png" translatesAutoresizingMaskIntoConstraints="NO" id="2NE-sy-MHv">
+                                                <rect key="frame" x="0.0" y="30" width="70" height="70"/>
                                                 <color key="tintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="6bT-PJ-gBt"/>
+                                                    <constraint firstAttribute="height" constant="70" id="6bT-PJ-gBt"/>
                                                     <constraint firstAttribute="width" constant="70" id="JuX-gv-Hcp"/>
                                                 </constraints>
                                             </imageView>
@@ -384,14 +384,14 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="0pI-pL-mRR"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="2NE-sy-MHv" firstAttribute="top" secondItem="n1M-Rl-7jx" secondAttribute="bottom" constant="12" id="3hG-rE-W8y"/>
-                                            <constraint firstItem="ual-ZS-Kyu" firstAttribute="top" secondItem="2NE-sy-MHv" secondAttribute="bottom" constant="12" id="hjb-DO-g9c"/>
+                                            <constraint firstItem="2NE-sy-MHv" firstAttribute="top" secondItem="n1M-Rl-7jx" secondAttribute="bottom" constant="7" id="3hG-rE-W8y"/>
+                                            <constraint firstItem="ual-ZS-Kyu" firstAttribute="top" secondItem="2NE-sy-MHv" secondAttribute="bottom" constant="7" id="hjb-DO-g9c"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0eE-1j-tOL">
@@ -403,11 +403,11 @@
                                                     <constraint firstAttribute="height" constant="23" id="pMr-GA-dqG"/>
                                                     <constraint firstAttribute="width" constant="70" id="vPo-NR-qHa"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="umbrella.png" translatesAutoresizingMaskIntoConstraints="NO" id="9m7-Vk-apg">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="rain.png" translatesAutoresizingMaskIntoConstraints="NO" id="9m7-Vk-apg">
                                                 <rect key="frame" x="0.0" y="25" width="70" height="80"/>
                                                 <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -419,7 +419,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="v2u-3r-4Nv"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -438,7 +438,7 @@
                                                     <constraint firstAttribute="height" constant="23" id="AvC-sg-OSL"/>
                                                     <constraint firstAttribute="width" constant="70" id="ekK-xp-h5v"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -455,7 +455,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="xQS-Nm-dkK"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -479,7 +479,7 @@
                                                     <constraint firstAttribute="height" constant="23" id="ZfU-UX-GmJ"/>
                                                     <constraint firstAttribute="width" constant="70" id="cVG-U4-1TI"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -497,7 +497,7 @@
                                                     <constraint firstAttribute="height" constant="23" id="Oxp-ev-iA7"/>
                                                     <constraint firstAttribute="width" constant="70" id="bN1-uo-jUp"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -516,7 +516,7 @@
                                                     <constraint firstAttribute="height" constant="23" id="edo-75-lva"/>
                                                     <constraint firstAttribute="width" constant="70" id="hiZ-KC-dqs"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -534,7 +534,7 @@
                                                     <constraint firstAttribute="height" constant="23" id="Kvy-wa-7K7"/>
                                                     <constraint firstAttribute="width" constant="70" id="Uz4-cf-Ao8"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -553,7 +553,7 @@
                                                     <constraint firstAttribute="height" constant="23" id="RPl-yM-Ehc"/>
                                                     <constraint firstAttribute="width" constant="70" id="e1K-IN-Qwa"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -571,7 +571,7 @@
                                                     <constraint firstAttribute="width" constant="70" id="X11-z1-yNp"/>
                                                     <constraint firstAttribute="height" constant="23" id="i8t-lQ-MTv"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -772,8 +772,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8Y6-nE-QjW"/>
-        <segue reference="K37-Bf-fug"/>
+        <segue reference="tT4-Fp-BCG"/>
+        <segue reference="zXI-Gz-bKW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
@@ -785,8 +785,8 @@
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="humidity.png" width="418.90908813476562" height="418.90908813476562"/>
         <image name="location" catalog="system" width="128" height="115"/>
-        <image name="umbrella.png" width="384" height="384"/>
+        <image name="rain.png" width="384" height="384"/>
         <image name="uv1.png" width="833" height="833"/>
-        <image name="wind" catalog="system" width="128" height="103"/>
+        <image name="wind.png" width="384" height="384"/>
     </resources>
 </document>

@@ -38,9 +38,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "Village"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "CurrentTemp"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "Nowcast"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -173,8 +173,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Weather"), object: nil)
-                KMAweatherClient.getVillageTemp()
-                KMAweatherClient.getCurrentTemp()
+                KMAweatherClient.getVillageForcast()
+                KMAweatherClient.getNowcast()
                 AirDustClient.getAirDust()
                 LivingWeatherClient.getUV()
                 LivingWeatherClient.getDiscomfort()
