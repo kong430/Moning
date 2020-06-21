@@ -58,7 +58,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @objc func updateWeather(){
         nameLabel.text = Place.name
         weatherImage.image = UIImage(named: MainWeather.icon+".png")
-        weatherLabel.text = MainWeather.description
+        weatherLabel.text = MainWeather.description()
         
         updateColor()
         
@@ -162,7 +162,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 
                 // 날씨
                 for weather in self.currentResult!.weather {
-                    MainWeather.description = weather.description
+//                    MainWeather.description = weather.description
                     MainWeather.icon = weather.icon
                 }
                 // 습도, 바람, 체감기온

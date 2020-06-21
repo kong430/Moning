@@ -11,7 +11,13 @@ import Foundation
 class MainWeather {
     
     // open weather
-    static var description: String! // 날씨 설명
+    static func description() -> String! { // 날씨 설명
+        if icon == nil {
+            return ""
+        }
+        let index = icon.index(icon.startIndex, offsetBy: 2)
+        return weatherDescription[icon.substring(to: index)]
+    }
     static var icon: String! = ""
     
     static var humidity: Int! // 습도
@@ -34,3 +40,7 @@ class MainWeather {
     static var UVlight: String! // 자외선
     static var discomfort: String! // 불쾌지수
 }
+
+let weatherDescription = ["01":"맑음", "02":"약간 흐림", "03":"흐림", "04":"매우 흐림", "09":"소나기", "10":"비", "11":"뇌우", "13":"눈", "50":"안개"]
+// clear sky, few clouds, scattered clouds, broken clouds, shower rain, rain, thunderstorm, snow, mist
+
