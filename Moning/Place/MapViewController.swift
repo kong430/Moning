@@ -15,11 +15,14 @@ protocol HandleMapSearch {
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewControllerTransitioningDelegate{
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var addButton: UIButton!
     let newPin = MKPointAnnotation()
     var resultSearchController:UISearchController? = nil
     var locationManager = CLLocationManager()
     var selectedPin:MKPlacemark? = nil
-    
+    var place = ""
+    var location = ""
+        
     override func viewDidLoad(){
         super.viewDidLoad()
         //Do any additional setup after loading the view, typically from a nib.
@@ -48,6 +51,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
         mapView.showsUserLocation = true
         locationSearchTable.handleMapSearchDelegate = self
         locationSearchTable.transitioningDelegate = self
+        
+        //self.place.delegate = self
+    }
+    
+    @IBAction func buttonClick(_ sender: Any) {
+        //UserDefaults.standard.set(placeList, forKey: "placeList")
+        placeList.append(place)
+        locationList.append(location)
+        place = ""
+        location = ""
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func getDirections(){
@@ -57,35 +71,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
             mapItem.openInMaps(launchOptions: launchOptions)
         }
     }
-    /*
-    func myLocation(latitude: CLLocationDegrees, longtitude: CLLocationDegrees, delta: Double){
-        let coordinateLocation = CLLocationCoordinate2DMake(latitude, longtitude)
-        //let spanValue = MKCoordinateSpanMake(delta, delta)
-        let spanValue = MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta)
-        let locationRegion = MKCoordinateRegion(center: coordinateLocation, span: spanValue)
-        mapView.setRegion(locationRegion, animated: true)
-    }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        /*let lastLocation = locations.last
-        myLocation(latitude: (lastLocation?.coordinate.latitude)!, longtitude: (lastLocation?.coordinate.longitude)!, delta: 0.01)
-        mapView.setRegion(region, animated: true)
-
-        newPin.coordinate = lastLocation.coordinate
-        mapView.addAnnotation(newPin)*/
-        let location = locations.last! as CLLocation
-
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-
-        //set region on the map
-        mapView.setRegion(region, animated: true)
-
-        newPin.coordinate = location.coordinate
-        mapView.addAnnotation(newPin)
-        
-    }
-    */
     func mapLongPress(_ recognizer: UIGestureRecognizer) {
            print("A long press has been detected.")
            let touchedAt = recognizer.location(in: self.mapView) // adds the location on the view it was pressed
@@ -95,8 +81,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
            newPin.coordinate = touchedAtCoordinate
            mapView.addAnnotation(newPin)
     }
-    
 }
+
 extension MapViewController{
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -117,7 +103,6 @@ extension MapViewController{
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("error:: \(error)")
     }
-
 }
 
 extension MapViewController: HandleMapSearch {
@@ -130,32 +115,23 @@ extension MapViewController: HandleMapSearch {
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
         if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = city + " " + state
+            let state = placemark.administrativeArea{
+            annotation.subtitle = state + " " + city + " " + searchItem
+            location = annotation.subtitle!
+            place = searchItem
         }
+        
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea,
+            let street = placemark.thoroughfare{
+            annotation.subtitle = state + " " + city + " " + street
+            location = annotation.subtitle!
+            place = searchItem
+        }
+
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
         mapView.setRegion(region, animated: true)
-    }
-}
-
-extension MapViewController : MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
-        if annotation is MKUserLocation {
-            //return nil so map view draws "blue dot" for standard user location
-            return nil
-        }
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-        pinView?.pinTintColor = UIColor.orange
-        pinView?.canShowCallout = true
-        let smallSquare = CGSize(width: 30, height: 30)
-        let button = UIButton(frame: CGRect(origin: CGPoint(x:0, y:0), size: smallSquare))
-        button.setBackgroundImage(UIImage(named: "car"), for: .normal)
-        button.addTarget(self, action: Selector(("getDirections")), for: .touchUpInside)
-        pinView?.leftCalloutAccessoryView = button
-        return pinView
     }
 }
