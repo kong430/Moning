@@ -57,11 +57,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     
     @IBAction func buttonClick(_ sender: Any) {
         //UserDefaults.standard.set(placeList, forKey: "placeList")
-        placeList.append(place)
-        locationList.append(location)
+        let item: PlaceList = PlaceList(place: place, location: location)
+        placeList.append(item)
+        _ = navigationController?.popViewController(animated: true)
         place = ""
         location = ""
-        _ = navigationController?.popViewController(animated: true)
+        
     }
     
     func getDirections(){

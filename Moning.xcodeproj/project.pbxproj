@@ -51,6 +51,8 @@
 		702F727F2D1E570A1E0F4250 /* Pods_MoningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C09965D53485687DA3E724D /* Pods_MoningTests.framework */; };
 		99C4DBBA3E9CC1549BDC158A /* Pods_Moning_MoningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A35997FD44D497BA6422FC4 /* Pods_Moning_MoningUITests.framework */; };
 		AB410043248F4B03000E24DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB410042248F4B03000E24DA /* MapViewController.swift */; };
+		AB456D4424A097D20002887C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB456D4324A097D20002887C /* GoogleService-Info.plist */; };
+		AB456D4F24A0AEE50002887C /* PlaceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB456D4E24A0AEE50002887C /* PlaceList.swift */; };
 		AB9CE8F6249FA676005251A1 /* LocationSearchVieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CE8F5249FA676005251A1 /* LocationSearchVieController.swift */; };
 		B6F016D96D20591F9667DFE9 /* Pods_Moning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C1C351ACD19048E4817080 /* Pods_Moning.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +138,8 @@
 		A22CB8343F3750C803B70C9E /* Pods-Moning-MoningUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning-MoningUITests.release.xcconfig"; path = "Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A270A396E51F3DAD2F191318 /* Pods-Moning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.debug.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.debug.xcconfig"; sourceTree = "<group>"; };
 		AB410042248F4B03000E24DA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AB456D4324A097D20002887C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB456D4E24A0AEE50002887C /* PlaceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceList.swift; sourceTree = "<group>"; };
 		AB9CE8F5249FA676005251A1 /* LocationSearchVieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVieController.swift; sourceTree = "<group>"; };
 		B1057F324EC466EE1C362E1E /* Pods-Moning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.release.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +211,7 @@
 			children = (
 				3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */,
 				AB410042248F4B03000E24DA /* MapViewController.swift */,
+				AB456D4E24A0AEE50002887C /* PlaceList.swift */,
 				AB9CE8F5249FA676005251A1 /* LocationSearchVieController.swift */,
 			);
 			path = Place;
@@ -607,6 +612,7 @@
 				3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
 				3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */,
+				AB456D4F24A0AEE50002887C /* PlaceList.swift in Sources */,
 				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,
 				3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */,
 				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,
