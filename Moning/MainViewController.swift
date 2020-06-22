@@ -8,9 +8,12 @@
 
 import UIKit
 import CoreLocation
+import SDWebImage
+import FirebaseUI
+import FirebaseStorage
+import Firebase
 
-
-class MainViewController: UIViewController, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,7 +28,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UICollect
     @IBOutlet weak var notifyTitleLabel: UILabel!
     @IBOutlet weak var codiTitleLabel: UILabel!
     
-    @IBOutlet weak var codiCollectionView: UICollectionView!
+    @IBOutlet weak var notifyCollectionView: UICollectionView!
+    
+    @IBOutlet weak var codi1Image: UIImageView!
+    @IBOutlet weak var codi2Image: UIImageView!
+    @IBOutlet weak var codi3Image: UIImageView!
+    
+    
+    
     
     @IBAction func refreshButtonAction(_ sender: Any) {
         locationManager.startUpdatingLocation()
@@ -42,6 +52,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UICollect
         NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "Village"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "Nowcast"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setCodiImage), name: NSNotification.Name(rawValue: "codi"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,12 +91,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UICollect
         notifyTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
         codiTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
         
-        codiCollectionView.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        notifyCollectionView.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
     }
     
     @objc func updateVillageTemp(){
         lowTempLabel.text = MainWeather.minTemp
         highTempLabel.text = MainWeather.maxTemp
+        
+        CodinationClient.setLevel()
         
         self.view.layoutIfNeeded()
     }
@@ -187,17 +201,43 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UICollect
         task.resume()
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Codination.codiImages.count
+    @objc func setCodiImage() {
+        
+        var codiName = String(Codination.level)+Codination.gender+"_"
+        
+        // 0~9 중 랜덤 세 개
+        var numArray: [Int] = Array(0...9)
+        numArray.shuffle()
+        var codi1Name = codiName + String(numArray[0])
+        var codi2Name = codiName + String(numArray[1])
+        var codi3Name = codiName + String(numArray[2])
+        
+        // Reference to an image file in Firebase Storage
+        var ref1 = CodinationClient.clothesRef.child("\(codi1Name).jpg")
+        var ref2 = CodinationClient.clothesRef.child("\(codi2Name).jpg")
+        var ref3 = CodinationClient.clothesRef.child("\(codi3Name).jpg")
+
+//        print(ref1)
+//        print(ref2)
+//        print(ref3)
+
+        // Load the image using SDWebImage
+        codi1Image.sd_setImage(with: ref1)
+        if codi1Image.image == nil {
+            ref1 = CodinationClient.clothesRef.child("\(codi1Name).JPG")
+            codi1Image.sd_setImage(with: ref1)
+        }
+        codi2Image.sd_setImage(with: ref2)
+        if codi2Image.image == nil {
+            ref2 = CodinationClient.clothesRef.child("\(codi2Name).JPG")
+            codi2Image.sd_setImage(with: ref2)
+        }
+        codi3Image.sd_setImage(with: ref3)
+        if codi3Image.image == nil {
+            ref3 = CodinationClient.clothesRef.child("\(codi3Name).JPG")
+            codi3Image.sd_setImage(with: ref3)
+        }
+
+        self.view.layoutIfNeeded()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CodiCell", for: indexPath) as! CodiCollectionViewCell
-        cell.codiImage.image = UIImage(named: Codination.codiImages[indexPath.row])
-                return cell
-    }
-    
-    
-    
 }

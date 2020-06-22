@@ -7,6 +7,8 @@ target 'Moning' do
 
   # Pods for Moning
   pod 'Firebase/Analytics'
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI/Storage'
 
   target 'MoningTests' do
     inherit! :search_paths

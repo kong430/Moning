@@ -1,5 +1,5 @@
 //
-//  CodiCollectionViewCell.swift
+//  NotifyCollectionViewCell.swift
 //  Moning
 //
 //  Created by 이제인 on 2020/06/22.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CodiCollectionViewCell: UICollectionViewCell {
+class NotifyCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var codiImage: UIImageView!
+    @IBOutlet weak var notifyImage: UIImageView!
     
 }
