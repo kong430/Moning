@@ -29,7 +29,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
         //Do any additional setup after loading the view, typically from a nib.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //사용자 인증 요청 - 이거 나중에 수정
+        //사용자 인증 요청 - 이거 나중에 수정?
         locationManager.requestWhenInUseAuthorization()
         //위치 업데이트 시작
         locationManager.startUpdatingLocation()
@@ -98,8 +98,6 @@ extension MapViewController{
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            /*let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)*/
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             mapView.setRegion(region, animated: true)
