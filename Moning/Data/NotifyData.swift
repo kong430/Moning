@@ -10,6 +10,6 @@ import Foundation
 
 class NotifyThings {
     
-    static var notifyImages = ["airpods.png", "charger.png", "handheld.png", "mask.png", "sunglasses.png"]
+    static var notifyImages = ["airpods.png", "charger.png", "handheld.png", "hotpack.png", "mask.png", "scarf.png", "sunglasses.png", "sunscreen.png"]
     
 }

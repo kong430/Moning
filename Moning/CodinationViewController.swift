@@ -31,25 +31,89 @@ extension MainViewController {
         print(ref2)
         print(ref3)
         
+        ref1.downloadURL { url, error in
+            if let error = error {
+//                print("ref1: ", error)
+                ref1 = CodinationClient.clothesRef.child("\(codi1Name).JPG")
+                ref1.downloadURL { url, error in
+                    if let error = error {
+                        print("ref1: ", error)
+                    }
+                    else {
+                        self.codi1Image.sd_setImage(with: ref1)
+                    }
+                }
+            }
+            else {
+                self.codi1Image.sd_setImage(with: ref1)
+            }
+        }
+        ref2.downloadURL { url, error in
+            if let error = error {
+//                print("ref2: ", error)
+                ref2 = CodinationClient.clothesRef.child("\(codi2Name).JPG")
+                ref2.downloadURL { url, error in
+                    if let error = error {
+                        print("ref2: ", error)
+                    }
+                    else {
+                        self.codi2Image.sd_setImage(with: ref2)
+                    }
+                }
+            }
+            else {
+                self.codi2Image.sd_setImage(with: ref2)
+            }
+        }
+        ref3.downloadURL { url, error in
+            if let error = error {
+//                print("ref3: ", error)
+                ref3 = CodinationClient.clothesRef.child("\(codi3Name).JPG")
+                ref3.downloadURL { url, error in
+                    if let error = error {
+                        print("ref3: ", error)
+                    }
+                    else {
+                        self.codi3Image.sd_setImage(with: ref3)
+                    }
+                }
+            }
+            else {
+                self.codi3Image.sd_setImage(with: ref3)
+            }
+        }
         
-
-        // Load the image using SDWebImage
-        self.codi1Image.sd_setImage(with: ref1)
-        if self.codi1Image.image == nil {
-            ref1 = CodinationClient.clothesRef.child("\(codi1Name).JPG")
-            self.codi1Image.sd_setImage(with: ref1)
-        }
-        self.codi2Image.sd_setImage(with: ref2)
-        if self.codi2Image.image == nil {
-            ref2 = CodinationClient.clothesRef.child("\(codi2Name).JPG")
-            self.codi2Image.sd_setImage(with: ref2)
-        }
-        self.codi3Image.sd_setImage(with: ref3)
-        if self.codi3Image.image == nil {
-            ref3 = CodinationClient.clothesRef.child("\(codi3Name).JPG")
-            self.codi3Image.sd_setImage(with: ref3)
-        }
-
+        // 코디 이미지 클릭 이벤트
+        codi1Image.isUserInteractionEnabled = true
+        let tap1 = CodiTapGesture(target: self, action: #selector(codiImageTapped))
+        tap1.tappedCodiName = codi1Name
+        codi1Image.addGestureRecognizer(tap1)
+        
+        codi2Image.isUserInteractionEnabled = true
+        let tap2 = CodiTapGesture(target: self, action: #selector(codiImageTapped))
+        tap2.tappedCodiName = codi2Name
+        codi2Image.addGestureRecognizer(tap2)
+        
+        codi3Image.isUserInteractionEnabled = true
+        let tap3 = CodiTapGesture(target: self, action: #selector(codiImageTapped))
+        tap3.tappedCodiName = codi3Name
+        codi3Image.addGestureRecognizer(tap3)
+    
         self.view.layoutIfNeeded()
     }
+    
+    
+    // 코디 이미지 클릭 이벤트
+    @objc func codiImageTapped(sender: CodiTapGesture){
+        let codiName = sender.tappedCodiName
+        print("click!!!!!!!!!!", codiName)
+        
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "detailVCID")
+        vcName?.modalTransitionStyle = .coverVertical
+        self.present(vcName!, animated: true, completion: nil)
+        
+    }
+    
+
+    
 }
