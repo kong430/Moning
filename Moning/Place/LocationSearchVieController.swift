@@ -22,8 +22,8 @@ class LocationSearchTable : UITableViewController {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : " "
         // put a comma between street and city/state
-        /*let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
-        let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " " : " "*/
+        /*let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""*/
+        let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " " : " "
         
         let addressLine = String(
             format:"%@%@%@%@%@%@%@",
@@ -32,10 +32,10 @@ class LocationSearchTable : UITableViewController {
             firstSpace,
             // city
             selectedItem.locality ?? "",
-            firstSpace,
+            secondSpace,
             // street name
             selectedItem.thoroughfare ?? "",
-            firstSpace,
+            secondSpace,
             // street number
             selectedItem.subThoroughfare ?? ""
         )
@@ -72,7 +72,6 @@ extension LocationSearchTable {
         searchItem = selectedItem.name!
         cell.textLabel?.text = selectedItem.name
         cellName = selectedItem.name!
-        //cell.detailTextLabel?.text = ""
         cell.detailTextLabel?.text = parseAddress(selectedItem: selectedItem)
         cellDetail = parseAddress(selectedItem: selectedItem)
         return cell

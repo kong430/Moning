@@ -18,9 +18,6 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         placeListTable.delegate = self
         placeListTable.dataSource = self
-        
-        //if UserDefaults.standard.object(forKey: "placeList") != nil{
-        //    placeList = UserDefaults.standard.object(forKey: "placeList") as! [String]
     }
     
     // 뷰가 노출될 때마다 리스트의 데이터를 다시 불러옴
