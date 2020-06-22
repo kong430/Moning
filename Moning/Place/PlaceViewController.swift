@@ -62,6 +62,12 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Place.lat = placeList[indexPath.row].latitude
+        Place.lon = placeList[indexPath.row].longitude
+        navigationController?.popViewController(animated: true)
+    }
+    
     //userdefault 저장
     func saveAllData() {
         let data = placeList.map {
