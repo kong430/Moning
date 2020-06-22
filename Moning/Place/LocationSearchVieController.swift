@@ -5,7 +5,6 @@
 //  Created by Park MinGyeong on 2020/06/21.
 //  Copyright © 2020 이제인. All rights reserved.
 //
-
 import UIKit
 import MapKit
 var searchItem = ""

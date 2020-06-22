@@ -5,7 +5,6 @@
 //  Created by Park MinGyeong on 2020/06/09.
 //  Copyright © 2020 이제인. All rights reserved.
 //
-
 import UIKit
 import MapKit
 
@@ -22,6 +21,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     var selectedPin:MKPlacemark? = nil
     var place = ""
     var location = ""
+    var latitude = 0.0
+    var longitude = 0.0
         
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -57,11 +58,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     
     @IBAction func buttonClick(_ sender: Any) {
         //UserDefaults.standard.set(placeList, forKey: "placeList")
-        let item: PlaceList = PlaceList(place: place, location: location)
+        let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude)
         placeList.append(item)
         _ = navigationController?.popViewController(animated: true)
         place = ""
         location = ""
+        latitude = 0.0
+        longitude = 0.0
         
     }
     
@@ -77,7 +80,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
            print("A long press has been detected.")
            let touchedAt = recognizer.location(in: self.mapView) // adds the location on the view it was pressed
            let touchedAtCoordinate : CLLocationCoordinate2D = mapView.convert(touchedAt, toCoordinateFrom: self.mapView) // will get coordinates
-
            let newPin = MKPointAnnotation()
            newPin.coordinate = touchedAtCoordinate
            mapView.addAnnotation(newPin)
@@ -129,7 +131,10 @@ extension MapViewController: HandleMapSearch {
             location = annotation.subtitle!
             place = searchItem
         }
-
+        
+        latitude = placemark.coordinate.latitude
+        longitude = placemark.coordinate.longitude
+        
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: placemark.coordinate, span: span)

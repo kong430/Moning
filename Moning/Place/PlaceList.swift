@@ -11,9 +11,13 @@ import Foundation
 struct PlaceList {
     var place: String = ""
     var location: String = ""
-    
-    init(place: String, location: String){
+    var latitude: Double = 0
+    var longitude: Double = 0
+    //init(place: String, location: String){
+    init(place: String, location: String, latitude: Double, longitude: Double){
         self.place = place
         self.location = location
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }

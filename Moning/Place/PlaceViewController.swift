@@ -5,17 +5,18 @@
 //  Created by 이제인 on 2020/05/25.
 //  Copyright © 2020 이제인. All rights reserved.
 //
-
 import UIKit
 var placeList = [PlaceList]()
 //var placeList = [String]()
 //var locationList = [String]()
-
 class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var placeListTable: UITableView!
 
     override func viewDidLoad() {
+        /*for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            UserDefaults.standard.removeObject(forKey: "items")
+        }*/
         super.viewDidLoad()
         placeListTable.delegate = self
         placeListTable.dataSource = self
@@ -55,6 +56,9 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         {
             placeList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            UserDefaults.standard.removeObject(forKey: "items")
+            saveAllData()
+            placeListTable.reloadData()
         }
     }
     
@@ -63,11 +67,14 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         let data = placeList.map {
             [
                 "place": $0.place,
-                "location": $0.location
+                "location": $0.location,
+                "latitude": $0.latitude,
+                "longitude": $0.longitude
             ]
         }
         let userDefaults = UserDefaults.standard
         userDefaults.set(data, forKey: "items") // 키, value 설정
+        userDefaults.set(data, forKey: "items")
         userDefaults.synchronize()  // 동기화
     }
     
@@ -85,9 +92,10 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         placeList = data.map {
             let place = $0["place"] as? String
             let location = $0["location"] as? String
+            let latitude = $0["latitude"] as? Double
+            let longitude = $0["longitude"] as? Double
             
-            return PlaceList(place: place!, location: location!)
+            return PlaceList(place: place!, location: location!, latitude: latitude!, longitude: longitude!)
         }
     }
 }
-
