@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */; };
+		05BF599E249262CB007DA866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05BF599D249262CB007DA866 /* GoogleService-Info.plist */; };
 		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
 		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
 		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
@@ -75,6 +76,7 @@
 		02C1C351ACD19048E4817080 /* Pods_Moning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
+		05BF599D249262CB007DA866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
 		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
@@ -247,7 +249,7 @@
 				3F8E7AA724710DB700752C92 /* SecondViewController.swift */,
 				3F4F9A15246FC0B3005DEFE9 /* Assets.xcassets */,
 				3F4F9A1A246FC0B3005DEFE9 /* Info.plist */,
-				3FC8DE7B248A420500848BD9 /* GoogleService-Info.plist */,
+				05BF599D249262CB007DA866 /* GoogleService-Info.plist */,
 				3F86B006248E969600776E8C /* gpx */,
 				3F7B3EE3247CF5B000529C72 /* Images */,
 			);
@@ -451,6 +453,7 @@
 			files = (
 				3F7B3EF6247CF66D00529C72 /* 04n.png in Resources */,
 				3F7B3F04247CF66D00529C72 /* 01n.png in Resources */,
+				05BF599E249262CB007DA866 /* GoogleService-Info.plist in Resources */,
 				3F7B3F00247CF66D00529C72 /* 03d.png in Resources */,
 				3F4F6515247B8FA60001DB5F /* Place.storyboard in Resources */,
 				3F7B3F02247CF66D00529C72 /* 10d.png in Resources */,
@@ -466,7 +469,6 @@
 				3F7B3EF7247CF66D00529C72 /* 11n.png in Resources */,
 				3F7B3EFC247CF66D00529C72 /* 04d.png in Resources */,
 				3F4F9A19246FC0B3005DEFE9 /* LaunchScreen.storyboard in Resources */,
-				3FC8DE7C248A420600848BD9 /* GoogleService-Info.plist in Resources */,
 				3F7B3EF9247CF66D00529C72 /* 02n.png in Resources */,
 				3F4F9A16246FC0B3005DEFE9 /* Assets.xcassets in Resources */,
 				3F7B3F05247CF66D00529C72 /* 03n.png in Resources */,
@@ -797,7 +799,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HelloJaneJane.Moning;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.HelloJaneJane.Moning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -817,7 +819,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HelloJaneJane.Moning;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.HelloJaneJane.Moning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
