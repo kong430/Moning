@@ -5,7 +5,6 @@
 //  Created by Park MinGyeong on 2020/06/09.
 //  Copyright © 2020 이제인. All rights reserved.
 //
-
 import UIKit
 import MapKit
 
@@ -22,13 +21,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     var selectedPin:MKPlacemark? = nil
     var place = ""
     var location = ""
+    var latitude = 0.0
+    var longitude = 0.0
         
     override func viewDidLoad(){
         super.viewDidLoad()
         //Do any additional setup after loading the view, typically from a nib.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //사용자 인증 요청 - 이거 나중에 수정
+        //사용자 인증 요청 - 이거 나중에 수정?
         locationManager.requestWhenInUseAuthorization()
         //위치 업데이트 시작
         locationManager.startUpdatingLocation()
@@ -51,17 +52,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
         mapView.showsUserLocation = true
         locationSearchTable.handleMapSearchDelegate = self
         locationSearchTable.transitioningDelegate = self
-        
-        //self.place.delegate = self
+
+        //Zoom to user location
+        let noLocation = CLLocationCoordinate2D()
+        let viewRegion = MKCoordinateRegion(center: noLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+           mapView.setRegion(viewRegion, animated: false)
     }
     
     @IBAction func buttonClick(_ sender: Any) {
         //UserDefaults.standard.set(placeList, forKey: "placeList")
-        placeList.append(place)
-        locationList.append(location)
+        let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude)
+        placeList.append(item)
+        _ = navigationController?.popViewController(animated: true)
         place = ""
         location = ""
-        _ = navigationController?.popViewController(animated: true)
+        latitude = 0.0
+        longitude = 0.0
+        
     }
     
     func getDirections(){
@@ -76,7 +83,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
            print("A long press has been detected.")
            let touchedAt = recognizer.location(in: self.mapView) // adds the location on the view it was pressed
            let touchedAtCoordinate : CLLocationCoordinate2D = mapView.convert(touchedAt, toCoordinateFrom: self.mapView) // will get coordinates
-
            let newPin = MKPointAnnotation()
            newPin.coordinate = touchedAtCoordinate
            mapView.addAnnotation(newPin)
@@ -92,8 +98,6 @@ extension MapViewController{
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            /*let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)*/
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             mapView.setRegion(region, animated: true)
@@ -128,7 +132,10 @@ extension MapViewController: HandleMapSearch {
             location = annotation.subtitle!
             place = searchItem
         }
-
+        
+        latitude = placemark.coordinate.latitude
+        longitude = placemark.coordinate.longitude
+        
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: placemark.coordinate, span: span)

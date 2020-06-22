@@ -81,6 +81,8 @@
 		702F727F2D1E570A1E0F4250 /* Pods_MoningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C09965D53485687DA3E724D /* Pods_MoningTests.framework */; };
 		99C4DBBA3E9CC1549BDC158A /* Pods_Moning_MoningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A35997FD44D497BA6422FC4 /* Pods_Moning_MoningUITests.framework */; };
 		AB410043248F4B03000E24DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB410042248F4B03000E24DA /* MapViewController.swift */; };
+		AB456D4F24A0AEE50002887C /* PlaceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB456D4E24A0AEE50002887C /* PlaceList.swift */; };
+		AB456D4424A097D20002887C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB456D4324A097D20002887C /* GoogleService-Info.plist */; };
 		AB9CE8F6249FA676005251A1 /* LocationSearchVieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CE8F5249FA676005251A1 /* LocationSearchVieController.swift */; };
 		B6F016D96D20591F9667DFE9 /* Pods_Moning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C1C351ACD19048E4817080 /* Pods_Moning.framework */; };
 /* End PBXBuildFile section */
@@ -196,7 +198,11 @@
 		A22CB8343F3750C803B70C9E /* Pods-Moning-MoningUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning-MoningUITests.release.xcconfig"; path = "Target Support Files/Pods-Moning-MoningUITests/Pods-Moning-MoningUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A270A396E51F3DAD2F191318 /* Pods-Moning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.debug.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.debug.xcconfig"; sourceTree = "<group>"; };
 		AB410042248F4B03000E24DA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+
+		AB456D4E24A0AEE50002887C /* PlaceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceList.swift; sourceTree = "<group>"; };
+
 		AB456D4324A097D20002887C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+
 		AB9CE8F5249FA676005251A1 /* LocationSearchVieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVieController.swift; sourceTree = "<group>"; };
 		B1057F324EC466EE1C362E1E /* Pods-Moning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moning.release.xcconfig"; path = "Target Support Files/Pods-Moning/Pods-Moning.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,6 +274,7 @@
 			children = (
 				3F4F6512247B8F0A0001DB5F /* PlaceViewController.swift */,
 				AB410042248F4B03000E24DA /* MapViewController.swift */,
+				AB456D4E24A0AEE50002887C /* PlaceList.swift */,
 				AB9CE8F5249FA676005251A1 /* LocationSearchVieController.swift */,
 			);
 			path = Place;
@@ -314,8 +321,8 @@
 				3F63C75B24A060BE002EA061 /* NotifyCollectionViewController.swift */,
 				3F63C75F24A068F7002EA061 /* NotifyCollectionViewCell.swift */,
 				3F4F9A15246FC0B3005DEFE9 /* Assets.xcassets */,
-				3F63C76424A09BFA002EA061 /* GoogleService-Info.plist */,
 				3F4F9A1A246FC0B3005DEFE9 /* Info.plist */,
+				3F5430762493FEBF008E827C /* GoogleService-Info.plist */,
 				3F86B006248E969600776E8C /* gpx */,
 				3F7B3EE3247CF5B000529C72 /* Images */,
 			);
@@ -576,6 +583,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				3F7B3EF6247CF66D00529C72 /* 04n.png in Resources */,
+				3F7B3F04247CF66D00529C72 /* 01n.png in Resources */,
+				3F7B3F00247CF66D00529C72 /* 03d.png in Resources */,
+
 				3F63C741249FE179002EA061 /* 04n.png in Resources */,
 				3F63C76524A09BFB002EA061 /* GoogleService-Info.plist in Resources */,
 				3F63C750249FE185002EA061 /* scarf.png in Resources */,
@@ -598,6 +610,7 @@
 				3F63C73B249FE179002EA061 /* 11n.png in Resources */,
 				3F63C74F249FE185002EA061 /* airpods.png in Resources */,
 				3F4F9A19246FC0B3005DEFE9 /* LaunchScreen.storyboard in Resources */,
+
 				3F63C71D249FE16C002EA061 /* discomfort2.png in Resources */,
 				3F63C736249FE179002EA061 /* 03d.png in Resources */,
 				3F63C71C249FE16C002EA061 /* rain.png in Resources */,
@@ -762,7 +775,11 @@
 				3F63C75E24A062FB002EA061 /* CodinationClient.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
 				3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */,
+
+				AB456D4F24A0AEE50002887C /* PlaceList.swift in Sources */,
+
 				3F63C758249FE2C6002EA061 /* NotifyData.swift in Sources */,
+
 				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,
 				3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */,
 				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,

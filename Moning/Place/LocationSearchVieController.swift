@@ -5,7 +5,6 @@
 //  Created by Park MinGyeong on 2020/06/21.
 //  Copyright © 2020 이제인. All rights reserved.
 //
-
 import UIKit
 import MapKit
 var searchItem = ""
@@ -19,7 +18,6 @@ class LocationSearchTable : UITableViewController {
     var searchResults = [MKLocalSearchCompletion]()
     
     func parseAddress(selectedItem:MKPlacemark) -> String {
-        // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : " "
         // put a comma between street and city/state
         /*let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""*/
