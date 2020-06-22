@@ -56,19 +56,25 @@ class CodinationClient {
         // 바람
         if baseTemp < 12.0 && MainWeather.windSpeed >= 8.0 {
             // 춥고 바람 많이 불면 두꺼운 옷
-            Codination.level += 1
+            if Codination.level < 7 {
+                Codination.level += 1
+            }
             Codination.windFlag = true
         }
 
         // 습도
         if baseTemp >= 23.0 && MainWeather.humidity >= 60 {
             // 덥고 습도 높으면 얇은 옷
-            Codination.level -= 1
+            if Codination.level > 0 {
+                Codination.level -= 1
+            }
             Codination.hotHumidityFlag = true
         }
         else if baseTemp <= 8.0 && MainWeather.humidity >= 80 {
             // 춥고 습도 높으면 두꺼운 옷
-            Codination.level += 1
+            if Codination.level < 7 {
+                Codination.level += 1
+            }
             Codination.coldHumidityFlag = true
         }
 

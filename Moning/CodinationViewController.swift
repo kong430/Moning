@@ -18,14 +18,14 @@ extension MainViewController {
         // 0~9 중 랜덤 세 개
         var numArray: [Int] = Array(0...9)
         numArray.shuffle()
-        Codination.codi1Name = codiName + String(numArray[0])
-        Codination.codi2Name = codiName + String(numArray[1])
-        Codination.codi3Name = codiName + String(numArray[2])
+        var codi1Name = codiName + String(numArray[0])
+        var codi2Name = codiName + String(numArray[1])
+        var codi3Name = codiName + String(numArray[2])
 
         // Reference to an image file in Firebase Storage
-        var ref1 = CodinationClient.clothesRef.child("\(Codination.codi1Name).jpg")
-        var ref2 = CodinationClient.clothesRef.child("\(Codination.codi2Name).jpg")
-        var ref3 = CodinationClient.clothesRef.child("\(Codination.codi3Name).jpg")
+        var ref1 = CodinationClient.clothesRef.child("\(codi1Name).jpg")
+        var ref2 = CodinationClient.clothesRef.child("\(codi2Name).jpg")
+        var ref3 = CodinationClient.clothesRef.child("\(codi3Name).jpg")
 
         print(ref1)
         print(ref2)
@@ -34,7 +34,7 @@ extension MainViewController {
         ref1.downloadURL { url, error in
             if let error = error {
 //                print("ref1: ", error)
-                ref1 = CodinationClient.clothesRef.child("\(Codination.codi1Name).JPG")
+                ref1 = CodinationClient.clothesRef.child("\(codi1Name).JPG")
                 ref1.downloadURL { url, error in
                     if let error = error {
                         print("ref1: ", error)
@@ -51,7 +51,7 @@ extension MainViewController {
         ref2.downloadURL { url, error in
             if let error = error {
 //                print("ref2: ", error)
-                ref2 = CodinationClient.clothesRef.child("\(Codination.codi2Name).JPG")
+                ref2 = CodinationClient.clothesRef.child("\(codi2Name).JPG")
                 ref2.downloadURL { url, error in
                     if let error = error {
                         print("ref2: ", error)
@@ -68,7 +68,7 @@ extension MainViewController {
         ref3.downloadURL { url, error in
             if let error = error {
 //                print("ref3: ", error)
-                ref3 = CodinationClient.clothesRef.child("\(Codination.codi3Name).JPG")
+                ref3 = CodinationClient.clothesRef.child("\(codi3Name).JPG")
                 ref3.downloadURL { url, error in
                     if let error = error {
                         print("ref3: ", error)
@@ -86,17 +86,17 @@ extension MainViewController {
         // 코디 이미지 클릭 이벤트
         codi1Image.isUserInteractionEnabled = true
         let tap1 = CodiTapGesture(target: self, action: #selector(codiImageTapped))
-        tap1.tappedCodiName = Codination.codi1Name
+        tap1.tappedCodiName = codi1Name
         codi1Image.addGestureRecognizer(tap1)
         
         codi2Image.isUserInteractionEnabled = true
         let tap2 = CodiTapGesture(target: self, action: #selector(codiImageTapped))
-        tap2.tappedCodiName = Codination.codi2Name
+        tap2.tappedCodiName = codi2Name
         codi2Image.addGestureRecognizer(tap2)
         
         codi3Image.isUserInteractionEnabled = true
         let tap3 = CodiTapGesture(target: self, action: #selector(codiImageTapped))
-        tap3.tappedCodiName = Codination.codi3Name
+        tap3.tappedCodiName = codi3Name
         codi3Image.addGestureRecognizer(tap3)
     
         self.view.layoutIfNeeded()
@@ -108,8 +108,12 @@ extension MainViewController {
         let codiName = sender.tappedCodiName
         print("click!!!!!!!!!!", codiName)
         
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "detailVCID")
+        vcName?.modalTransitionStyle = .coverVertical
+        self.present(vcName!, animated: true, completion: nil)
         
     }
     
+
     
 }

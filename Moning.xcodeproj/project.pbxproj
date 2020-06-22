@@ -73,6 +73,7 @@
 		3F63C76024A068F7002EA061 /* NotifyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63C75F24A068F7002EA061 /* NotifyCollectionViewCell.swift */; };
 		3F63C76224A08D92002EA061 /* CodinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63C76124A08D92002EA061 /* CodinationViewController.swift */; };
 		3F63C76524A09BFB002EA061 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F63C76424A09BFA002EA061 /* GoogleService-Info.plist */; };
+		3F63C76824A11FFC002EA061 /* CodiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63C76724A11FFC002EA061 /* CodiDetailViewController.swift */; };
 		3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B3EE1247BBDE900529C72 /* PlaceData.swift */; };
 		3F86B004248E285A00776E8C /* AirDustClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86B003248E285A00776E8C /* AirDustClient.swift */; };
 		3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E7AA724710DB700752C92 /* SecondViewController.swift */; };
@@ -176,6 +177,7 @@
 		3F63C75F24A068F7002EA061 /* NotifyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F63C76124A08D92002EA061 /* CodinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodinationViewController.swift; sourceTree = "<group>"; };
 		3F63C76424A09BFA002EA061 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F63C76724A11FFC002EA061 /* CodiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodiDetailViewController.swift; sourceTree = "<group>"; };
 		3F75B257248D5ABE009EC63C /* Hongdae.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Hongdae.gpx; sourceTree = "<group>"; };
 		3F7B3EE1247BBDE900529C72 /* PlaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceData.swift; sourceTree = "<group>"; };
 		3F86B003248E285A00776E8C /* AirDustClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDustClient.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				3F4F650E247B8EAD0001DB5F /* Storyboard */,
 				3F4F9A0C246FC0AF005DEFE9 /* AppDelegate.swift */,
 				3F4F9A0E246FC0AF005DEFE9 /* SceneDelegate.swift */,
+				3F63C76724A11FFC002EA061 /* CodiDetailViewController.swift */,
 				3F4F9A10246FC0AF005DEFE9 /* MainViewController.swift */,
 				3F63C76124A08D92002EA061 /* CodinationViewController.swift */,
 				3F8E7AA724710DB700752C92 /* SecondViewController.swift */,
@@ -751,6 +754,7 @@
 				3F63C76024A068F7002EA061 /* NotifyCollectionViewCell.swift in Sources */,
 				3F0F4EE4249DEBCB0055BC2D /* LivingWeatherClient.swift in Sources */,
 				3F63C75C24A060BE002EA061 /* NotifyCollectionViewController.swift in Sources */,
+				3F63C76824A11FFC002EA061 /* CodiDetailViewController.swift in Sources */,
 				3F63C756249FE29D002EA061 /* CodiData.swift in Sources */,
 				3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */,
 				3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */,
