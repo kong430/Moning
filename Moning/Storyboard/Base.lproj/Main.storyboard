@@ -162,6 +162,9 @@
                                 <state key="normal" title="남" backgroundImage="circle.fill" catalog="system">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="codiGenderButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3wh-q7-RDP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOp-SM-HQc">
                                 <rect key="frame" x="226" y="557.5" width="40" height="30"/>
@@ -172,6 +175,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="더보기"/>
+                                <connections>
+                                    <action selector="codiDetailButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SOZ-O9-4gW"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zwT-hF-Bgv">
                                 <rect key="frame" x="20" y="612.5" width="374" height="150"/>
@@ -268,8 +274,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="codi1Image" destination="aUM-O6-zKf" id="EJB-Yk-z4n"/>
                         <outlet property="codi2Image" destination="iRQ-0c-qio" id="6Vo-AS-FMf"/>
                         <outlet property="codi3Image" destination="j3c-19-v05" id="Woh-iL-mWu"/>
+                        <outlet property="codiDetailButton" destination="HOp-SM-HQc" id="RS0-LI-edg"/>
+                        <outlet property="codiGenderButton" destination="KNd-fP-5Oo" id="wWU-SZ-6Bw"/>
                         <outlet property="codiTitleLabel" destination="TEK-QG-8AN" id="cqM-QF-uFm"/>
                         <outlet property="currentTempLabel" destination="hke-rF-71C" id="GBr-Nz-4hA"/>
                         <outlet property="highTempLabel" destination="reA-AZ-I2F" id="PcH-Ly-GvG"/>

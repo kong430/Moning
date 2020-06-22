@@ -29,18 +29,38 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var codiTitleLabel: UILabel!
     
     @IBOutlet weak var notifyCollectionView: UICollectionView!
-    
+
     @IBOutlet weak var codi1Image: UIImageView!
     @IBOutlet weak var codi2Image: UIImageView!
     @IBOutlet weak var codi3Image: UIImageView!
-    
-    
+
+    @IBOutlet weak var codiGenderButton: UIButton!
+    @IBOutlet weak var codiDetailButton: UIButton!
     
     
     @IBAction func refreshButtonAction(_ sender: Any) {
         locationManager.startUpdatingLocation()
         self.getCurrentLocation()
     }
+    
+    @IBAction func codiGenderButtonAction(_ sender: Any) {
+        if Codination.gender == "g" {
+            Codination.gender = "b"
+            codiGenderButton.setTitle("여", for: .normal)
+        }
+        else if Codination.gender == "b" {
+            Codination.gender = "g"
+            codiGenderButton.setTitle("남", for: .normal)
+        }
+        DispatchQueue.main.async {
+            self.setCodiImage()
+        }
+    }
+    
+    @IBAction func codiDetailButtonAction(_ sender: Any) {
+        // 모달 띄우기
+    }
+    
 
     var locationManager: CLLocationManager!
     
@@ -199,45 +219,5 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         task.resume()
-    }
-    
-    @objc func setCodiImage() {
-        
-        var codiName = String(Codination.level)+Codination.gender+"_"
-        
-        // 0~9 중 랜덤 세 개
-        var numArray: [Int] = Array(0...9)
-        numArray.shuffle()
-        var codi1Name = codiName + String(numArray[0])
-        var codi2Name = codiName + String(numArray[1])
-        var codi3Name = codiName + String(numArray[2])
-        
-        // Reference to an image file in Firebase Storage
-        var ref1 = CodinationClient.clothesRef.child("\(codi1Name).jpg")
-        var ref2 = CodinationClient.clothesRef.child("\(codi2Name).jpg")
-        var ref3 = CodinationClient.clothesRef.child("\(codi3Name).jpg")
-
-//        print(ref1)
-//        print(ref2)
-//        print(ref3)
-
-        // Load the image using SDWebImage
-        codi1Image.sd_setImage(with: ref1)
-        if codi1Image.image == nil {
-            ref1 = CodinationClient.clothesRef.child("\(codi1Name).JPG")
-            codi1Image.sd_setImage(with: ref1)
-        }
-        codi2Image.sd_setImage(with: ref2)
-        if codi2Image.image == nil {
-            ref2 = CodinationClient.clothesRef.child("\(codi2Name).JPG")
-            codi2Image.sd_setImage(with: ref2)
-        }
-        codi3Image.sd_setImage(with: ref3)
-        if codi3Image.image == nil {
-            ref3 = CodinationClient.clothesRef.child("\(codi3Name).JPG")
-            codi3Image.sd_setImage(with: ref3)
-        }
-
-        self.view.layoutIfNeeded()
     }
 }

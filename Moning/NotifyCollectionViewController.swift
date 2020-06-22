@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.swift
+//  NotifyCollectionViewController.swift
 //  Moning
 //
 //  Created by 이제인 on 2020/06/22.

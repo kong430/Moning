@@ -19,6 +19,4 @@ class Codination {
     
     static var gender = "g" // g면 여자(디폴트), b면 남자
 
-    static var codiImages = ["01d.png","02d.png","03d.png"]
-    
 }
