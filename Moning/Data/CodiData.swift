@@ -18,5 +18,9 @@ class Codination {
     static var level = -1
     
     static var gender = "g" // g면 여자(디폴트), b면 남자
-
+    
+    static var codi1Name = ""
+    static var codi2Name = ""
+    static var codi3Name = ""
+    
 }
