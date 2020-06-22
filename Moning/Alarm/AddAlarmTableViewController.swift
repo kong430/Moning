@@ -1,69 +1,28 @@
 //
-//  AlarmTableViewController.swift
-//  Moning
+//  AddAlarmTableViewController.swift
+//  
 //
-//  Created by 이제인 on 2020/05/18.
-//  Copyright © 2020 이제인. All rights reserved.
+//  Created by Yun Jeong on 2020/06/22.
 //
 
 import UIKit
-import UserNotifications
 
-class AlarmTableViewController: UITableViewController {
+class AddAlarmTableViewController: UITableViewController {
+    
+    var materials = [String]()
 
-    @IBOutlet weak var EditButton: UIBarButtonItem!
-    var alarmList = [String]()
-    var materialList = [[String]]()
-    var alarmIndexPath = IndexPath()
-    
-    
-    
-    
     override func viewDidLoad() {
-        requestNotificationAuthorization()
-        sendNotification(seconds: 10)
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    //notification 부분
-    let userNotificationCenter = UNUserNotificationCenter.current()
-
-    func requestNotificationAuthorization() {
-        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
-
-        userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
-            if let error = error {
-                print("Error: \(error)")
-            }
-        }
-
-    }
-    //test용 콘텐츠
-    func sendNotification(seconds: Double) {
-        let notificationContent = UNMutableNotificationContent()
-
-        notificationContent.title = "알림 테스트"
-        notificationContent.body = "이것은 알림을 테스트 하는 것이다"
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
-        let request = UNNotificationRequest(identifier: "testNotification",
-                                            content: notificationContent,
-                                            trigger: trigger)
-
-        userNotificationCenter.add(request) { error in
-            if let error = error {
-                print("Notification Error: ", error)
-            }
-        }
-    }
     // MARK: - Table view data source
-    //
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -71,19 +30,18 @@ class AlarmTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 2
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alarmInfoCell", for: indexPath) as! AlarmCustomCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
 
         return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.

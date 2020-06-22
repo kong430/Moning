@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/yunjeong/Documents/GitHub/Moning/Moning/Alarm/AddAlarmTableViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Moning.xcodeproj">
    </FileRef>
    <FileRef
