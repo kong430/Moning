@@ -140,6 +140,7 @@
                     <navigationItem key="navigationItem" title="알림 설정" id="AAP-sq-dL1">
                         <barButtonItem key="backBarButtonItem" title=" " id="KLi-8L-fuf"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="zSx-eL-zAu">
+                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="add:" destination="DFE-HZ-4Th" id="lLs-fX-sNn"/>
                             </connections>
@@ -152,4 +153,5 @@
             <point key="canvasLocation" x="1556.521739130435" y="943.52678571428567"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

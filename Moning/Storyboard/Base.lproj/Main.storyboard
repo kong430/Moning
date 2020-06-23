@@ -938,6 +938,7 @@
         <segue reference="8Y6-nE-QjW"/>
         <segue reference="K37-Bf-fug"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="bell" catalog="system" width="128" height="124"/>

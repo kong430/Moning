@@ -15,6 +15,8 @@ var switchModeList = [Bool]()
 var materialAlarmTime : Date?
 var weatherAlarmTime : Date?
 var loadedTime : Int = 0
+var materialAlarmSetting : Bool = true
+var weatherAlarmSetting : Bool = true
 
 class AlarmTableViewController: UITableViewController {
     
@@ -26,6 +28,8 @@ class AlarmTableViewController: UITableViewController {
         requestNotificationAuthorization()
         super.viewDidLoad()
         loadAllData()
+        self.tableView.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        
         
     }
     /*override func viewDidAppear(_ animated: Bool) {
@@ -169,6 +173,7 @@ class AlarmTableViewController: UITableViewController {
         print(nameList)
  */
             cell.alarmNameLabel?.text = materialList[indexPath.row]
+            cell.alarmNameLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
             cell.alarmSwitch.isOn = switchModeList[indexPath.row]
         //switch저장 문제
             cell.alarmSwitch.setOn(switchModeList[indexPath.row], animated: !switchModeList[indexPath.row])
@@ -178,6 +183,8 @@ class AlarmTableViewController: UITableViewController {
             if cell.alarmNameLabel.adjustsFontSizeToFitWidth == false{
                 cell.alarmNameLabel.adjustsFontSizeToFitWidth = true
             }
+            cell.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+            
             return cell
         case 1:
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "mTimecell", for: indexPath)
@@ -188,12 +195,15 @@ class AlarmTableViewController: UITableViewController {
             df.timeStyle = .short
             cell1.textLabel?.text = "준비물 알림 시간 설정"
             cell1.detailTextLabel?.text = df.string(from: materialAlarmTime ?? Date())
+            cell1.textLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
+            cell1.detailTextLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
             /*if materialAlarmTime == nil{
                 materialAlarmTime = Date()
                 cell1.detailTextLabel?.text = df.string(from: materialAlarmTime ?? Date())
             }else{
                 cell1.detailTextLabel?.text = df.string(from: materialAlarmTime ?? Date())
             }*/
+            cell1.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
             
             return cell1
             
@@ -203,7 +213,9 @@ class AlarmTableViewController: UITableViewController {
             var datePicker = cell2.datePicker
             datePicker?.tag = indexPath.section
             datePicker?.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
-            //weatherAlarmTime = datePicker?.date as! Date
+            datePicker?.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+            datePicker?.setValue(getMainTextColor(icon: MainWeather.icon), forKeyPath: "textColor")
+
             return cell2
             
         case 3:
@@ -214,7 +226,6 @@ class AlarmTableViewController: UITableViewController {
             df.dateStyle = .none
             df.timeStyle = .short
             cell3.textLabel?.text = "추천 준비물 알림 시간 설정"
-            
             /*if weatherAlarmTime == nil{
                 weatherAlarmTime = Date()
                 cell3.detailTextLabel?.text = df.string(from: weatherAlarmTime ?? Date())
@@ -222,6 +233,9 @@ class AlarmTableViewController: UITableViewController {
                 cell3.detailTextLabel?.text = df.string(from: weatherAlarmTime ?? Date())
             }*/
             cell3.detailTextLabel?.text = df.string(from: weatherAlarmTime ?? Date())
+            cell3.textLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
+            cell3.detailTextLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
+            cell3.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
             
             return cell3
             
@@ -230,8 +244,9 @@ class AlarmTableViewController: UITableViewController {
             var datePicker2 = cell4.datePicker
             datePicker2?.tag = indexPath.section
             datePicker2?.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+            datePicker2?.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
             return cell4
-            
+            datePicker2?.setValue(getMainTextColor(icon: MainWeather.icon), forKeyPath: "textColor")
             
         default:
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
@@ -309,6 +324,28 @@ class AlarmTableViewController: UITableViewController {
         self.present(alert, animated: false)
     }
     
+    /*
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if indexPath.section == 2 || indexPath.section == 4{
+            let setting = UIContextualAction(style: .normal, title: "Setting") { [weak self] action, view, completion in
+                guard let `self` = self else {
+                    return
+                }
+                if indexPath.section == 2{
+                    materialAlarmSetting = !materialAlarmSetting
+                    completion(true)
+                }
+                
+            }
+            setting.image = materialAlarmSetting ? UIImage(named: "checkmark.square") : UIImage(contentsOfFile: "checkmark.square.fill")
+            setting.backgroundColor = UIColor.darkGray
+        
+        return UISwipeActionsConfiguration(actions: [setting])
+        }
+        return UISwipeActionsConfiguration()
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -331,7 +368,7 @@ class AlarmTableViewController: UITableViewController {
         }
         else {}
     }
-
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section{
@@ -344,10 +381,12 @@ class AlarmTableViewController: UITableViewController {
         default :
             return ""
             
-        
         }
     }
-    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.systemOrange
+    }
     func saveAllData(){
         let userDefaults = UserDefaults.standard
         userDefaults.set(materialList,forKey: "materialKey")
