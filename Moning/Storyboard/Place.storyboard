@@ -64,6 +64,7 @@
                     <navigationItem key="navigationItem" title="위치 목록" id="Aj9-LD-eJd">
                         <barButtonItem key="backBarButtonItem" title=" " id="t3f-jl-Vvv"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="ytl-iG-VsF">
+                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="8Ks-kl-s26" kind="show" id="mGw-ON-M9r"/>
                             </connections>
@@ -141,7 +142,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u58-E3-njn">
                                         <rect key="frame" x="17" y="56" width="95" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="목록에 추가하기"/>
+                                        <state key="normal" title="목록에 추가하기">
+                                            <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="buttonClick:" destination="8Ks-kl-s26" eventType="touchUpInside" id="ooI-6V-uHi"/>
                                         </connections>
@@ -171,4 +174,5 @@
             <point key="canvasLocation" x="796" y="72"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
