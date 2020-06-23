@@ -53,10 +53,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
         locationSearchTable.handleMapSearchDelegate = self
         locationSearchTable.transitioningDelegate = self
 
-        //Zoom to user location
-        let noLocation = CLLocationCoordinate2D()
-        let viewRegion = MKCoordinateRegion(center: noLocation, latitudinalMeters: 200, longitudinalMeters: 200)
-           mapView.setRegion(viewRegion, animated: false)
+        if let userLocation = locationManager.location?.coordinate
+        {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(viewRegion, animated: false)
+        }
     }
     
     @IBAction func buttonClick(_ sender: Any) {
