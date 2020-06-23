@@ -60,13 +60,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "Village"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "Nowcast"), object: nil)
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "Village"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "Nowcast"), object: nil)
+//
         NotificationCenter.default.addObserver(self, selector: #selector(setCodiImage), name: NSNotification.Name(rawValue: "codi"), object: nil)
+//
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMain), name: NSNotification.Name(rawValue: "fin"), object: nil)
         
     }
     
@@ -81,16 +83,35 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             self.getCurrentLocation()
         }
     }
-
-    @objc func updateWeather(){
+    
+    @objc func updateMain() {
         nameLabel.text = Place.name
         weatherImage.image = UIImage(named: MainWeather.icon+".png")
         weatherLabel.text = MainWeather.description()
+        
+        lowTempLabel.text = MainWeather.minTemp
+        highTempLabel.text = MainWeather.maxTemp
+        
+        timeLabel.text = MainWeather.timeStamp + " 기준"
+        currentTempLabel.text = MainWeather.currentTemp + " ℃"
+        
+        CodinationClient.setLevel()
+        updateNotify()
         
         updateColor()
         
         self.view.layoutIfNeeded()
     }
+
+//    @objc func updateWeather(){
+//        nameLabel.text = Place.name
+//        weatherImage.image = UIImage(named: "\(MainWeather.icon).png")
+//        weatherLabel.text = MainWeather.description()
+//
+//        updateColor()
+//
+//        self.view.layoutIfNeeded()
+//    }
     
     func updateColor() {
         self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
@@ -108,21 +129,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         notifyCollectionView.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
     }
     
-    @objc func updateVillageTemp(){
-        lowTempLabel.text = MainWeather.minTemp
-        highTempLabel.text = MainWeather.maxTemp
-        
-        CodinationClient.setLevel()
-        
-        self.view.layoutIfNeeded()
-    }
+//    @objc func updateVillageTemp(){
+//        lowTempLabel.text = MainWeather.minTemp
+//        highTempLabel.text = MainWeather.maxTemp
+//
+//        CodinationClient.setLevel()
+//
+//        self.view.layoutIfNeeded()
+//    }
     
-    @objc func updateCurrentTemp(){
-        timeLabel.text = MainWeather.timeStamp + " 기준"
-        currentTempLabel.text = MainWeather.currentTemp + " ℃"
-        
-        self.view.layoutIfNeeded()
-    }
+//    @objc func updateCurrentTemp(){
+//        timeLabel.text = MainWeather.timeStamp + " 기준"
+//        currentTempLabel.text = MainWeather.currentTemp + " ℃"
+//
+//        self.view.layoutIfNeeded()
+//    }
     
     
     // 현위치 받아오기
@@ -203,12 +224,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Weather"), object: nil)
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Weather"), object: nil)
                 KMAweatherClient.getVillageForcast()
-                KMAweatherClient.getNowcast()
-                AirDustClient.getAirDust()
-                LivingWeatherClient.getUV()
-                LivingWeatherClient.getDiscomfort()
+//                KMAweatherClient.getNowcast()
+//                AirDustClient.getAirDust()
+//                LivingWeatherClient.getUV()
+//                LivingWeatherClient.getDiscomfort()
             }
         }
         

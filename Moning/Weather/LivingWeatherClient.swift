@@ -113,7 +113,8 @@ class LivingWeatherClient {
             
             
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UV"), object: "nil")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UV"), object: "nil")
+                LivingWeatherClient.getDiscomfort()
             }
         }
         task.resume()
@@ -168,7 +169,9 @@ class LivingWeatherClient {
             }
             
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "discomfort"), object: "nil")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "discomfort"), object: "nil")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fin"), object: "nil")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fin2"), object: "nil")
             }
         }
         task.resume()

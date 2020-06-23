@@ -10,6 +10,26 @@ import Foundation
 
 class NotifyThings {
     
-    static var notifyImages = ["airpods.png", "charger.png", "handheld.png", "hotpack.png", "mask.png", "scarf.png", "sunglasses.png", "sunscreen.png"]
+    struct notifyModel {
+        var name: String
+        var flag: Bool
+        var text: String
+    }
+    
+    static var notifyModels = [
+        notifyModel(name: "handheld", flag: false, text: ""),
+        notifyModel(name: "hotpack", flag: false, text: ""),
+        notifyModel(name: "scarf", flag: false, text: ""),
+        notifyModel(name: "mask", flag: false, text: ""),
+        notifyModel(name: "sunglasses", flag: false, text: ""),
+        notifyModel(name: "sunscreen", flag: false, text: ""),
+        notifyModel(name: "umbrella", flag: false, text: "")
+    ]
+    
+    static var specialModel = notifyModel(name: "perfect", flag: false, text: "준비물이 필요없는 완벽한 날씨!")
+    
+    static var needNotify: [notifyModel] = []
+    
+    
     
 }

@@ -38,11 +38,15 @@ class MainWeather {
     
     // 미세먼지
     static var pm10Val: String! // pm10 미세먼지
+    static var pm10State: String! = ""
     static var pm25Val: String! // pm2.5 초미세먼지
+    static var pm25State: String! = ""
     
     // 생활지수
     static var UVlight: String! // 자외선
+    static var UVlightState: String! = ""
     static var discomfort: String! // 불쾌지수
+    static var discomfortState: String! = ""
 }
 
 let weatherDescription = ["01":"맑음", "02":"약간 흐림", "03":"흐림", "04":"매우 흐림", "09":"소나기", "10":"비", "11":"뇌우", "13":"눈", "50":"안개"]

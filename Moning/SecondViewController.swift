@@ -42,22 +42,38 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSecond), name: NSNotification.Name(rawValue: "fin2"), object: nil)
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateAirDust), name: NSNotification.Name(rawValue: "AirDust"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDetailWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateUV), name: NSNotification.Name(rawValue: "UV"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDiscomfort), name: NSNotification.Name(rawValue: "discomfort"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.updateAirDust), name: NSNotification.Name(rawValue: "AirDust"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateDetailWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateUV), name: NSNotification.Name(rawValue: "UV"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateDiscomfort), name: NSNotification.Name(rawValue: "discomfort"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateSecond), name: NSNotification.Name(rawValue: "fin2"), object: nil)
+        
     }
     
-    @objc func updateDetailWeather(){
+    @objc func updateSecond() {
+        self.updateDetailWeather()
+        self.updateAirDust()
+        self.updateDiscomfort()
+        self.updateUV()
+        
+        self.updateColor()
+        self.view.layoutIfNeeded()
+    }
+    
+    func updateDetailWeather(){
         windLabel.text = String(MainWeather.windSpeed)+"m/s"
         humidityLabel.text = String(MainWeather.humidity)+"%"
         feellikeLabel.text = String(format: "%.1f", MainWeather.feels_like)+"℃"
-        
+
         var rainProb = 0
         rainProb = max(rainProb, Int(MainWeather.rainProb06)!)
         rainProb = max(rainProb, Int(MainWeather.rainProb09)!)
@@ -66,10 +82,6 @@ class SecondViewController: UIViewController {
         rainProb = max(rainProb, Int(MainWeather.rainProb18)!)
         rainProb = max(rainProb, Int(MainWeather.rainProb21)!)
         rainLabel.text = String(rainProb)+"%"
-        
-        self.updateColor()
-        
-        self.view.layoutIfNeeded()
     }
     
     func updateColor(){
@@ -103,41 +115,41 @@ class SecondViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
-    @objc func updateUV(){
+    func updateUV(){
         uvLabel.text = MainWeather.UVlight
         
         if MainWeather.UVlight == "" {
-            uvImage.image = UIImage(named: "uv1"+".png")
+            uvImage.image = UIImage(named: "uv1.png")
         }
         else {
             var UVnum = Int(MainWeather.UVlight)!
             
             if 0 <= UVnum && UVnum <= 2 {
                 // 낮음
-                uvImage.image = UIImage(named: "uv1"+".png")
+                uvImage.image = UIImage(named: "uv1.png")
             }
             else if 3 <= UVnum && UVnum <= 5 {
                 // 보통
-                uvImage.image = UIImage(named: "uv2"+".png")
+                uvImage.image = UIImage(named: "uv2.png")
             }
             else if 6 <= UVnum && UVnum <= 7 {
                 // 높음
-                uvImage.image = UIImage(named: "uv3"+".png")
+                uvImage.image = UIImage(named: "uv3.png")
             }
             else if 8 <= UVnum && UVnum <= 10 {
                 // 매우 높음
-                uvImage.image = UIImage(named: "uv4"+".png")
+                uvImage.image = UIImage(named: "uv4.png")
             }
             else if 11 <= UVnum {
                 // 위험
-                uvImage.image = UIImage(named: "uv5"+".png")
+                uvImage.image = UIImage(named: "uv5.png")
             }
         }
         
         self.view.layoutIfNeeded()
     }
     
-    @objc func updateDiscomfort(){
+    func updateDiscomfort(){
         discomfortLabel.text = MainWeather.discomfort
         
         if MainWeather.discomfort == ""{
@@ -167,7 +179,7 @@ class SecondViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
-    @objc func updateAirDust(){
+    func updateAirDust(){
         
         dust10numLabel.text = MainWeather.pm10Val
         dust25numLabel.text = MainWeather.pm25Val
@@ -181,20 +193,21 @@ class SecondViewController: UIViewController {
             let dust25 = Int(MainWeather.pm25Val)!
             if 0 <= dust25 && dust25 <= 15 {
                 dust25Image.tintColor = UIColor.systemBlue
-                dust25textLabel.text = "좋음"
+                MainWeather.pm25State = "좋음"
             }
             else if 16 <= dust25 && dust25 <= 35 {
                 dust25Image.tintColor = UIColor.systemGreen
-                dust25textLabel.text = "보통"
+                MainWeather.pm25State = "보통"
             }
             else if 36 <= dust25 && dust25 <= 75 {
                 dust25Image.tintColor = UIColor.systemYellow
-                dust25textLabel.text = "나쁨"
+                MainWeather.pm25State = "나쁨"
             }
             else if 76 <= dust25 {
                 dust25Image.tintColor = UIColor.systemRed
-                dust25textLabel.text = "매우나쁨"
+                MainWeather.pm25State = "매우나쁨"
             }
+            dust25textLabel.text = MainWeather.pm25State
         }
         
         // 미세먼지
@@ -206,20 +219,21 @@ class SecondViewController: UIViewController {
             let dust10 = Int(MainWeather.pm10Val)!
             if 0 <= dust10 && dust10 <= 30 {
                 dust10Image.tintColor = UIColor.systemBlue
-                dust10textLabel.text = "좋음"
+                MainWeather.pm10State = "좋음"
             }
             else if 31 <= dust10 && dust10 <= 80 {
                 dust10Image.tintColor = UIColor.systemGreen
-                dust10textLabel.text = "보통"
+                MainWeather.pm10State = "보통"
             }
             else if 81 <= dust10 && dust10 <= 150 {
                 dust10Image.tintColor = UIColor.systemYellow
-                dust10textLabel.text = "나쁨"
+                MainWeather.pm10State = "나쁨"
             }
             else if 151 <= dust10 {
                 dust10Image.tintColor = UIColor.systemRed
-                dust10textLabel.text = "매우나쁨"
+                MainWeather.pm10State = "매우나쁨"
             }
+            dust10textLabel.text = MainWeather.pm10State
         }
         
         self.view.layoutIfNeeded()

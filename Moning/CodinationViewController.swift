@@ -129,7 +129,8 @@ extension MainViewController {
                     let url = item["url"] as! String
                     
                     if name == Codination.tappedCodiName {
-                        Codination.tappedCodiUrl = url
+                        let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                        Codination.tappedCodiUrl = encodedUrl
                     }
                 }
                 
