@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0572B51F248D6F8C00DB740A /* AddMaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddMaterialViewController.swift */; };
 		05BF599E249262CB007DA866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05BF599D249262CB007DA866 /* GoogleService-Info.plist */; };
-		05BF59A7249FF41C007DA866 /* AddAlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59A6249FF41C007DA866 /* AddAlarmTableViewController.swift */; };
-		05BF59A924A07F61007DA866 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59A824A07F61007DA866 /* LocalNotificationManager.swift */; };
+		05BF59AB24A09ADD007DA866 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */; };
+		05BF59AF24A1D2FF007DA866 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59AE24A1D2FF007DA866 /* AlarmViewController.swift */; };
+		05BF59B124A1DF33007DA866 /* SecondDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */; };
 		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
 		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
 		3F4F650A247B8E300001DB5F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F6509247B8E300001DB5F /* Alarm.storyboard */; };
@@ -74,11 +74,11 @@
 
 /* Begin PBXFileReference section */
 		02C1C351ACD19048E4817080 /* Pods_Moning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0572B51E248D6F8C00DB740A /* AddMaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMaterialViewController.swift; sourceTree = "<group>"; };
 		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
 		05BF599D249262CB007DA866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		05BF59A6249FF41C007DA866 /* AddAlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddAlarmTableViewController.swift; path = /Users/yunjeong/Documents/GitHub/Moning/Moning/Alarm/AddAlarmTableViewController.swift; sourceTree = "<absolute>"; };
-		05BF59A824A07F61007DA866 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerCell.swift; path = Moning/Alarm/DatePickerCell.swift; sourceTree = SOURCE_ROOT; };
+		05BF59AE24A1D2FF007DA866 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = Moning/Alarm/AlarmViewController.swift; sourceTree = SOURCE_ROOT; };
+		05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDatePickerCell.swift; sourceTree = "<group>"; };
 		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
 		3F4F6509247B8E300001DB5F /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
@@ -197,9 +197,9 @@
 			children = (
 				05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */,
 				3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */,
-				05BF59A824A07F61007DA866 /* LocalNotificationManager.swift */,
-				0572B51E248D6F8C00DB740A /* AddMaterialViewController.swift */,
-				05BF59A6249FF41C007DA866 /* AddAlarmTableViewController.swift */,
+				05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */,
+				05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */,
+				05BF59AE24A1D2FF007DA866 /* AlarmViewController.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -410,6 +410,10 @@
 		3F4F9A01246FC0AF005DEFE9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					123,
+					124,
+				);
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "이제인";
@@ -604,18 +608,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */,
+				05BF59B124A1DF33007DA866 /* SecondDatePickerCell.swift in Sources */,
+				05BF59AF24A1D2FF007DA866 /* AlarmViewController.swift in Sources */,
 				3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */,
 				3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
 				3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */,
+				05BF59AB24A09ADD007DA866 /* DatePickerCell.swift in Sources */,
 				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,
 				3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */,
-				05BF59A924A07F61007DA866 /* LocalNotificationManager.swift in Sources */,
 				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,
-				0572B51F248D6F8C00DB740A /* AddMaterialViewController.swift in Sources */,
 				05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */,
 				3F4F9A0D246FC0AF005DEFE9 /* AppDelegate.swift in Sources */,
-				05BF59A7249FF41C007DA866 /* AddAlarmTableViewController.swift in Sources */,
 				3F86B004248E285A00776E8C /* AirDustClient.swift in Sources */,
 				3F5750562484355D00C567BF /* MainWeatherData.swift in Sources */,
 				3F4F9A0F246FC0AF005DEFE9 /* SceneDelegate.swift in Sources */,
