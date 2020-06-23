@@ -163,6 +163,7 @@
                     <connections>
                         <outlet property="addButton" destination="u58-E3-njn" id="Thy-Tw-crx"/>
                         <outlet property="mapView" destination="xfY-p9-iAQ" id="rGo-KZ-AMW"/>
+                        <outlet property="view_" destination="GVU-Qh-CpT" id="LIc-N1-dEZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHG-z6-WZR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
