@@ -43,6 +43,7 @@ class LocationSearchTable : UITableViewController {
 
 extension LocationSearchTable : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
         guard let mapView = mapView,
             let searchBarText = searchController.searchBar.text else { return }
         let request = MKLocalSearch.Request()
@@ -67,6 +68,9 @@ extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         let selectedItem = matchingItems[indexPath.row].placemark
+        cell.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        cell.textLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
+        cell.detailTextLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
         searchItem = selectedItem.name!
         cell.textLabel?.text = selectedItem.name
         cellName = selectedItem.name!

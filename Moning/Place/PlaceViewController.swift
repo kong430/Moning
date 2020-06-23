@@ -20,6 +20,7 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         placeListTable.delegate = self
         placeListTable.dataSource = self
+        placeListTable.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
         loadAllData()
     }
     
@@ -46,6 +47,9 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell.textLabel?.text = placeList[indexPath.row].place
         cell.detailTextLabel?.text = placeList[indexPath.row].location
+        cell.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        cell.textLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
+        cell.detailTextLabel?.textColor = getMainTextColor(icon: MainWeather.icon)
         //cell.detailTextLabel?.text = placeList[indexPath.row]
         return cell
     }

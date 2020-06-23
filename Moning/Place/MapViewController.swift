@@ -15,6 +15,7 @@ protocol HandleMapSearch {
 class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewControllerTransitioningDelegate{
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var view_: UIView!
     let newPin = MKPointAnnotation()
     var resultSearchController:UISearchController? = nil
     var locationManager = CLLocationManager()
@@ -29,6 +30,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
         
     override func viewDidLoad(){
         super.viewDidLoad()
+        //self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        view_.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        addButton.tintColor = getMainTextColor(icon: MainWeather.icon)
         //Do any additional setup after loading the view, typically from a nib.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -61,6 +65,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
             let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.setRegion(viewRegion, animated: false)
         }
+        
     }
     
     @IBAction func buttonClick(_ sender: Any) {
