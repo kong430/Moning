@@ -24,7 +24,6 @@ class AlarmTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         requestNotificationAuthorization()
-        sendNotification(seconds: 10)
         super.viewDidLoad()
         loadAllData()
         
@@ -36,6 +35,7 @@ class AlarmTableViewController: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         saveAllData()
+        sendNotification()
         //tableView.reloadData()
     }
     /*
@@ -65,23 +65,58 @@ class AlarmTableViewController: UITableViewController {
 
     }
     //test용 콘텐츠
-    func sendNotification(seconds: Double) {
+    func sendNotification() {
+        loadAllData()
         let notificationContent1 = UNMutableNotificationContent()
-        //var str :String = materialList[0]
+        let notificationContent2 = UNMutableNotificationContent()
+        var alarmMList = [String]()
+        for i in 0..<switchModeList.count{
+            if switchModeList[i]{
+                alarmMList.append(materialList[i])
+            }
+        }
+        var str : String
+        if alarmMList.count == 0{
+            str = "챙길 준비물이 없어요."
+        }
+        else{
+            str = alarmMList[0]
+            for i in 1..<alarmMList.count{
+                str += ", " + alarmMList[i]
+            }
+        }
 
         notificationContent1.title = "오늘 들고 나갈 것 챙겼닝?"
-        notificationContent1.body = "이것은 알림을 테스트 하는 것이다"
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
-        let request = UNNotificationRequest(identifier: "testNotification",
+        notificationContent1.body = str
+        let calendar1 = Calendar.current
+        let components1 = calendar1.dateComponents([.hour, .minute], from: materialAlarmTime ?? Date())
+        
+        //let trigger1 = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let trigger1 = UNCalendarNotificationTrigger(dateMatching:components1 , repeats: true)
+        let request1 = UNNotificationRequest(identifier: "materialNotification",
                                             content: notificationContent1,
-                                            trigger: trigger)
-
-        userNotificationCenter.add(request) { error in
+                                            trigger: trigger1)
+        userNotificationCenter.add(request1) { error in
             if let error = error {
                 print("Notification Error: ", error)
             }
         }
+        
+        notificationContent2.title = "오늘의 날씨가 궁금하닝?"
+        notificationContent2.body = "궁금하다면 모닝 앱에서 확인해봐!"
+        //let calendar2 = Calendar.current
+        let components2 = calendar1.dateComponents([.hour, .minute], from: weatherAlarmTime ?? Date())
+        let trigger2 = UNCalendarNotificationTrigger(dateMatching:components2 , repeats: true)
+        let request2 = UNNotificationRequest(identifier: "weatherNotification",
+                                            content: notificationContent2,
+                                            trigger: trigger2)
+
+        userNotificationCenter.add(request2) { error in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
+ 
     }
     // MARK: - Table view data source
     //

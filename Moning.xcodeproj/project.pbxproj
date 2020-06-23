@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		05BF599E249262CB007DA866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05BF599D249262CB007DA866 /* GoogleService-Info.plist */; };
 		05BF59AB24A09ADD007DA866 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */; };
-		05BF59AF24A1D2FF007DA866 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59AE24A1D2FF007DA866 /* AlarmViewController.swift */; };
 		05BF59B124A1DF33007DA866 /* SecondDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */; };
 		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
 		3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F433B7A248A55E100738762 /* KMAweatherClient.swift */; };
@@ -77,7 +76,6 @@
 		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
 		05BF599D249262CB007DA866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerCell.swift; path = Moning/Alarm/DatePickerCell.swift; sourceTree = SOURCE_ROOT; };
-		05BF59AE24A1D2FF007DA866 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = Moning/Alarm/AlarmViewController.swift; sourceTree = SOURCE_ROOT; };
 		05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDatePickerCell.swift; sourceTree = "<group>"; };
 		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */,
 				05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */,
 				05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */,
-				05BF59AE24A1D2FF007DA866 /* AlarmViewController.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 			files = (
 				3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */,
 				05BF59B124A1DF33007DA866 /* SecondDatePickerCell.swift in Sources */,
-				05BF59AF24A1D2FF007DA866 /* AlarmViewController.swift in Sources */,
 				3F4F6513247B8F0A0001DB5F /* PlaceViewController.swift in Sources */,
 				3F433B7B248A55E100738762 /* KMAweatherClient.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
