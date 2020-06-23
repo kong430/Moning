@@ -8,12 +8,16 @@
 
 import UIKit
 import CoreLocation
-
+import SDWebImage
+import FirebaseUI
+import FirebaseStorage
+import Firebase
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -21,23 +25,60 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lowTempLabel: UILabel!
     @IBOutlet weak var highTempLabel: UILabel!
     
+    @IBOutlet weak var notifyTitleLabel: UILabel!
+    @IBOutlet weak var codiTitleLabel: UILabel!
+    
+    @IBOutlet weak var notifyCollectionView: UICollectionView!
+
+    @IBOutlet weak var codi1Image: UIImageView!
+    @IBOutlet weak var codi2Image: UIImageView!
+    @IBOutlet weak var codi3Image: UIImageView!
+
+    @IBOutlet weak var codiGenderSegment: UISegmentedControl!
     
     @IBAction func refreshButtonAction(_ sender: Any) {
         locationManager.startUpdatingLocation()
         self.getCurrentLocation()
     }
-
+    
+    @IBAction func codiGenderSegAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            Codination.gender = "g"
+        case 1:
+            Codination.gender = "b"
+        default:
+            Codination.gender = "g"
+        }
+        DispatchQueue.main.async {
+            self.setCodiImage()
+        }
+    }
+    
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "VillageTemp"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateWeather), name: NSNotification.Name(rawValue: "Weather"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateVillageTemp), name: NSNotification.Name(rawValue: "Village"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "Nowcast"), object: nil)
+//
+        NotificationCenter.default.addObserver(self, selector: #selector(setCodiImage), name: NSNotification.Name(rawValue: "codi"), object: nil)
+//
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMain), name: NSNotification.Name(rawValue: "fin"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "CurrentTemp"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if Place.lat != nil && Place.lon != nil {
+            self.getWeather()
+            return
+        }
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -48,25 +89,67 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             self.getCurrentLocation()
         }
     }
-
-    func updateWeather(){
+    
+    @objc func updateMain() {
         nameLabel.text = Place.name
         weatherImage.image = UIImage(named: MainWeather.icon+".png")
-        weatherLabel.text = MainWeather.description
-        self.view.layoutIfNeeded()
-    }
-    
-    @objc func updateVillageTemp(){
+        weatherLabel.text = MainWeather.description()
+        
         lowTempLabel.text = MainWeather.minTemp
         highTempLabel.text = MainWeather.maxTemp
-        self.view.layoutIfNeeded()
-    }
-    
-    @objc func updateCurrentTemp(){
+        
         timeLabel.text = MainWeather.timeStamp + " 기준"
         currentTempLabel.text = MainWeather.currentTemp + " ℃"
+        
+        CodinationClient.setLevel()
+        updateNotify()
+        
+        updateColor()
+        
         self.view.layoutIfNeeded()
     }
+
+//    @objc func updateWeather(){
+//        nameLabel.text = Place.name
+//        weatherImage.image = UIImage(named: "\(MainWeather.icon).png")
+//        weatherLabel.text = MainWeather.description()
+//
+//        updateColor()
+//
+//        self.view.layoutIfNeeded()
+//    }
+    
+    func updateColor() {
+        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        
+        nameLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        timeLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        currentTempLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        lowTempLabel.textColor = getBlueColor(icon: MainWeather.icon)
+        highTempLabel.textColor = getRedColor(icon: MainWeather.icon)
+        weatherLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+    
+        notifyTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        codiTitleLabel.textColor = getMainTextColor(icon: MainWeather.icon)
+        
+        notifyCollectionView.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+    }
+    
+//    @objc func updateVillageTemp(){
+//        lowTempLabel.text = MainWeather.minTemp
+//        highTempLabel.text = MainWeather.maxTemp
+//
+//        CodinationClient.setLevel()
+//
+//        self.view.layoutIfNeeded()
+//    }
+    
+//    @objc func updateCurrentTemp(){
+//        timeLabel.text = MainWeather.timeStamp + " 기준"
+//        currentTempLabel.text = MainWeather.currentTemp + " ℃"
+//
+//        self.view.layoutIfNeeded()
+//    }
     
     
     // 현위치 받아오기
@@ -113,9 +196,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             DispatchQueue.main.async {
                 self.getWeather()
-                KMAweatherClient.getVillageTemp()
-                KMAweatherClient.getCurrentTemp()
-                AirDustClient.getAirDust()
             }
         }
 
@@ -127,7 +207,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func getWeather(){
         let url = OpenWeatherClient.currentUrl(lat: Place.lat, lon: Place.lon)
-//        print(url)
+        print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
@@ -140,25 +220,30 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 
                 // 날씨
                 for weather in self.currentResult!.weather {
-                    MainWeather.description = weather.description
+//                    MainWeather.description = weather.description
                     MainWeather.icon = weather.icon
                 }
-                // 습도, 바람
+                // 습도, 바람, 체감기온
                 MainWeather.humidity = self.currentResult!.main.humidity
                 MainWeather.windSpeed = self.currentResult!.wind.speed
+                MainWeather.feels_like = self.currentResult!.main.feels_like - 273.15 // 캘빈 -> 섭씨
             }
-
+            
             DispatchQueue.main.async {
-                self.updateWeather()
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Weather"), object: nil)
+                KMAweatherClient.getVillageForcast()
+//                KMAweatherClient.getNowcast()
+//                AirDustClient.getAirDust()
+//                LivingWeatherClient.getUV()
+//                LivingWeatherClient.getDiscomfort()
             }
         }
         
         task.resume()
     }
-    
-    
-        
-    
-    
-    
+}
+
+// 커스텀 클릭 이벤트
+class CodiTapGesture: UITapGestureRecognizer {
+    var tappedCodiName = ""
 }
