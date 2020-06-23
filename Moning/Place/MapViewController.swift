@@ -23,6 +23,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     var location = ""
     var latitude = 0.0
     var longitude = 0.0
+    var sidoName_ = ""
+    var cityName_ = ""
+    var name_ = ""
         
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -62,14 +65,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     
     @IBAction func buttonClick(_ sender: Any) {
         //UserDefaults.standard.set(placeList, forKey: "placeList")
-        let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude)
+        let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude, sido: sidoName_, city: cityName_)
         placeList.append(item)
         _ = navigationController?.popViewController(animated: true)
         place = ""
         location = ""
         latitude = 0.0
         longitude = 0.0
-        
+        sidoName_ = ""
+        cityName_ = ""
     }
     
     func getDirections(){
@@ -124,6 +128,8 @@ extension MapViewController: HandleMapSearch {
             annotation.subtitle = state + " " + city + " " + searchItem
             location = annotation.subtitle!
             place = searchItem
+            sidoName_ = state
+            cityName_ = city
         }
         
         if let city = placemark.locality,
@@ -132,6 +138,8 @@ extension MapViewController: HandleMapSearch {
             annotation.subtitle = state + " " + city + " " + street
             location = annotation.subtitle!
             place = searchItem
+            sidoName_ = state
+            cityName_ = city
         }
         
         latitude = placemark.coordinate.latitude

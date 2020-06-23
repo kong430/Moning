@@ -20,7 +20,6 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         placeListTable.delegate = self
         placeListTable.dataSource = self
-        
         loadAllData()
     }
     
@@ -65,6 +64,9 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Place.lat = placeList[indexPath.row].latitude
         Place.lon = placeList[indexPath.row].longitude
+        Place.sidoName = placeList[indexPath.row].sidoName_
+        Place.cityName = placeList[indexPath.row].cityName_
+        Place.name = placeList[indexPath.row].location
         navigationController?.popViewController(animated: true)
     }
     
@@ -75,7 +77,9 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
                 "place": $0.place,
                 "location": $0.location,
                 "latitude": $0.latitude,
-                "longitude": $0.longitude
+                "longitude": $0.longitude,
+                "sidoName_": $0.sidoName_,
+                "cityName_": $0.cityName_
             ]
         }
         let userDefaults = UserDefaults.standard
@@ -100,8 +104,10 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
             let location = $0["location"] as? String
             let latitude = $0["latitude"] as? Double
             let longitude = $0["longitude"] as? Double
+            let sidoName_ = $0["sidoName_"] as? String
+            let cityName_ = $0["cityName_"] as? String
             
-            return PlaceList(place: place!, location: location!, latitude: latitude!, longitude: longitude!)
+            return PlaceList(place: place!, location: location!, latitude: latitude!, longitude: longitude!, sido: sidoName_!, city: cityName_!)
         }
     }
 }
