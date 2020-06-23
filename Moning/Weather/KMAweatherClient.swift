@@ -152,7 +152,8 @@ class KMAweatherClient {
                 print("nowcast: fail")
             }
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Nowcast"), object: "nil")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Nowcast"), object: "nil")
+                AirDustClient.getAirDust()
             }
         }
 
@@ -286,7 +287,9 @@ class KMAweatherClient {
             }
             
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Village"), object: "nil")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Village"), object: "nil")
+                KMAweatherClient.getNowcast()
+                
             }
         }
 

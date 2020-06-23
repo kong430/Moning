@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MainWeather {
     
@@ -38,11 +39,20 @@ class MainWeather {
     
     // 미세먼지
     static var pm10Val: String! // pm10 미세먼지
+    static var pm10State: String! = ""
+    static var pm10Color: UIColor! = UIColor.systemGray2
     static var pm25Val: String! // pm2.5 초미세먼지
+    static var pm25State: String! = ""
+    static var pm25Color: UIColor! = UIColor.systemGray2
     
     // 생활지수
     static var UVlight: String! // 자외선
+    static var UVlightState: String! = ""
+    static var UVlightImage: String! = "uv1.png"
+    
     static var discomfort: String! // 불쾌지수
+    static var discomfortState: String! = ""
+    static var discomfortImage: String! = "discomfort1.png"
 }
 
 let weatherDescription = ["01":"맑음", "02":"약간 흐림", "03":"흐림", "04":"매우 흐림", "09":"소나기", "10":"비", "11":"뇌우", "13":"눈", "50":"안개"]

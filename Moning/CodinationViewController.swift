@@ -105,15 +105,45 @@ extension MainViewController {
     
     // 코디 이미지 클릭 이벤트
     @objc func codiImageTapped(sender: CodiTapGesture){
-        let codiName = sender.tappedCodiName
-        print("click!!!!!!!!!!", codiName)
+        Codination.tappedCodiName = sender.tappedCodiName
+        print("click!!!!!!!!!!", Codination.tappedCodiName)
+        
+        var linkRef = CodinationClient.storageRef.child("codiLink.json")
+        linkRef.getData(maxSize: 1*1024*1024) { data, error in
+            if let error = error {
+                print("codiLink: getData error")
+            }
+            else {
+                guard let data = data else {return}
+                let decoder = JSONDecoder()
+                guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                    else {
+                        print("codiLink: json error")
+                        return
+                }
+                let resp = jsonData["response"] as! [[String:Any]]
+                for i in resp {
+                    let item = i as [String:Any]
+                    
+                    let name = item["name"] as! String
+                    let url = item["url"] as! String
+                    
+                    if name == Codination.tappedCodiName {
+                        let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                        Codination.tappedCodiUrl = encodedUrl
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Shopping"), object: "nil")
+                }
+            }
+        }
+        
         
         let vcName = self.storyboard?.instantiateViewController(withIdentifier: "detailVCID")
         vcName?.modalTransitionStyle = .coverVertical
         self.present(vcName!, animated: true, completion: nil)
         
     }
-    
-
-    
 }
