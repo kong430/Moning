@@ -11,28 +11,38 @@ import UserNotifications
 
 var materialList = [String]()
 var switchModeList = [Bool]()
-var materialAlarmTime = Date()
-var weatherAlarmTime = Date()
+//var alarmTimes = [Date(),Date()]
+var materialAlarmTime : Date?
+var weatherAlarmTime : Date?
+var loadedTime : Int = 0
 
 class AlarmTableViewController: UITableViewController {
     
     var isOpenPickerView1 = false
     var isOpenPickerView2 = false
     
-    let nameKeyForUserDefault = "nameKey"
-    let switchKeyForUserDefault = "switchKey"
-    
-    
 
     override func viewDidLoad() {
         requestNotificationAuthorization()
         sendNotification(seconds: 10)
         super.viewDidLoad()
-        UserDefaults.standard.set(materialList, forKey: self.nameKeyForUserDefault)
-        UserDefaults.standard.set(switchModeList,forKey: self.switchKeyForUserDefault)
-        
+        loadAllData()
         
     }
+    /*override func viewDidAppear(_ animated: Bool) {
+        saveAllData()
+        tableView.reloadData()
+    }*/
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        saveAllData()
+        //tableView.reloadData()
+    }
+    /*
+    override func viewWillAppear(_ animated: Bool) {
+        loadAllData()
+    }
+ */
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -56,14 +66,15 @@ class AlarmTableViewController: UITableViewController {
     }
     //test용 콘텐츠
     func sendNotification(seconds: Double) {
-        let notificationContent = UNMutableNotificationContent()
+        let notificationContent1 = UNMutableNotificationContent()
+        //var str :String = materialList[0]
 
-        notificationContent.title = "알림 테스트"
-        notificationContent.body = "이것은 알림을 테스트 하는 것이다"
+        notificationContent1.title = "오늘 들고 나갈 것 챙겼닝?"
+        notificationContent1.body = "이것은 알림을 테스트 하는 것이다"
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
         let request = UNNotificationRequest(identifier: "testNotification",
-                                            content: notificationContent,
+                                            content: notificationContent1,
                                             trigger: trigger)
 
         userNotificationCenter.add(request) { error in
@@ -141,7 +152,13 @@ class AlarmTableViewController: UITableViewController {
             df.dateStyle = .none
             df.timeStyle = .short
             cell1.textLabel?.text = "준비물 알림 시간 설정"
-            cell1.detailTextLabel?.text = df.string(from: materialAlarmTime)
+            cell1.detailTextLabel?.text = df.string(from: materialAlarmTime ?? Date())
+            /*if materialAlarmTime == nil{
+                materialAlarmTime = Date()
+                cell1.detailTextLabel?.text = df.string(from: materialAlarmTime ?? Date())
+            }else{
+                cell1.detailTextLabel?.text = df.string(from: materialAlarmTime ?? Date())
+            }*/
             
             return cell1
             
@@ -162,7 +179,14 @@ class AlarmTableViewController: UITableViewController {
             df.dateStyle = .none
             df.timeStyle = .short
             cell3.textLabel?.text = "추천 준비물 알림 시간 설정"
-            cell3.detailTextLabel?.text = df.string(from: weatherAlarmTime)
+            
+            /*if weatherAlarmTime == nil{
+                weatherAlarmTime = Date()
+                cell3.detailTextLabel?.text = df.string(from: weatherAlarmTime ?? Date())
+            }else{
+                cell3.detailTextLabel?.text = df.string(from: weatherAlarmTime ?? Date())
+            }*/
+            cell3.detailTextLabel?.text = df.string(from: weatherAlarmTime ?? Date())
             
             return cell3
             
@@ -272,15 +296,7 @@ class AlarmTableViewController: UITableViewController {
         }
         else {}
     }
-    
-    func datePickerCell(datePickerCell : DatePickerCell,datePicked date:Date){
-        let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 2))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
-        
-        
-    }
+
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section{
@@ -295,6 +311,49 @@ class AlarmTableViewController: UITableViewController {
             
         
         }
+    }
+    
+    func saveAllData(){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(materialList,forKey: "materialKey")
+        userDefaults.set(switchModeList,forKey : "switchKey")
+        userDefaults.set(materialAlarmTime,forKey: "materialTimeKey")
+        userDefaults.set(weatherAlarmTime,forKey: "weatherTimeKey")
+        //userDefaults.set(alarmTimes,forKey: "alarmKey")
+        userDefaults.synchronize()
+        
+        loadedTime += 1
+    }
+    
+    func loadAllData(){
+        /*if loadedTime == 0{
+            materialList = [String]()
+            switchModeList = [Bool]()
+            materialAlarmTime = Date()
+            weatherAlarmTime = Date()
+        }*/
+        
+        let userDefaults = UserDefaults.standard
+        let mList = userDefaults.stringArray(forKey: "materialKey") ?? [String]()
+        let sList = userDefaults.array(forKey: "switchKey") as? [Bool] ?? [Bool]()
+        let mDate = userDefaults.object(forKey: "materialTimeKey")
+        let wDate = userDefaults.object(forKey: "weatherTimeKey")
+        //let aList = userDefaults.array(forKey: "alarmKey") as? [Date] ?? [Date]()
+        materialList = []
+        switchModeList = []
+        for i in 0..<mList.count{
+            materialList.append(mList[i])
+        }
+        //materialList = mList
+        for i in 0..<sList.count{
+            switchModeList.append(sList[i])
+        }
+        //에러터짐여
+        materialAlarmTime = mDate as! Date
+        weatherAlarmTime = wDate as! Date
+        
+            //loadedTime += 1
+        
     }
     /*
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
