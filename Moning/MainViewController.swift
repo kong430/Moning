@@ -34,34 +34,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var codi2Image: UIImageView!
     @IBOutlet weak var codi3Image: UIImageView!
 
-    @IBOutlet weak var codiGenderButton: UIButton!
-    @IBOutlet weak var codiDetailButton: UIButton!
-    
+    @IBOutlet weak var codiGenderSegment: UISegmentedControl!
     
     @IBAction func refreshButtonAction(_ sender: Any) {
         locationManager.startUpdatingLocation()
         self.getCurrentLocation()
     }
     
-    @IBAction func codiGenderButtonAction(_ sender: Any) {
-        if Codination.gender == "g" {
-            Codination.gender = "b"
-            codiGenderButton.setTitle("여", for: .normal)
-        }
-        else if Codination.gender == "b" {
+    @IBAction func codiGenderSegAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
             Codination.gender = "g"
-            codiGenderButton.setTitle("남", for: .normal)
+        case 1:
+            Codination.gender = "b"
+        default:
+            Codination.gender = "g"
         }
         DispatchQueue.main.async {
             self.setCodiImage()
         }
     }
     
-    @IBAction func codiDetailButtonAction(_ sender: Any) {
-        // 모달 띄우기
-    }
-    
-
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
@@ -74,9 +67,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentTemp), name: NSNotification.Name(rawValue: "Nowcast"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setCodiImage), name: NSNotification.Name(rawValue: "codi"), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if Place.lat != nil && Place.lon != nil {
+            self.getWeather()
+            return
+        }
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -220,4 +220,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         task.resume()
     }
+}
+
+// 커스텀 클릭 이벤트
+class CodiTapGesture: UITapGestureRecognizer {
+    var tappedCodiName = ""
 }
