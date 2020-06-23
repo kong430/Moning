@@ -13,11 +13,15 @@ struct PlaceList {
     var location: String = ""
     var latitude: Double = 0
     var longitude: Double = 0
+    var sidoName_: String = ""
+    var cityName_: String = ""
     //init(place: String, location: String){
-    init(place: String, location: String, latitude: Double, longitude: Double){
+    init(place: String, location: String, latitude: Double, longitude: Double, sido: String, city: String){
         self.place = place
         self.location = location
         self.latitude = latitude
         self.longitude = longitude
+        self.sidoName_ = sido
+        self.cityName_ = city
     }
 }

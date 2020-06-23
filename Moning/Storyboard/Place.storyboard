@@ -20,7 +20,6 @@
         <!--위치 목록-->
         <scene sceneID="ivv-d3-HjK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yke-op-hby" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="placeViewController" hidesBottomBarWhenPushed="YES" id="YLh-0t-nSe" customClass="PlaceViewController" customModule="Moning" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EQN-Xb-OZD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -76,6 +75,7 @@
                         <outlet property="placeListTable" destination="8G7-1Y-rkr" id="uGl-kY-jbX"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yke-op-hby" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-52.173913043478265" y="51.5625"/>
         </scene>
@@ -163,6 +163,7 @@
                     <connections>
                         <outlet property="addButton" destination="u58-E3-njn" id="Thy-Tw-crx"/>
                         <outlet property="mapView" destination="xfY-p9-iAQ" id="rGo-KZ-AMW"/>
+                        <outlet property="view_" destination="GVU-Qh-CpT" id="LIc-N1-dEZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHG-z6-WZR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

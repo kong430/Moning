@@ -73,6 +73,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if Place.lat != nil && Place.lon != nil {
+            self.getWeather()
+            return
+        }
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
