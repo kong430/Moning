@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 class AirDustClient {
     
@@ -52,6 +53,45 @@ class AirDustClient {
                 if cityName == Place.cityName {
                     MainWeather.pm10Val = data["pm10Value"] as! String
                     MainWeather.pm25Val = data["pm25Value"] as! String
+                    
+                    // 미세먼지
+                    let dust10 = Int(MainWeather.pm10Val)!
+                    if 0 <= dust10 && dust10 <= 30 {
+                        MainWeather.pm10Color = UIColor.systemBlue
+                        MainWeather.pm10State = "좋음"
+                    }
+                    else if 31 <= dust10 && dust10 <= 80 {
+                        MainWeather.pm10Color = UIColor.systemGreen
+                        MainWeather.pm10State = "보통"
+                    }
+                    else if 81 <= dust10 && dust10 <= 150 {
+                        MainWeather.pm10Color = UIColor.systemYellow
+                        MainWeather.pm10State = "나쁨"
+                    }
+                    else if 151 <= dust10 {
+                        MainWeather.pm10Color = UIColor.systemRed
+                        MainWeather.pm10State = "매우나쁨"
+                    }
+                    
+                    // 초미세먼지
+                    let dust25 = Int(MainWeather.pm25Val)!
+                    if 0 <= dust25 && dust25 <= 15 {
+                        MainWeather.pm25Color = UIColor.systemBlue
+                        MainWeather.pm25State = "좋음"
+                    }
+                    else if 16 <= dust25 && dust25 <= 35 {
+                        MainWeather.pm25Color = UIColor.systemGreen
+                        MainWeather.pm25State = "보통"
+                    }
+                    else if 36 <= dust25 && dust25 <= 75 {
+                        MainWeather.pm25Color = UIColor.systemYellow
+                        MainWeather.pm25State = "나쁨"
+                    }
+                    else if 76 <= dust25 {
+                        MainWeather.pm25Color = UIColor.systemRed
+                        MainWeather.pm25State = "매우나쁨"
+                    }
+                    
                     print("airdust: success")
                     isok = true
                     break

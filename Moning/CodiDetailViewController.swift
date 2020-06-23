@@ -12,32 +12,37 @@ class CodiDetailViewController: UIViewController {
     
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var codiLargeImage: UIImageView!
+    @IBOutlet weak var explainLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = getBackgroundColor(icon: MainWeather.icon)
+        descriptionText.textColor = getMainTextColor(icon: MainWeather.icon)
+        explainLabel.textColor = getMainTextColor(icon: MainWeather.icon)
         
         var text = ""
         
         switch Codination.level {
         case 0:
-            text = "최고 기온 28도가 넘어가는 무더운 날입니다. 얇은 옷을 추천해요!\n"
+            text = "정말 더워요. 얇은 옷을 추천해요!\n"
         case 1:
-            text = "더워요"
+            text = "더워요.\n"
         case 2:
             text = "따뜻한 날씨입니다. 그러나 아직 반팔은 추울 수 있어요!\n"
         case 3:
-            text = "밤엔 좀 쌀쌀함"
+            text = "선선한 날씨에요.\n"
         case 4:
-            text = "꽤 추움"
+            text = "가벼운 겉옷이 필요한 날씨에요!\n"
         case 5:
-            text = "추워"
+            text = "쌀쌀하네요.\n"
         case 6:
-            text = "더추워"
+            text = "추운 날이에요.\n"
         case 7:
-            text = "더더추워"
+            text = "옷깃을 단단히 여며야 해요!\n"
   
         default:
-            text = "이거 나오면 안 돼요 ㅠㅠ"
+            text = "이거 나오면 안 돼요 ㅠㅠ 에러임\n"
         }
         
         if Codination.windFlag {
@@ -61,7 +66,7 @@ class CodiDetailViewController: UIViewController {
             text += "일교차가 커요! 가볍게 걸칠 수 있는 겉옷을 준비해 주세요.\n"
         }
         
-        descriptionText.text = text + "\n 테스트 문구: 밑에 사진 이름은 \(Codination.tappedCodiName) "
+        descriptionText.text = text// + "\n 테스트 문구: 밑에 사진 이름은 \(Codination.tappedCodiName) "
         
         
         var ref = CodinationClient.clothesRef.child("\(Codination.tappedCodiName).jpg")

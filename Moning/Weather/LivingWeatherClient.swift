@@ -97,13 +97,35 @@ class LivingWeatherClient {
             for i in item {
                 let data = i as [String:Any]
 
-//                let UVResult = data[self.UVItemType] as! String
-                
                 var UVResult = data["today"] as! String
                 if UVResult == "" {
                     UVResult = data["tomorrow"] as! String
                 }
                 MainWeather.UVlight = UVResult
+                
+                var UVnum = Int(MainWeather.UVlight)!
+                
+                if 0 <= UVnum && UVnum <= 2 {
+                    MainWeather.UVlightState = "낮음"
+                    MainWeather.UVlightImage = "uv1.png"
+                }
+                else if 3 <= UVnum && UVnum <= 5 {
+                    MainWeather.UVlightState = "보통"
+                    MainWeather.UVlightImage = "uv2.png"
+                }
+                else if 6 <= UVnum && UVnum <= 7 {
+                    MainWeather.UVlightState = "높음"
+                    MainWeather.UVlightImage = "uv3.png"
+                }
+                else if 8 <= UVnum && UVnum <= 10 {
+                    MainWeather.UVlightState = "매우 높음"
+                    MainWeather.UVlightImage = "uv4.png"
+                }
+                else if 11 <= UVnum {
+                    MainWeather.UVlightState = "위험"
+                    MainWeather.UVlightImage = "uv5.png"
+                }
+                
                 print("UV: success")
             }
             
@@ -161,6 +183,26 @@ class LivingWeatherClient {
 
                 var discomfortResult = data["h3"] as! String
                 MainWeather.discomfort = discomfortResult
+                
+                var discomfortNum = Int(MainWeather.discomfort)!
+                
+                if discomfortNum < 68 {
+                    MainWeather.discomfortState = "낮음: 전원 쾌적함을 느낌"
+                    MainWeather.discomfortImage = "discomfort1.png"
+                }
+                else if 68 <= discomfortNum && discomfortNum < 75 {
+                    MainWeather.discomfortState = "보통: 불쾌감을 느끼기 시작함"
+                    MainWeather.discomfortImage = "discomfort2.png"
+                }
+                else if 75 <= discomfortNum && discomfortNum < 80 {
+                    MainWeather.discomfortState = "높음: 50% 정도 불쾌감을 느낌"
+                    MainWeather.discomfortImage = "discomfort3.png"
+                }
+                else if 80 <= discomfortNum {
+                    MainWeather.discomfortState = "매우 높음: 전원 불쾌감을 느낌"
+                    MainWeather.discomfortImage = "discomfort4.png"
+                }
+                
                 print("discomfort: success")
             }
             

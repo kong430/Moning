@@ -959,7 +959,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Moning/Moning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6FMP88TVVY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Moning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
