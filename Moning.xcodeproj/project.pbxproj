@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05BF59AB24A09ADD007DA866 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */; };
+		05BF59B124A1DF33007DA866 /* SecondDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */; };
 		0572B51F248D6F8C00DB740A /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */; };
 		05E650E024843DE900D990D9 /* AlarmCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */; };
 		3F0F4EE4249DEBCB0055BC2D /* LivingWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F4EE3249DEBCB0055BC2D /* LivingWeatherClient.swift */; };
@@ -107,8 +109,9 @@
 
 /* Begin PBXFileReference section */
 		02C1C351ACD19048E4817080 /* Pods_Moning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		0572B520248F310F00DB740A /* Moning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moning.entitlements; sourceTree = "<group>"; };
+		05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerCell.swift; path = Moning/Alarm/DatePickerCell.swift; sourceTree = SOURCE_ROOT; };
+		05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDatePickerCell.swift; sourceTree = "<group>"; };
 		05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmCustomCell.swift; path = Moning/Alarm/AlarmCustomCell.swift; sourceTree = SOURCE_ROOT; };
 		3F0F4EE3249DEBCB0055BC2D /* LivingWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivingWeatherClient.swift; sourceTree = "<group>"; };
 		3F433B7A248A55E100738762 /* KMAweatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAweatherClient.swift; sourceTree = "<group>"; };
@@ -265,7 +268,8 @@
 			children = (
 				05E650DF24843DE900D990D9 /* AlarmCustomCell.swift */,
 				3FAA24F9247245A200AFCFCB /* AlarmTableViewController.swift */,
-				0572B51E248D6F8C00DB740A /* AddAlarmViewController.swift */,
+				05BF59B024A1DF33007DA866 /* SecondDatePickerCell.swift */,
+				05BF59AA24A09ADD007DA866 /* DatePickerCell.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -554,6 +558,10 @@
 		3F4F9A01246FC0AF005DEFE9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					123,
+					124,
+				);
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "이제인";
@@ -771,6 +779,7 @@
 			files = (
 				3F9FF5B924A1E45300219483 /* ShoppingWebViewController.swift in Sources */,
 				3F5750502484328800C567BF /* OpenWeatherResults.swift in Sources */,
+				05BF59B124A1DF33007DA866 /* SecondDatePickerCell.swift in Sources */,
 				3F63C76224A08D92002EA061 /* CodinationViewController.swift in Sources */,
 				3F63C76024A068F7002EA061 /* NotifyCollectionViewCell.swift in Sources */,
 				3F0F4EE4249DEBCB0055BC2D /* LivingWeatherClient.swift in Sources */,
@@ -783,6 +792,10 @@
 				3F63C75E24A062FB002EA061 /* CodinationClient.swift in Sources */,
 				3F8E7AA824710DB700752C92 /* SecondViewController.swift in Sources */,
 				3FAA24FA247245A200AFCFCB /* AlarmTableViewController.swift in Sources */,
+				05BF59AB24A09ADD007DA866 /* DatePickerCell.swift in Sources */,
+				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,
+				3F7B3EE2247BBDE900529C72 /* PlaceData.swift in Sources */,
+				3F4F9A11246FC0AF005DEFE9 /* MainViewController.swift in Sources */,
 				AB456D4F24A0AEE50002887C /* PlaceList.swift in Sources */,
 				3F63C758249FE2C6002EA061 /* NotifyData.swift in Sources */,
 				3F5750482484178D00C567BF /* OpenWeatherClient.swift in Sources */,

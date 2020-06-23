@@ -1,17 +1,16 @@
 //
-//  AlarmCustomCell.swift
+//  SecondDatePickerCell.swift
 //  Moning
 //
-//  Created by Yun Jeong on 2020/06/01.
+//  Created by Yun Jeong on 2020/06/23.
 //  Copyright © 2020 이제인. All rights reserved.
 //
 
 import UIKit
 
-class AlarmCustomCell: UITableViewCell {
-    @IBOutlet weak var alarmNameLabel: UILabel!
-    @IBOutlet weak var alarmSwitch: UISwitch!
-    
+class SecondDatePickerCell: UITableViewCell {
+
+    @IBOutlet weak var datePicker: UIDatePicker!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
