@@ -23,6 +23,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     var location = ""
     var latitude = 0.0
     var longitude = 0.0
+    var sidoName_ = ""
+    var cityName_ = ""
+    var name_ = ""
         
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -53,22 +56,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
         locationSearchTable.handleMapSearchDelegate = self
         locationSearchTable.transitioningDelegate = self
 
-        //Zoom to user location
-        let noLocation = CLLocationCoordinate2D()
-        let viewRegion = MKCoordinateRegion(center: noLocation, latitudinalMeters: 200, longitudinalMeters: 200)
-           mapView.setRegion(viewRegion, animated: false)
+        if let userLocation = locationManager.location?.coordinate
+        {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(viewRegion, animated: false)
+        }
     }
     
     @IBAction func buttonClick(_ sender: Any) {
         //UserDefaults.standard.set(placeList, forKey: "placeList")
-        let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude)
+        let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude, sido: sidoName_, city: cityName_)
         placeList.append(item)
         _ = navigationController?.popViewController(animated: true)
         place = ""
         location = ""
         latitude = 0.0
         longitude = 0.0
-        
+        sidoName_ = ""
+        cityName_ = ""
     }
     
     func getDirections(){
@@ -123,6 +128,8 @@ extension MapViewController: HandleMapSearch {
             annotation.subtitle = state + " " + city + " " + searchItem
             location = annotation.subtitle!
             place = searchItem
+            sidoName_ = state
+            cityName_ = city
         }
         
         if let city = placemark.locality,
@@ -131,6 +138,8 @@ extension MapViewController: HandleMapSearch {
             annotation.subtitle = state + " " + city + " " + street
             location = annotation.subtitle!
             place = searchItem
+            sidoName_ = state
+            cityName_ = city
         }
         
         latitude = placemark.coordinate.latitude
