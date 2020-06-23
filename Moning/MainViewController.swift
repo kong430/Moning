@@ -180,7 +180,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func getWeather(){
         let url = OpenWeatherClient.currentUrl(lat: Place.lat, lon: Place.lon)
-//        print(url)
+        print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
