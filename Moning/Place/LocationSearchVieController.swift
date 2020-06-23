@@ -37,6 +37,12 @@ class LocationSearchTable : UITableViewController {
             // street number
             selectedItem.subThoroughfare ?? ""
         )
+        
+        if(selectedItem.administrativeArea == nil || selectedItem.locality == nil){
+            return ""
+        }
+        
+        
         return addressLine
     }
 }
@@ -55,6 +61,13 @@ extension LocationSearchTable : UISearchResultsUpdating {
                 return
             }
             self.matchingItems = response.mapItems
+            for i in stride(from: self.matchingItems.count - 1, to: -1, by: -1) {
+                let item = self.matchingItems[i].placemark
+                if self.parseAddress(selectedItem: item) == "" {
+                    print("remove: " + item.title!)
+                    self.matchingItems.remove(at: i)
+                }
+            }
             self.tableView.reloadData()
         }
     }
@@ -85,6 +98,13 @@ extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = matchingItems[indexPath.row].placemark
         handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
-        dismiss(animated: true, completion: nil)
+        if(self.parseAddress(selectedItem: selectedItem) != ""){
+            dismiss(animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "문제가 발생했습니다.", message: "주소형식이 올바르지 않습니다.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
