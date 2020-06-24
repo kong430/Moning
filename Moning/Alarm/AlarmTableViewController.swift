@@ -386,6 +386,7 @@ class AlarmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.systemOrange
+        header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 15.0)
     }
     func saveAllData(){
         let userDefaults = UserDefaults.standard
@@ -410,8 +411,8 @@ class AlarmTableViewController: UITableViewController {
         let userDefaults = UserDefaults.standard
         let mList = userDefaults.stringArray(forKey: "materialKey") ?? [String]()
         let sList = userDefaults.array(forKey: "switchKey") as? [Bool] ?? [Bool]()
-        let mDate = userDefaults.object(forKey: "materialTimeKey")
-        let wDate = userDefaults.object(forKey: "weatherTimeKey")
+        let mDate = userDefaults.object(forKey: "materialTimeKey") ?? Date()
+        let wDate = userDefaults.object(forKey: "weatherTimeKey") ?? Date()
         //let aList = userDefaults.array(forKey: "alarmKey") as? [Date] ?? [Date]()
         materialList = []
         switchModeList = []
