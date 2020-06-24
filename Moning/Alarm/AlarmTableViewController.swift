@@ -100,9 +100,11 @@ class AlarmTableViewController: UITableViewController {
         let request1 = UNNotificationRequest(identifier: "materialNotification",
                                             content: notificationContent1,
                                             trigger: trigger1)
-        userNotificationCenter.add(request1) { error in
-            if let error = error {
-                print("Notification Error: ", error)
+        if alarmMList.count != 0{
+            userNotificationCenter.add(request1) { error in
+                if let error = error {
+                    print("Notification Error: ", error)
+                }
             }
         }
         
