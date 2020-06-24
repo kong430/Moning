@@ -2843,7 +2843,7 @@
     }
 
         .features li {
-            width: calc(33.33333% - 2em);
+            width: calc(10% - 2em);
             margin-left: 2em;
             margin-top: 3em;
             padding: 0;
