@@ -44,8 +44,8 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         
         
+        print("이건 돼?")
         NotificationCenter.default.addObserver(self, selector: #selector(updateSecond), name: NSNotification.Name(rawValue: "fin2"), object: nil)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,11 +55,14 @@ class SecondViewController: UIViewController {
 //        NotificationCenter.default.addObserver(self, selector: #selector(updateUV), name: NSNotification.Name(rawValue: "UV"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(updateDiscomfort), name: NSNotification.Name(rawValue: "discomfort"), object: nil)
 //
+//        print("이건 돼?")
 //        NotificationCenter.default.addObserver(self, selector: #selector(updateSecond), name: NSNotification.Name(rawValue: "fin2"), object: nil)
         
     }
     
     @objc func updateSecond() {
+        print("넌 왜 안돼 ")
+        
         self.updateDetailWeather()
         self.updateAirDust()
         self.updateDiscomfort()
@@ -82,6 +85,8 @@ class SecondViewController: UIViewController {
         rainProb = max(rainProb, Int(MainWeather.rainProb18)!)
         rainProb = max(rainProb, Int(MainWeather.rainProb21)!)
         rainLabel.text = String(rainProb)+"%"
+        
+        self.view.layoutIfNeeded()
     }
     
     func updateColor(){

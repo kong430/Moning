@@ -11,6 +11,8 @@ import UIKit
 
 class MainWeather {
     
+    static var isok = false
+    
     // open weather
     static func description() -> String! { // 날씨 설명
         if icon == nil {

@@ -138,7 +138,17 @@ class KMAweatherClient {
                 
                 // 현재기온
                 if cat == "T1H" {
-                    MainWeather.timeStamp = (data["baseDate"] as! String)+" "+(data["baseTime"] as! String)
+                    var baseDateStr = data["baseDate"] as! String
+//                    var monthRange = 4..<6
+//                    var dayRange = 6..<8
+//                    baseDateStr = String(baseDateStr[monthRange]) + "/" + String(baseDateStr[dayRange])
+                    
+                    var baseTimeStr = data["baseTime"] as! String
+//                    var hourRange = 0...1
+//                    var minuteRange = 2...3
+//                    baseTimeStr = String(baseTimeStr[hourRange]) + ":" + String(baseTimeStr[minuteRange])
+                    
+                    MainWeather.timeStamp =  baseDateStr + " " + baseTimeStr
                     MainWeather.currentTemp = data["obsrValue"] as! String
                     print("nowcast: success")
                     isok = true

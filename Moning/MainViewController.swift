@@ -73,20 +73,19 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        if Place.lat != nil && Place.lon != nil {
-            self.getWeather()
-            return
+        if Place.lat == nil && Place.lon == nil {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            
+            DispatchQueue.main.async {
+                self.getCurrentLocation()
+            }
         }
-        
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
-        
-        DispatchQueue.main.async {
-            self.getCurrentLocation()
+        else {
+            self.getWeather()
         }
     }
     
@@ -105,6 +104,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         updateNotify()
         
         updateColor()
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fin2"), object: "nil")
         
         self.view.layoutIfNeeded()
     }
@@ -207,7 +208,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func getWeather(){
         let url = OpenWeatherClient.currentUrl(lat: Place.lat, lon: Place.lon)
-        print(url)
+//        print(url)
         
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
