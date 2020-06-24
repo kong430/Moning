@@ -72,6 +72,11 @@ class PlaceViewController: UIViewController, UITableViewDataSource, UITableViewD
         Place.cityName = placeList[indexPath.row].cityName_
         Place.name = placeList[indexPath.row].location
         navigationController?.popViewController(animated: true)
+        //let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let nextView = storyboard.instantiateInitialViewController()!
+        //nextView.modalPresentationStyle = .fullScreen
+        //nextView.modalTransitionStyle = .crossDissolve
+        //self.present(nextView, animated: true, completion: nil)
     }
     
     //userdefault 저장
