@@ -3780,7 +3780,7 @@
 
     #wrapper {
         width: 64em;
-        max-width: calc(150% - 4em);
+        max-width: calc(100% - 4em);
         margin: 0 auto;
     }
 
