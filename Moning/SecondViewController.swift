@@ -46,6 +46,7 @@ class SecondViewController: UIViewController {
         
         print("이건 돼?")
         NotificationCenter.default.addObserver(self, selector: #selector(updateSecond), name: NSNotification.Name(rawValue: "fin2"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fin2"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,14 +63,15 @@ class SecondViewController: UIViewController {
     
     @objc func updateSecond() {
         print("넌 왜 안돼 ")
-        
-        self.updateDetailWeather()
-        self.updateAirDust()
-        self.updateDiscomfort()
-        self.updateUV()
-        
-        self.updateColor()
-        self.view.layoutIfNeeded()
+        if MainViewController.updated {
+            self.updateDetailWeather()
+            self.updateAirDust()
+            self.updateDiscomfort()
+            self.updateUV()
+           
+            self.updateColor()
+            self.view.layoutIfNeeded()
+        }
     }
     
     func updateDetailWeather(){
