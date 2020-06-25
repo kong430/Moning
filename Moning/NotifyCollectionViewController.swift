@@ -129,15 +129,13 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         NotifyThings.notifyModels[6].text = rainText
         
         
-        // 준비물 없을 때
-//        for i in NotifyThings.notifyModels {
-//            if i.flag {
-//                NotifyThings.needNotify.append(i)
-//            }
-//        }
+         준비물 없을 때
+        for i in NotifyThings.notifyModels {
+            if i.flag {
+                NotifyThings.needNotify.append(i)
+            }
+        }
         if NotifyThings.needNotify.count == 0 {
-            
-            print("??????????")
             NotifyThings.needNotify.append(NotifyThings.specialModel)
         }
         
