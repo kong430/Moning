@@ -55,6 +55,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    static var updated = false
+    
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
@@ -106,7 +108,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         updateColor()
 
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fin2"), object: "nil")
-        
+        MainViewController.updated = true
         self.view.layoutIfNeeded()
     }
 

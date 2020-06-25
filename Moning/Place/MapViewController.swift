@@ -70,15 +70,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIViewCont
     
     @IBAction func buttonClick(_ sender: Any) {
         //UserDefaults.standard.set(placeList, forKey: "placeList")
-        let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude, sido: sidoName_, city: cityName_)
-        placeList.append(item)
-        _ = navigationController?.popViewController(animated: true)
-        place = ""
-        location = ""
-        latitude = 0.0
-        longitude = 0.0
-        sidoName_ = ""
-        cityName_ = ""
+        
+        if place != "" && location != "" {
+            let item: PlaceList = PlaceList(place: place, location: location, latitude: latitude, longitude: longitude, sido: sidoName_, city: cityName_)
+            placeList.append(item)
+            _ = navigationController?.popViewController(animated: true)
+            place = ""
+            location = ""
+            latitude = 0.0
+            longitude = 0.0
+            sidoName_ = ""
+            cityName_ = ""
+        }
+        else {
+            let alert = UIAlertController(title: "지역을 검색해주세요.", message: "", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: false)
+        }
     }
     
     func getDirections(){
