@@ -27,7 +27,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         var cell : UICollectionViewCell = collectionView.cellForItem(at: indexPath as IndexPath)!
 
         let needNotify = NotifyThings.needNotify[indexPath.row]
-        let alert = UIAlertController(title: "", message: needNotify.text, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: needNotify.nameKor, message: needNotify.text, preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: false)
